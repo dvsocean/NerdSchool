@@ -1,0 +1,10 @@
+<html>
+  <head>
+    <title>Register</title>
+  </head>
+  <body>
+    <h2>Register Page</h2>
+
+
+  </body>
+</html>

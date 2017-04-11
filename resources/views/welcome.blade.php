@@ -33,12 +33,12 @@
 					<nav id="menu">
 						<ul class="links">
 							<li><a href="index.html">Home</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
+							<li><a href="generic.html">Home</a></li>
+							<li><a href="elements.html">Home</a></li>
 						</ul>
 						<ul class="actions vertical">
-							<li><a href="#" class="button special fit">Sign Up</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
+							<li><a href="{{url('/register')}}" class="button special fit">Register</a></li>
+							<li><a href="{{url('/login')}}" class="button fit">Log In</a></li>
 						</ul>
 					</nav>
 
@@ -65,7 +65,7 @@
                 </p>
 							</header>
 							<ul class="actions">
-								<li><a href="#" class="button special big">Login</a></li>
+								<li><a href="/login" class="button special big">Login</a></li>
 							</ul>
 						</div>
 						<a href="#one" class="more">Learn More</a>
@@ -183,7 +183,7 @@
                     open an account and further your learning by communicating with classmates.
                   </p>
 									<ul class="actions vertical">
-										<li><a href="#" class="button special big">Register</a></li>
+										<li><a href="{{url('/register')}}" class="button special big">Register</a></li>
 										<!-- <li><a href="#" class="button big">Learn More</a></li> -->
 									</ul>
 								</div>
