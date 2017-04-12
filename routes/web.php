@@ -11,24 +11,10 @@
 |
 */
 
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-//Auth::routes();
+Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
-Route::get('/login', 'Auth\LoginController@showLoginForm');
-
-Route::get('/register', 'Auth\RegisterController@registerUser');
-
-Route::get('/insertUser', 'InsertUserController@store');
-
-
-
-
-
-
-
