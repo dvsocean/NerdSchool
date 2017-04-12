@@ -175,22 +175,22 @@
                     <section>
                         <span class="icon major fa fa-file-code-o"></span>
                         <h3>HTML Page layout</h3>
-                        <p>...</p>
+                        <p>Dynamic scripts, video and data embedded into vanilla HTML</p>
                     </section>
                     <section>
                         <span class="icon major fa-laptop"></span>
                         <h3>Responsive Website</h3>
-                        <p>...</p>
+                        <p>More than just a fluid layout, elements respond to their containers</p>
                     </section>
                     <section>
                         <span class="icon major fa fa-graduation-cap"></span>
-                        <h3>React Library</h3>
-                        <p>...</p>
+                        <h3>Pro libraries</h3>
+                        <p>React, Angular, Laravel and more take web pages into the future</p>
                     </section>
                     <section>
                         <span class="icon major fa fa-picture-o"></span>
                         <h3>CSS or Linked CSS</h3>
-                        <p>...</p>
+                        <p>Less, Sass or CSS, compile them all into one stylesheet</p>
                     </section>
                 </div>
             </div>
@@ -217,14 +217,12 @@
     <footer id="footer">
         <div class="inner">
             <ul class="icons">
-                <li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
-                <li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
-                <li><a href="#" class="icon alt fa-youtube"><span class="label">YouTube</span></a></li>
-                <li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
-                <li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
+                <li><a href="https://github.com/dvsocean/nerdschool" class="icon alt fa-github"><span class="label">Github</span></a></li>
+                <li><a href="https://www.linkedin.com/in/daniel-ocean-4ab9918a/" class="icon alt fa fa-linkedin"><span class="label">Instagram</span></a></li>
+                <li><a href="mailto:dvsocean@icloud.com" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
             </ul>
         </div>
-        <p class="copyright">&copy; Untitled. All rights reserved.</p>
+        <p class="copyright">&copy; Nerdschool, Walnut, CA</p>
     </footer>
 
 </div>
