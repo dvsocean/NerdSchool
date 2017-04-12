@@ -37,8 +37,26 @@
             <li><a href="elements.html">Home</a></li>
         </ul>
         <ul class="actions vertical">
-            <li><a href="{{url('/register')}}" class="button special fit">Register</a></li>
-            <li><a href="{{url('/login')}}" class="button fit">Log In</a></li>
+            @if(Auth::user())
+                <li>
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        Logout {{Auth::user()->name}}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+            @else
+                <li><a href="{{url('/register')}}" class="button special fit">Register</a></li>
+                <li><a href="/login" class="button fit">Log In</a></li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+            @endif
+
         </ul>
     </nav>
 
@@ -64,9 +82,13 @@
                     nerd yourself.
                 </p>
             </header>
-            <ul class="actions">
-                <li><a href="/login" class="button special big">Login</a></li>
-            </ul>
+            @if(Auth::user())
+                <h3>Welcome {{Auth::user()->name}}</h3>
+            @else
+                <ul class="actions">
+                    <li><a href="/login" class="button special big">Login</a></li>
+                </ul>
+            @endif
         </div>
         <a href="#one" class="more">Learn More</a>
     </section>
