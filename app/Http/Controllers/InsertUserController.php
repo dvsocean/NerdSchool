@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
-class NerdController extends Controller
+class InsertUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +35,8 @@ class NerdController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input= $request->all();
+        User::create($input);
     }
 
     /**
