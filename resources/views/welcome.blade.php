@@ -69,7 +69,7 @@
 
         * Your video must be offered in both .mp4 and .webm formats to work everywhere.
     -->
-    <section id="banner" data-video="images/banner">
+    <section id="banner" data-video="images/banner.mp4">
         <div class="inner">
             <header>
                 <h1>Nerdschool</h1>
@@ -173,22 +173,22 @@
                 </header>
                 <div class="features">
                     <section>
-                        <span class="icon major fa-diamond style1"></span>
+                        <span class="icon major fa fa-file-code-o"></span>
                         <h3>HTML Page layout</h3>
                         <p>...</p>
                     </section>
                     <section>
-                        <span class="icon major fa-laptop style2"></span>
+                        <span class="icon major fa-laptop"></span>
                         <h3>Responsive Website</h3>
                         <p>...</p>
                     </section>
                     <section>
-                        <span class="icon major fa-bar-chart style3"></span>
+                        <span class="icon major fa fa-graduation-cap"></span>
                         <h3>React Library</h3>
                         <p>...</p>
                     </section>
                     <section>
-                        <span class="icon major fa-save style4"></span>
+                        <span class="icon major fa fa-picture-o"></span>
                         <h3>CSS or Linked CSS</h3>
                         <p>...</p>
                     </section>
