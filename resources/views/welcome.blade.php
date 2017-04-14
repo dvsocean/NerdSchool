@@ -123,10 +123,10 @@
                         <h2>Code that makes content beautiful</h2>
                     </header>
                     <p>
-                      Our goal is to provide an accelerated learning environment<br>
-                      by allowing you to communicate with others who are learning<br>
-                      the same material. Nerdschool provides an option to implement<br>
-                      what you have learned by making your content live. You may upload<br>
+                      Our goal is to provide an accelerated learning environment
+                      by allowing you to communicate with others who are learning
+                      the same material. Nerdschool provides an option to implement
+                      what you have learned by making your content live. You may upload
                       up-to 3 pages and test your nerdy creation. Details inside.
                     </p>
                 </div>
