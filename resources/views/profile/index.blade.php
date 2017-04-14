@@ -39,9 +39,8 @@
                   <a href="{{ route('logout') }}"
                      onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
-                      Logout {{Auth::user()->name}}
+                      Logout
                   </a>
-
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                       {{ csrf_field() }}
                   </form>
@@ -49,9 +48,6 @@
             @else
                 <li><a href="{{url('/register')}}" class="button special fit">Register</a></li>
                 <li><a href="/login" class="button fit">Log In</a></li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
             @endif
         </ul>
     </nav>

@@ -49,24 +49,20 @@
         <br>
         <br>
         <ul class="actions vertical">
-            @if(Auth::user())
-                <li>
-                    <a href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                        Logout {{Auth::user()->name}}
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </li>
+          @if(Auth::user())
+              <li>
+                  <a href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">
+                      Logout
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                  </form>
+              </li>
             @else
                 <li><a href="{{url('/register')}}" class="button special fit">Register</a></li>
                 <li><a href="/login" class="button fit">Log In</a></li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
             @endif
         </ul>
     </nav>
@@ -85,7 +81,7 @@
             <header>
                 <div class="container">
                   <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                       <img src="images/NerdSchool-package.png" class="img-responsive">
                     </div>
                   </div>
