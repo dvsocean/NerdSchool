@@ -13,6 +13,14 @@
     <link rel="stylesheet" href="{{asset('css/stylesmix.css')}}">
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -32,10 +40,14 @@
     <!-- Menu -->
     <nav id="menu">
         <ul class="links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="generic.html">Home</a></li>
-            <li><a href="elements.html">Home</a></li>
+          @if(Auth::user())
+            <li><a href="{{url('/')}}">Home</a></li>
+            <li><a href="{{url('/profile')}}">Profile</a></li>
+          @endif
         </ul>
+        <br>
+        <br>
+        <br>
         <ul class="actions vertical">
             @if(Auth::user())
                 <li>
@@ -56,7 +68,6 @@
                     {{ csrf_field() }}
                 </form>
             @endif
-
         </ul>
     </nav>
 
@@ -72,7 +83,15 @@
     <section id="banner" data-video="images/banner.mp4">
         <div class="inner">
             <header>
-                <h1>Nerdschool</h1>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+                      <img src="images/NerdSchool-package.png" class="img-responsive">
+                    </div>
+                  </div>
+                </div>
+
+
                 <p>
                     Does technology give you a headache yet<br>
                     you love it? Or maybe you have a simple<br>
@@ -101,15 +120,14 @@
             <div class="inner spotlight style1">
                 <div class="content">
                     <header>
-                        <h2>Get started now!</h2>
+                        <h2>Code that makes content beautiful</h2>
                     </header>
                     <p>
-                        Edit migrations to edit tables<br>
-                        Controllers and Models<br>
-                        Linux from USB<br>
-                        Uploading your project<br>
-                        Compiling with Gulp<br>
-                        Installing Linux<br>
+                      Our goal is to provide an accelerated learning environment<br>
+                      by allowing you to communicate with others who are learning<br>
+                      the same material. Nerdschool provides an option to implement<br>
+                      what you have learned by making your content live. You may upload<br>
+                      up-to 3 pages and test your nerdy creation. Details inside.
                     </p>
                 </div>
                 <!--
@@ -125,14 +143,15 @@
             <div class="inner spotlight alt style2">
                 <div class="content">
                     <header>
-                        <h2 style="padding-left: 25px;">Code that makes content beautiful</h2>
+                        <h2 style="padding-left: 25px;">Get started!</h2>
                     </header>
                     <p style="padding-left: 25px;">
-                        Our goal is to provide an accelerated learning environment<br>
-                        by allowing you to communicate with others who are learning<br>
-                        the same material. Nerdschool provides an option to implement<br>
-                        what you have learned by making your content live. You may upload<br>
-                        up-to 3 pages and test your nerdy creation. Details in your account.
+                      Edit migrations to edit tables<br>
+                      Controllers and Models<br>
+                      Linux from USB<br>
+                      Uploading your project<br>
+                      Compiling with Gulp<br>
+                      Installing Linux<br>
                     </p>
                 </div>
                 <!--
