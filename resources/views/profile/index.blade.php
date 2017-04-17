@@ -11,14 +11,15 @@
     <link rel="stylesheet" href="{{asset('css/stylesmix.css')}}">
     <!--WEBPACK-->
 
-    <!-- BOOTSTRAP -->
+    <!--BOOTSTRAP CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- BOOTSTRAP -->
+    <!--BOOTSTRAP CSS-->
+
 
 </head>
 <body>
+<?php $user= Auth::user(); ?>
 
 <!-- Page Wrapper -->
 <div id="page-wrapper">
@@ -36,7 +37,7 @@
     <!-- Menu -->
     <nav id="menu">
         <ul class="links">
-            @if(Auth::user())
+            @if($user)
                 <li><a href="{{url('/')}}">Home</a></li>
                 <li><a href="{{url('/profile')}}">Profile</a></li>
                 <li><a href="{{url('/discussions')}}">Discussions</a></li>
@@ -62,59 +63,38 @@
         <section id="main" class="main">
             <div class="inner">
                 <header class="major">
-                    <h1>{{Auth::user()->name}}'s Profile</h1><br>
-                    <img src="images/pic04.jpg" class="img-circle" height="82" width="82">
+                    <h1>{{$user->name}}'s Profile</h1><br>
+
+
+                    {!! Form::model($user, ['method'=> 'PATCH', 'action'=>['NerdController@update', $user->id], 'files'=> true]) !!}
+                      {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
+
+
+                      <br><br>
+                      {!! Form::text('name', null, ['class'=>'', 'placeholder'=>'Name']) !!}
+
+                      <br><br>
+                      {!! Form::text('email', null, ['class'=>'', 'placeholder'=>'Email']) !!}
+
+                      <br><br>
+                      {!! Form::text('school', null, ['class'=>'', 'placeholder'=>'School']) !!}
+
+                      <br><br>
+                      {!! Form::text('major', null, ['class'=>'', 'placeholder'=>'Major']) !!}
+
+                      <br><br>
+                      {!! Form::text('goal', null, ['class'=>'', 'placeholder'=>'Goal']) !!}
+
+                      <br><br>
+                      {!! Form::text('interest', null, ['class'=>'', 'placeholder'=>'Interest']) !!}
+
+                      <br><br>
+                      {!! Form::submit('Update', ['class'=>''])!!}
+                      <br><br>
+                    {!! Form::close() !!}
+
                 </header>
                 <span class="image main"><!--PLACEHOLDER--></span>
-
-                <form method="post" action="#">
-                    <div class="row uniform">
-                        <div class="6u 12u$(xsmall)">
-                            <input type="text" name="name" id="name" value="{{Auth::user()->name}}" placeholder="" />
-                        </div>
-                        <div class="6u$ 12u$(xsmall)">
-                            <input type="email" name="email" id="email" value="{{Auth::user()->email}}" placeholder="" />
-                        </div>
-
-                        <div class="6u 12u$(xsmall)">
-                            <input type="text" name="school" id="school" value="{{Auth::user()->school}}" placeholder="--school--" />
-                        </div>
-                        <div class="6u$ 12u$(xsmall)">
-                            <input type="text" name="career" id="career" value="{{Auth::user()->major}}" placeholder="--major--" />
-                        </div>
-                        <!-- Break -->
-                        <div class="12u$">
-                            <div class="select-wrapper">
-                                <select name="category" id="category">
-                                    <option value="">College Student</option>
-                                    <option value="1">Hobby/Passion</option>
-                                    <option value="1">Always been tech savvy</option>
-                                    <option value="1">Here to better myself</option>
-                                    <option value="1">Curious</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- Break -->
-                        <div class="6u 12u$(small)">
-                            <input type="checkbox" id="copy" name="copy">
-                            <label for="copy">TEST</label>
-                        </div>
-                        <div class="6u$ 12u$(small)">
-                            <input type="checkbox" id="human" name="human">
-                            <label for="human">Notifications</label>
-                        </div>
-                        <!-- Break -->
-                        <div class="12u$">
-                            <textarea name="message" id="message" placeholder="A bit about you" rows="6"></textarea>
-                        </div>
-                        <!-- Break -->
-                        <div class="12u$">
-                            <ul class="actions">
-                                <li><input type="submit" value="Update" class="special" /></li>
-                            </ul>
-                        </div>
-                    </div>
-                </form>
 
             </div>
         </section>
@@ -137,6 +117,10 @@
 
 <!-- Scripts -->
 <script src="{{asset('js/scriptsmix.js')}}"></script>
+
+<!-- BOOTSTRAP JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- BOOTSTRAP JS-->
 
 </body>
 </html>
