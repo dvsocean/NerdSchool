@@ -22,3 +22,9 @@ Route::get('/home', 'HomeController@index');
 Route::get('/profile', function(){
     return view('profile.index');
 });
+
+Route::get('/discussions', function(){
+    return view('discussions.index');
+});
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

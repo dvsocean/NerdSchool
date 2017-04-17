@@ -1,18 +1,22 @@
-<!DOCTYPE HTML>
+@if(Auth::user())
+        <!DOCTYPE HTML>
 <html>
 <head>
     <title>{{Auth::user()->name}}</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{{asset('css/stylesmix.css')}}">
-    <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!--WEBPACK-->
+    <link rel="stylesheet" href="{{asset('css/stylesmix.css')}}">
+    <!--WEBPACK-->
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP -->
+
 </head>
 <body>
 
@@ -31,24 +35,23 @@
 
     <!-- Menu -->
     <nav id="menu">
-      <ul class="links">
-          <li><a href="{{url('/')}}">Home</a></li>
-        <ul class="actions vertical">
-          @if(Auth::user())
-              <li>
-                  <a href="{{ route('logout') }}"
-                     onclick="event.preventDefault();
-                                                   document.getElementById('logout-form').submit();">
-                      Logout
-                  </a>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                      {{ csrf_field() }}
-                  </form>
-              </li>
-            @else
-                <li><a href="{{url('/register')}}" class="button special fit">Register</a></li>
-                <li><a href="/login" class="button fit">Log In</a></li>
+        <ul class="links">
+            @if(Auth::user())
+                <li><a href="{{url('/')}}">Home</a></li>
+                <li><a href="{{url('/profile')}}">Profile</a></li>
+                <li><a href="{{url('/discussions')}}">Discussions</a></li>
             @endif
+        </ul>
+        <ul class="actions vertical">
+            <li>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
         </ul>
     </nav>
 
@@ -137,3 +140,18 @@
 
 </body>
 </html>
+
+@else
+    <html>
+        <head>
+            <title>Unknown User!</title>
+        </head>
+    <body>
+
+        <br><br>
+        <br><br>
+
+        <h3 align="center">We dont know who you are! Please create an account and login.</h3>
+    </body>
+    </html>
+@endif
