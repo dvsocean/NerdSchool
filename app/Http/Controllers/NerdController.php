@@ -75,14 +75,14 @@ class NerdController extends Controller
      */
     public function update(NerdRequest $request, $id)
     {
-        $user= User::findOrFail($id);
+        if ($input= $request->only('photo')) {
+          
+        }
 
-
-        $input= $request->only('school');
-
-
-        $user->update($input);
-        return redirect('/profile');
+        // $user= User::findOrFail($id);
+        // $input= $request->only('school');
+        // $user->update($input);
+        // return redirect('/profile');
 
 
     }
