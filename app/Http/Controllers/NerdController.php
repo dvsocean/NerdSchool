@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Photo;
 use Illuminate\Http\Request;
 use App\Http\Requests\NerdRequest;
 use App\Http\Requests;
@@ -75,15 +76,23 @@ class NerdController extends Controller
      */
     public function update(NerdRequest $request, $id)
     {
-        if ($input= $request->only('photo')) {
-          
-        }
+        $user= User::findOrFail($id);
 
-        // $user= User::findOrFail($id);
-        // $input= $request->only('school');
-        // $user->update($input);
-        // return redirect('/profile');
+      
 
+         if ($request->hasFile('photo_id')) {
+           $input= $request->all();
+           $file= $request->file('photo_id');
+           $name= time() . $file->getClientOriginalName();
+           $file->move('nerd_images/', $name);
+           $photo= Photo::create(['file'=>$name]);
+           $input['photo_id']= $photo->id;
+           $user->update($input);
+         }
+
+
+
+       return redirect('/profile');
 
     }
 

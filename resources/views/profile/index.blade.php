@@ -65,12 +65,12 @@
                 <header class="major">
                     <h1>{{$user->name}}'s Profile</h1><br>
 
-                    <img src="http://placehold.it/100x100" height="150" width="150" class="img-circle">
+                    <img src="{{$user->photo ? $user->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="150" width="150" class="img-circle">
 
 
                     {!! Form::model($user, ['method'=> 'PATCH', 'action'=>['NerdController@update', $user->id], 'files'=> true]) !!}
 
-                      {!! Form::file('photo', null, ['class'=>'form-control']) !!}
+                      {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
 
                       <br><br>
                       {!! Form::text('name', null, ['class'=>'', 'placeholder'=>'Name']) !!}
