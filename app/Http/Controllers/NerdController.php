@@ -78,19 +78,23 @@ class NerdController extends Controller
     {
         $user= User::findOrFail($id);
 
-      
+        $input= $request->all();
+        if ($request->hasFile('photo_id')) {
+          $file= $request->file('photo_id');
+          if ($user->photo_id) {
+              if (file_exists($user->photo->file)) {
+                  unlink($user->photo->file);
+                  $user->photo->delete($user->photo_id);
+              }
+          }
+          $name= time() . $file->getClientOriginalName();
+          $file->move('nerd_images/', $name);
+          $photo= Photo::create(['file'=>$name]);
+          $input['photo_id']= $photo->id;
+        }
+        $user->update($input);
 
-         if ($request->hasFile('photo_id')) {
-           $input= $request->all();
-           $file= $request->file('photo_id');
-           $name= time() . $file->getClientOriginalName();
-           $file->move('nerd_images/', $name);
-           $photo= Photo::create(['file'=>$name]);
-           $input['photo_id']= $photo->id;
-           $user->update($input);
-         }
-
-
+        Session::flash('message', 'UPDATED SUCCESSFUL');
 
        return redirect('/profile');
 
