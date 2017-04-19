@@ -63,10 +63,11 @@
         <section id="main" class="main">
             <div class="inner">
                 <header class="major">
-                  @if (Session::has('message'))
-                               <div class="alert alert-info text-center">{{ Session::get('message') }}</div>
-                  @endif
+
                     <h1>{{$user->name}}'s Profile</h1><br>
+                    @if (Session::has('message'))
+                      <div class="alert alert-info text-center">{{ Session::get('message') }}</div><br>
+                    @endif
 
                     <img src="{{$user->photo ? $user->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="150" width="150" class="img-circle"><br><br>
 
