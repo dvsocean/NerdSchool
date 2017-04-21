@@ -35,7 +35,8 @@
           @if(Auth::user())
             <li><a href="{{url('/')}}">Home</a></li>
             <li><a href="{{url('/profile')}}">Profile</a></li>
-                <li><a href="{{url('/discussions')}}">Discussions</a></li>
+            <li><a href="{{url('/discussions')}}">Discussions</a></li>
+            <li><a href="{{url('/classmates')}}">Classmates</a></li>
           @endif
         </ul>
         <br>

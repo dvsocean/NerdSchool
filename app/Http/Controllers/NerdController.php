@@ -21,7 +21,10 @@ class NerdController extends Controller
      */
     public function index()
     {
-        //
+        $nerds= User::all();
+
+        return view('classmates.index', compact('nerds'));
+
     }
 
     /**
