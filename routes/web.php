@@ -36,3 +36,5 @@ Route::get('/classmates', function(){
 });
 
 Route::get('classmates', 'NerdController@index');
+
+Route::get('destroy/{id}', ['uses'=>'NerdController@destroy', 'as'=>'destroy']);

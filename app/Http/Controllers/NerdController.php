@@ -97,7 +97,7 @@ class NerdController extends Controller
         }
         $user->update($input);
 
-        Session::flash('message', 'UPDATED SUCCESSFUL');
+        Session::flash('message', ''. $user->name .'s profile has been updated');
 
        return redirect('/profile');
 
@@ -111,6 +111,15 @@ class NerdController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $nerd= User::findOrFail($id);
+        if ($nerd->photo_id){
+            unlink($nerd->photo->file);
+        }
+        Session::flash('message', 'Nerd ' . $nerd->name . ' has been deleted');
+        if ($nerd->photo_id){
+            $nerd->photo->delete();
+        }
+        $nerd->delete();
+        return redirect('/profile');
     }
 }

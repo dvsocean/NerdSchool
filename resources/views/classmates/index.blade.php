@@ -65,7 +65,7 @@
             <div class="inner">
                 <header class="major">
 
-                    <h1>Classmates</h1><br>
+                    <h1>Classmates 101</h1><br>
 
                             @if($nerds)
                               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -83,7 +83,7 @@
                                           <tbody>
                                           @foreach($nerds as $nerd)
                                           <tr>
-                                              <td><img src="{{$nerd->photo->file}}" height="62" width="62" class="img-circle"</td>
+                                              <td><img src="{{$nerd->photo ? $nerd->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="62" width="62" class="img-circle"</td>
                                               <td>{{$nerd->name}}</td>
                                               <td><a href="mailto:{{$nerd->email}}">{{$nerd->email}}</a></td>
                                               <td>{{$nerd->school}}</td>

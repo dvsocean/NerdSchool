@@ -1,3 +1,4 @@
+<?php use App\User; ?>
 @if(Auth::user())
         <!DOCTYPE HTML>
 <html>
@@ -70,6 +71,12 @@
                       <div class="alert alert-info text-center">{{ Session::get('message') }}</div><br>
                     @endif
 
+                    <div class="col-md-12" align="right">
+                        @if(Auth::user()->name == 'Ocean')
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">All Nerds</button>
+                            @endif
+                    </div>
+
                     <img src="{{$user->photo ? $user->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="150" width="150" class="img-circle"><br><br>
 
 
@@ -96,13 +103,105 @@
                       {!! Form::text('interest', null, ['class'=>'', 'placeholder'=>'Interest']) !!}
 
                       <br><br>
-                      {!! Form::submit('Update', ['class'=>''])!!}
+                        <div class="col-md-4" align="left">
+                          {!! Form::submit('Update', ['class'=>'']) !!}
+                        </div>
+
+                        <div class="col-md-4">
+                            <!--PLACEHOLDER-->
+                        </div>
+
+                        <div class="col-md-4">
+                            <!--PLACEHOLDER-->
+                        </div>
                       <br><br>
                     {!! Form::close() !!}
 
                 </header>
                 <span class="image main"><!--PLACEHOLDER--></span>
 
+            </div>
+        </section>
+
+        <!--MODAL-->
+        <style>
+            .modal-content {
+                padding: 25px;
+            }
+        </style>
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <?php $all_nerds= User::all(); ?>
+                        <div class="table-responsive">
+                            <table class="table-striped">
+                                <thead>
+                                    <td>ID</td>
+                                    <td>Photo</td>
+                                    <td>Name</td>
+                                    <td>Email</td>
+                                    <td>School</td>
+                                    <td>Delete</td>
+                                </thead>
+                                <tbody>
+                                    @foreach($all_nerds as $nerd)
+                                        <tr>
+                                            <td>{{$nerd->id}}</td>
+                                            <td><img src="{{$nerd->photo ? $nerd->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="62" width="62" class="img-circle"></td>
+                                            <td>{{$nerd->name}}</td>
+                                            <td>{{$nerd->email}}</td>
+                                            <td>{{$nerd->school}}</td>
+                                            <td><a href="{{route('destroy', ['id'=> $nerd->id])}}" class="btn btn-danger" id="delete_nerd">DELETE</a></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <!--MODAL-->
+
+        <!--DELETE NERD JAVASCRIPT-->
+            <script>
+                $(function(){
+                    $('#delete_nerd').click(function(){
+                        alert('Hello');
+                    });
+                });
+            </script>
+        <!--DELETE NERD JAVASCRIPT-->
+
+        <section>
+            <div class="inner">
+                <h1>Start a discussion</h1>
+
+                {!! Form::open(['method'=> 'POST', 'action'=>'NerdController@index']) !!}
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!! Form::label('title', 'Topic:') !!}
+                            {!! Form::text('title', null, ['class'=>'form-control']) !!}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        {!! Form::label('title', 'Title:') !!}
+                        {!! Form::text('title', null, ['class'=>'form-control']) !!}
+                    </div>
+
+                    <div class="col-md-12">
+                        {!! Form::label('post', 'Post:') !!}
+                        {!! Form::textarea('post', null, ['class'=>'form-control']) !!}<br><br>
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {!! Form::submit('Start', ['class'=>''])!!}
+                        </div>
+                    </div>
+                {!! Form::close() !!}
             </div>
         </section>
 
