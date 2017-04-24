@@ -103,36 +103,47 @@
                       {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
 
                       <br><br>
-                      {!! Form::text('name', null, ['class'=>'', 'placeholder'=>'Name']) !!}
+
+
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                          {!! Form::text('name', null, ['class'=>'', 'placeholder'=>'Name']) !!}
+                        </div>
+                        
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                          {!! Form::text('email', null, ['class'=>'', 'placeholder'=>'Email']) !!}
+                        </div>
+                      </div>
 
                       <br><br>
-                      {!! Form::text('email', null, ['class'=>'', 'placeholder'=>'Email']) !!}
 
-                      <br><br>
-                      {!! Form::text('school', null, ['class'=>'', 'placeholder'=>'School']) !!}
-
-                      <br><br>
-                      {!! Form::text('major', null, ['class'=>'', 'placeholder'=>'Major']) !!}
-
-                      <br><br>
-                      {!! Form::text('goal', null, ['class'=>'', 'placeholder'=>'Goal']) !!}
-
-                      <br><br>
-                      {!! Form::text('interest', null, ['class'=>'', 'placeholder'=>'Interest']) !!}
-
-                      <br><br>
-                        <div class="col-md-4" align="left">
-                          {!! Form::submit('Update', ['class'=>'']) !!}
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                          {!! Form::text('school', null, ['class'=>'', 'placeholder'=>'School']) !!}
                         </div>
 
-                        <div class="col-md-4">
-                            <!--PLACEHOLDER-->
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                          {!! Form::text('major', null, ['class'=>'', 'placeholder'=>'Major']) !!}
+                        </div>
+                      </div>
+
+                      <br><br>
+
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                          {!! Form::text('goal', null, ['class'=>'', 'placeholder'=>'Goal']) !!}
                         </div>
 
-                        <div class="col-md-4">
-                            <!--PLACEHOLDER-->
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                          {!! Form::text('interest', null, ['class'=>'', 'placeholder'=>'Interest']) !!}
                         </div>
+                      </div>
+
                       <br><br>
+
+                      <div class="col-xs-12 col-sm-12 col-md-12" align="left">
+                        {!! Form::submit('Update', ['class'=>'']) !!}
+                      </div>
                     {!! Form::close() !!}
 
                 </header>
@@ -182,11 +193,9 @@
         </div>
         <!--MODAL-->
 
-<!-- <a href="{{route('destroy', ['id'=> $nerd->id])}}" class="btn btn-danger" id="delete_nerd">DELETE</a> -->
-
         <section>
             <div class="inner">
-                <h1>Start a discussion</h1>
+                <h3>Start a discussion</h3>
 
                 {!! Form::open(['method'=> 'POST', 'action'=>'NerdController@index']) !!}
 
