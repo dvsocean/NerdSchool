@@ -27,8 +27,10 @@
     <!--DELETE NERD JAVASCRIPT-->
         <script>
             $(function(){
-                $('#delete_nerd').click(function(){
-                    confirm('Are you sure you want to delete?');
+                $('.desNerd').click(function(e){
+                    if(!confirm('Are you sure you want to delete?')){
+                      e.preventDefault();
+                    }
                 });
             });
         </script>
@@ -168,9 +170,7 @@
                                             <td>{{$nerd->email}}</td>
                                             <td>{{$nerd->school}}</td>
                                             <td>
-                                                {!! Form::open(['method'=> 'DELETE', 'action'=> ['NerdController@destroy', $nerd->id]]) !!}
-                                                  {!! Form::submit('DELETE') !!}
-                                                {!! Form::close() !!}
+                                              <a href="{{route('destroy', ['id'=> $nerd->id])}}" class="btn btn-danger desNerd">DELETE</a>
                                             </td>
                                         </tr>
                                     @endforeach
