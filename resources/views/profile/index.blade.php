@@ -17,6 +17,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <!--BOOTSTRAP CSS-->
 
+    <!-- Scripts -->
+    <script src="{{asset('js/scriptsmix.js')}}"></script>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- BOOTSTRAP JS-->
+
+    <!--DELETE NERD JAVASCRIPT-->
+        <script>
+            $(function(){
+                $('#delete_nerd').click(function(){
+                    confirm('Are you sure you want to delete?');
+                });
+            });
+        </script>
+    <!--DELETE NERD JAVASCRIPT-->
 
 </head>
 <body>
@@ -151,7 +167,11 @@
                                             <td>{{$nerd->name}}</td>
                                             <td>{{$nerd->email}}</td>
                                             <td>{{$nerd->school}}</td>
-                                            <td><a href="{{route('destroy', ['id'=> $nerd->id])}}" class="btn btn-danger" id="delete_nerd">DELETE</a></td>
+                                            <td>
+                                                {!! Form::open(['method'=> 'DELETE', 'action'=> ['NerdController@destroy', $nerd->id]]) !!}
+                                                  {!! Form::submit('DELETE') !!}
+                                                {!! Form::close() !!}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -162,15 +182,7 @@
         </div>
         <!--MODAL-->
 
-        <!--DELETE NERD JAVASCRIPT-->
-            <script>
-                $(function(){
-                    $('#delete_nerd').click(function(){
-                        alert('Hello');
-                    });
-                });
-            </script>
-        <!--DELETE NERD JAVASCRIPT-->
+<!-- <a href="{{route('destroy', ['id'=> $nerd->id])}}" class="btn btn-danger" id="delete_nerd">DELETE</a> -->
 
         <section>
             <div class="inner">
@@ -221,12 +233,7 @@
 
 </div>
 
-<!-- Scripts -->
-<script src="{{asset('js/scriptsmix.js')}}"></script>
 
-<!-- BOOTSTRAP JS -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<!-- BOOTSTRAP JS-->
 
 </body>
 </html>
