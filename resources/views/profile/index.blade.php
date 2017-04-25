@@ -90,7 +90,7 @@
                     @endif
 
                     <div class="col-md-12" align="right">
-                        @if(Auth::user()->name == 'Ocean')
+                        @if(Auth::user()->admin == 'yes')
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">All Nerds</button>
                             @endif
                     </div>
@@ -197,12 +197,12 @@
             <div class="inner">
                 <h3>Start a discussion</h3>
 
-                {!! Form::open(['method'=> 'POST', 'action'=>'NerdController@index']) !!}
+                {!! Form::open(['method'=> 'POST', 'action'=>['PostsController@store', 'id'=>$user->id]]) !!}
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!! Form::label('title', 'Topic:') !!}
-                            {!! Form::text('title', null, ['class'=>'form-control']) !!}
+                            {!! Form::label('topic', 'Topic:') !!}
+                            {!! Form::text('topic', null, ['class'=>'form-control']) !!}
                         </div>
                     </div>
 
