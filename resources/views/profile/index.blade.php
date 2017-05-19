@@ -27,9 +27,22 @@
     <!--DELETE NERD JAVASCRIPT-->
         <script>
             $(function(){
+                var topicSelect= $('#topic');
+
                 $('.desNerd').click(function(e){
                     if(!confirm('Are you sure you want to delete?')){
                       e.preventDefault();
+                    }
+                });
+
+//                $('#nerdDrop').change(function(){
+//                    alert('Value has been changed');
+//                });
+
+                $('#postForm').submit(function(e){
+                    if(topicSelect = '0'){
+                        alert('Needs content');
+                        e.preventDefault();
                     }
                 });
             });
@@ -197,32 +210,41 @@
             <div class="inner">
                 <h3>Start a discussion</h3>
 
-                {!! Form::open(['method'=> 'POST', 'action'=>['PostsController@store', 'id'=>$user->id]]) !!}
+                {{--{!! Form::open(['method'=> 'POST', 'action'=>['PostsController@store', 'id'=>$user->id], 'id'=>'postForm']) !!}--}}
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('topic', 'Topic:') !!}
-                            {!! Form::text('topic', null, ['class'=>'form-control']) !!}
-                        </div>
-                    </div>
+                    {{--<div class="col-md-6">--}}
+                        {{--<div class="form-group">--}}
+                            {{--{!! Form::label('topic', 'Topic:') !!}--}}
+                            {{--{!! Form::select('topic', ['', 'General', 'Web', 'Libraries', 'Frameworks', 'Bootstrap']) !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
-                    <div class="col-md-6">
-                        {!! Form::label('title', 'Title:') !!}
-                        {!! Form::text('title', null, ['class'=>'form-control']) !!}
-                    </div>
+                    {{--<div class="col-md-6">--}}
+                        {{--{!! Form::label('title', 'Title:') !!}--}}
+                        {{--{!! Form::text('title', null, ['class'=>'form-control']) !!}--}}
+                    {{--</div>--}}
 
-                    <div class="col-md-12">
-                        {!! Form::label('post', 'Post:') !!}
-                        {!! Form::textarea('post', null, ['class'=>'form-control']) !!}<br><br>
-                    </div>
+                    {{--<div class="col-md-12">--}}
+                        {{--{!! Form::label('post', 'Post:') !!}--}}
+                        {{--{!! Form::textarea('post', null, ['class'=>'form-control']) !!}<br><br>--}}
+                    {{--</div>--}}
 
 
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            {!! Form::submit('Start', ['class'=>''])!!}
-                        </div>
-                    </div>
-                {!! Form::close() !!}
+                    {{--<div class="col-md-12">--}}
+                        {{--<div class="form-group">--}}
+                            {{--{!! Form::submit('Start', ['class'=>''])!!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--{!! Form::close() !!}--}}
+
+                <form action="" method="">
+                    <select id="topic">
+                        <option value="0">Sacramento</option>
+                        <option value="1">LA</option>
+                    </select><br><br>
+
+                    <input type="submit" value="submit">
+                </form>
             </div>
         </section>
 

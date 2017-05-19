@@ -35,10 +35,12 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $input= $request->all();
-        $input['user_id']= $request->input('id');
-        Post::create($input);
-        return redirect('/profile');
+//        $input= $request->all();
+//        $input['user_id']= $request->input('id');
+//        Post::create($input);
+//        return redirect('/profile');
+
+          return $request->all();
     }
 
     /**
