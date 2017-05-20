@@ -35,9 +35,7 @@
                     }
                 });
 
-//                $('#nerdDrop').change(function(){
-//                    alert('Value has been changed');
-//                });
+
 
                 $('#postForm').submit(function(e){
                     if(topicSelect = '0'){
