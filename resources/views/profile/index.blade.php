@@ -7,45 +7,60 @@
     <!--HEADER-->
     @include('includes.header')
     <!--HEADER-->
-</head>
+
+    <style>
+        .well {
+            text-align: left;
+            list-style-type: none;;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+        .control-box {
+            padding-right: 10px;
+        }
+    </style>
 
     <!--DELETE NERD JAVASCRIPT-->
-        <script>
-            $(function(){
-                var topicSelect= $('#topic');
-                var titleSelect= $('#title');
-                var textAreaSelect= $('#post');
+    <script>
+        $(function(){
+            var topicSelect= $('#topic');
+            var titleSelect= $('#title');
+            var textAreaSelect= $('#post');
 
-                $('.desNerd').click(function(e){
-                    if(!confirm('Are you sure you want to delete?')){
-                      e.preventDefault();
-                    }
-                });
-
-                $('#postForm').submit(function(e){
-                    if(topicSelect.val() < 1){
-                        alert('Please select a topic');
-                        e.preventDefault();
-                    }
-
-                    if(titleSelect.val().length < 3){
-                        alert('Title must be at least 3 characters long');
-                        e.preventDefault();
-                    }
-
-                    if(textAreaSelect.val().length < 10){
-                        alert('Your post must be at least 10 characters long');
-                        e.preventDefault();
-                    }
-                });
-
-                $('#datepicker').datepicker();
-                $('#datepicker').datepicker('setDate', new Date());
+            $('.desNerd').click(function(e){
+                if(!confirm('Are you sure you want to delete?')){
+                    e.preventDefault();
+                }
             });
-        </script>
-    <!--DELETE NERD JAVASCRIPT-->
 
+            $('#postForm').submit(function(e){
+                if(topicSelect.val() < 1){
+                    alert('Please select a topic');
+                    e.preventDefault();
+                }
+
+                if(titleSelect.val().length < 3){
+                    alert('Title must be at least 3 characters long');
+                    e.preventDefault();
+                }
+
+                if(textAreaSelect.val().length < 10){
+                    alert('Your post must be at least 10 characters long');
+                    e.preventDefault();
+                }
+            });
+
+            $('#datepicker').datepicker();
+            $('#datepicker').datepicker('setDate', new Date());
+        });
+    </script>
+    <!--DELETE NERD JAVASCRIPT-->
 </head>
+
+
 <body>
 <?php $user= Auth::user(); ?>
 
@@ -68,28 +83,6 @@
                     @if (Session::has('message'))
                       <div class="alert alert-info text-center">{{ Session::get('message') }}</div><br>
                     @endif
-
-                    <style>
-                        .well {
-                            text-align: left;
-                            list-style-type: none;;
-                        }
-
-                        a:link {
-                            text-decoration: none;
-                        }
-
-                        .control-box {
-                            padding-right: 10px;
-                        }
-                    </style>
-
-                    <div class="well">
-                        <a href="{{route('projects')}}" class="control-box">Project Files</a><span> </span>
-                        <a href="" class="control-box">Library</a><span> </span>
-                        <a href="" class="control-box">Test</a><span> </span>
-                        <a href="" class="control-box">Test</a><span> </span><a href="">Test</a>
-                    </div>
 
                     <!--PROJECT FILES OR DATABASE FOR ALL NERDS-->
                     <div class="col-md-12" align="right">
@@ -149,6 +142,23 @@
                         {!! Form::submit('Update', ['class'=>'']) !!}
                       </div>
                     {!! Form::close() !!}
+
+                    <div class="row" align="right">
+                        <div class="col-md-4">
+                            <!--PLACEHOLDER-->
+                        </div>
+
+                        <div class="col-md-4">
+                            <!--PLACEHOLDER-->
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="well">
+                                <a href="{{route('projects')}}" class="control-box btn btn-default">Project Files</a><span> </span>
+                                <a href="" class="control-box btn btn-default">Library</a><span> </span>
+                            </div>
+                        </div>
+                    </div>
 
                 </header>
                 <span class="image main"><!--PLACEHOLDER--></span>

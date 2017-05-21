@@ -26,7 +26,7 @@
 
                     <div class="row" align="right">
                         <div class="col-md-12">
-                            <a href="{{route('profile')}}" class="btn btn-primary">Profile</a>
+                            <a href="{{route('profile')}}" class="btn btn-default">Profile</a>
                         </div>
                     </div>
 

@@ -25,30 +25,34 @@
             <div class="inner">
                 <header class="major">
 
-                    <h1>Classmates 101</h1><br>
+                    <h1>Classmates</h1><br>
 
                             @if($nerds)
                               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                   <div class="table-responsive">
                                       <table class="table">
                                           <thead>
-                                          <tr>
-                                              <th>Photo</th>
-                                              <th>Name</th>
-                                              <th>Email</th>
-                                              <th>College</th>
-                                              <th>Interest</th>
-                                          </tr>
+                                              <tr>
+                                                  <th>Photo</th>
+                                                  <th>Name</th>
+                                                  <th>Email</th>
+                                                  <th>College</th>
+                                                  <th>Major</th>
+                                                  <th>Goal</th>
+                                                  <th>Interest</th>
+                                              </tr>
                                           </thead>
                                           <tbody>
                                           @foreach($nerds as $nerd)
-                                          <tr>
-                                              <td><img src="{{$nerd->photo ? $nerd->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="62" width="62" class="img-circle"</td>
-                                              <td>{{$nerd->name}}</td>
-                                              <td><a href="mailto:{{$nerd->email}}">{{$nerd->email}}</a></td>
-                                              <td>{{$nerd->school}}</td>
-                                              <td>{{$nerd->interest}}</td>
-                                          </tr>
+                                              <tr>
+                                                  <td><img src="{{$nerd->photo ? $nerd->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="62" width="62" class="img-circle"</td>
+                                                  <td>{{$nerd->name}}</td>
+                                                  <td><a href="mailto:{{$nerd->email}}">{{$nerd->email}}</a></td>
+                                                  <td>{{$nerd->school}}</td>
+                                                  <td>{{$nerd->major}}</td>
+                                                  <td>{{$nerd->goal}}</td>
+                                                  <td>{{$nerd->interest}}</td>
+                                              </tr>
                                           @endforeach
                                           </tbody>
                                       </table>
