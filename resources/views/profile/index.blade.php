@@ -9,8 +9,6 @@
     <!--HEADER-->
 </head>
 
-
-
     <!--DELETE NERD JAVASCRIPT-->
         <script>
             $(function(){
@@ -40,6 +38,8 @@
                         e.preventDefault();
                     }
                 });
+
+                $('#datepicker').datepicker();
             });
         </script>
     <!--DELETE NERD JAVASCRIPT-->
@@ -132,6 +132,7 @@
             </div>
         </section>
 
+
         <!--MODAL-->
         <style>
             .modal-content {
@@ -173,9 +174,8 @@
         </div>
         <!--MODAL-->
 
-        <section>
-            <div class="inner">
-                <h3>Start a discussion</h3>
+
+
 
                 {{--{!! Form::open(['method'=> 'POST', 'action'=>['PostsController@index', 'id'=>$user->id], 'id'=>'postForm']) !!}--}}
 
@@ -204,21 +204,72 @@
                     {{--</div>--}}
                 {{--{!! Form::close() !!}--}}
 
-                <form action="{{url('/posts')}}" method="POST">
-                    <select id="topic">
-                        <option value="0">Select a topic</option>
-                        <option value="1">LA</option>
-                    </select><br><br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!--PLACEHOLDER-->
+                        </div>
 
-                    <input type="submit" value="submit">
-                </form>
-            </div>
-        </section>
+                        <div class="col-md-4">
+                            <h3 align="center">Start a discussion</h3><br>
+                            <form action="{{url('/posts')}}" method="POST" id="postForm">
+                                <select id="topic">
+                                    <option value="0">Select a topic &#8681;</option>
+                                    <option value="1">Server</option>
+                                    <option value="2">Front end</option>
+                                    <option value="3">PHP</option>
+                                    <option value="4">Javascript</option>
+                                    <option value="5">General</option>
+                                </select><br><br>
+                        </div>
+
+                        <div class="col-md-4">
+                            <!--PLACEHOLDER-->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <!--PLACEHOLDER-->
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="title">Title</label><br>
+                            <input type="text" name="title" id="title">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Date</label><br>
+                            <input type="text" name="date" id="datepicker"><br><br>
+                        </div>
+
+                        <div class="col-md-2">
+                            <!--PLACEHOLDER-->
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <!--PLACEHOLDER-->
+                        </div>
+
+                        <div class="col-md-8">
+                            <label>Discussion</label><br>
+                            <textarea rows="7"></textarea><br>
+
+                            <input type="submit" value="Start">
+                            </form>
+                        </div>
+
+                        <div class="col-md-2">
+                            <!--PLACEHOLDER-->
+                        </div>
+                    </div>
+                </div>
     </div>
 
-
 @include('includes.footer')
-
+@include('includes.jquery-ui')
 </body>
 </html>
 
