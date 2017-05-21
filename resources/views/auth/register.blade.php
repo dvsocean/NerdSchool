@@ -62,7 +62,8 @@
 				                           <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password..." required>
 				                        </div>
 
-				                        <button type="submit" class="btn">Register</button>
+				                        <button type="submit" class="btn">Register</button><br><br>
+                                        <a href="{{route('homePage')}}"><button type="button" class="btn btn-danger">Go Back</button></a>
 				                    </form>
 
 

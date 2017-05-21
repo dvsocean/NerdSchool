@@ -10,6 +10,7 @@ class Post extends Model
     	'user_id',
     	'title',
     	'topic',
+        'discussion_date',
     	'post',
     	'pic_id'
     ];

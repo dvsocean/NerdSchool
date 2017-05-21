@@ -57,6 +57,7 @@
             @else
                 <ul class="actions">
                     <li><a href="/login" class="button special big">Login</a></li>
+                    <li><a href="/register" class="button special big">Signup</a></li>
                 </ul>
             @endif
         </div>

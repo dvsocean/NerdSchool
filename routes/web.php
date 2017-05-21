@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('homePage');
 
 Auth::routes();
 
@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/profile', function(){
     return view('profile.index');
-});
+})->name('profile');
 
 Route::get('/discussions', function(){
     return view('discussions.index');
@@ -43,4 +43,4 @@ Route::resource('/posts', 'PostsController');
 
 Route::get('project_files', function(){
     return view('project_files.index');
-});
+})->name('projects');

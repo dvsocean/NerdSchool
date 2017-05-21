@@ -53,7 +53,8 @@
                                    @endif
                                   </div>
 
-    			                        <button type="submit" class="btn">Sign in</button>
+    			                        <button type="submit" class="btn">Sign in</button><br><br>
+                                        <a href="{{route('homePage')}}"><button type="button" class="btn btn-danger">Nevermind</button></a>
     			                    </form>
 			                    </div>
 		                    </div>

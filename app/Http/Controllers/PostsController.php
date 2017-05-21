@@ -40,7 +40,7 @@ class PostsController extends Controller
 //        Post::create($input);
 //        return redirect('/profile');
 
-          return "IT WORKS STORE";
+          return $request->all();
     }
 
     /**

@@ -23,8 +23,36 @@
                 <header class="major">
                     <h1>Project Files</h1>
                 </header>
+
+                    <div class="row" align="right">
+                        <div class="col-md-12">
+                            <a href="{{route('profile')}}" class="btn btn-primary">Profile</a>
+                        </div>
+                    </div>
+
                 <img src="page_images/folder.png" alt="" height="100" width="90" class="center-block" />
-                <p>TEXT GOES HERE</p>
+                <br><br>
+
+                <div class="table-responsive">
+                    <table class="table-hover">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Discussion</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td><a href="">Development</a></td>
+                                <td>5.21.17</td>
+                                <td>This is me now with nerdschool...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
 
 

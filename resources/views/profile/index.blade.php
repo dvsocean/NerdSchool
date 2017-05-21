@@ -40,6 +40,7 @@
                 });
 
                 $('#datepicker').datepicker();
+                $('#datepicker').datepicker('setDate', new Date());
             });
         </script>
     <!--DELETE NERD JAVASCRIPT-->
@@ -68,13 +69,35 @@
                       <div class="alert alert-info text-center">{{ Session::get('message') }}</div><br>
                     @endif
 
+                    <style>
+                        .well {
+                            text-align: left;
+                            list-style-type: none;;
+                        }
+
+                        a:link {
+                            text-decoration: none;
+                        }
+
+                        .control-box {
+                            padding-right: 10px;
+                        }
+                    </style>
+
+                    <div class="well">
+                        <a href="{{route('projects')}}" class="control-box">Project Files</a><span> </span>
+                        <a href="" class="control-box">Library</a><span> </span>
+                        <a href="" class="control-box">Test</a><span> </span>
+                        <a href="" class="control-box">Test</a><span> </span><a href="">Test</a>
+                    </div>
+
+                    <!--PROJECT FILES OR DATABASE FOR ALL NERDS-->
                     <div class="col-md-12" align="right">
                         @if(Auth::user()->admin == 'yes')
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">All Nerds</button>
-                        @else
-                            <a href="{{url('/project_files')}}" class="btn btn-primary">Project Files</a>
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Database</button>
                         @endif
                     </div>
+                    <!--PROJECT FILES OR DATABASE FOR ALL NERDS-->
 
                     <img src="{{$user->photo ? $user->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="150" width="150" class="img-circle"><br><br>
 
@@ -213,13 +236,13 @@
                         <div class="col-md-4">
                             <h3 align="center">Start a discussion</h3><br>
                             <form action="{{url('/posts')}}" method="POST" id="postForm">
-                                <select id="topic">
+                                <select id="topic" name="topic">
                                     <option value="0">Select a topic &#8681;</option>
-                                    <option value="1">Server</option>
-                                    <option value="2">Front end</option>
-                                    <option value="3">PHP</option>
-                                    <option value="4">Javascript</option>
-                                    <option value="5">General</option>
+                                    <option value="Server">Server</option>
+                                    <option value="Front end">Front end</option>
+                                    <option value="PHP">PHP</option>
+                                    <option value="Javascript">Javascript</option>
+                                    <option value="General">General</option>
                                 </select><br><br>
                         </div>
 
@@ -255,7 +278,7 @@
 
                         <div class="col-md-8">
                             <label>Discussion</label><br>
-                            <textarea rows="7"></textarea><br>
+                            <textarea rows="7" name="discussion"></textarea><br>
 
                             <input type="submit" value="Start">
                             </form>
