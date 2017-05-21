@@ -14,7 +14,9 @@
     <!--DELETE NERD JAVASCRIPT-->
         <script>
             $(function(){
-                var topicSelect= $('#topic').val();
+                var topicSelect= $('#topic');
+                var titleSelect= $('#title');
+                var textAreaSelect= $('#post');
 
                 $('.desNerd').click(function(e){
                     if(!confirm('Are you sure you want to delete?')){
@@ -22,12 +24,22 @@
                     }
                 });
 
-//                $('#postForm').submit(function(e){
-//                    if(topicSelect == '0'){
-//                        alert('Needs content');
-//                        e.preventDefault();
-//                    }
-//                });
+                $('#postForm').submit(function(e){
+                    if(topicSelect.val() < 1){
+                        alert('Please select a topic');
+                        e.preventDefault();
+                    }
+
+                    if(titleSelect.val().length < 3){
+                        alert('Title must be at least 3 characters long');
+                        e.preventDefault();
+                    }
+
+                    if(textAreaSelect.val().length < 10){
+                        alert('Your post must be at least 10 characters long');
+                        e.preventDefault();
+                    }
+                });
             });
         </script>
     <!--DELETE NERD JAVASCRIPT-->
@@ -165,41 +177,41 @@
             <div class="inner">
                 <h3>Start a discussion</h3>
 
-                {!! Form::open(['method'=> 'POST', 'action'=>['PostsController@index', 'id'=>$user->id], 'id'=>'postForm']) !!}
+                {{--{!! Form::open(['method'=> 'POST', 'action'=>['PostsController@index', 'id'=>$user->id], 'id'=>'postForm']) !!}--}}
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            {!! Form::label('topic', 'Topic:') !!}
-                            {!! Form::select('topic', ['', 'General', 'Web', 'Libraries', 'Frameworks', 'Bootstrap']) !!}
-                        </div>
-                    </div>
+                    {{--<div class="col-md-6">--}}
+                        {{--<div class="">--}}
+                            {{--{!! Form::label('topic', 'Topic:') !!}--}}
+                            {{--{!! Form::select('topic', ['', 'General', 'Web', 'Libraries', 'Frameworks', 'Bootstrap']) !!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
-                    <div class="col-md-6">
-                        {!! Form::label('title', 'Title:') !!}
-                        {!! Form::text('title', null, ['class'=>'form-control']) !!}
-                    </div>
+                    {{--<div class="col-md-6">--}}
+                        {{--{!! Form::label('title', 'Title:') !!}--}}
+                        {{--{!! Form::text('title', null, ['class'=>'']) !!}--}}
+                    {{--</div>--}}
 
-                    <div class="col-md-12">
-                        {!! Form::label('post', 'Post:') !!}
-                        {!! Form::textarea('post', null, ['class'=>'form-control']) !!}<br><br>
-                    </div>
+                    {{--<div class="col-md-12">--}}
+                        {{--{!! Form::label('post', 'Post:') !!}--}}
+                        {{--{!! Form::textarea('post', null, ['class'=>'']) !!}<br><br>--}}
+                    {{--</div>--}}
 
 
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            {!! Form::submit('Start', ['class'=>''])!!}
-                        </div>
-                    </div>
-                {!! Form::close() !!}
+                    {{--<div class="col-md-12">--}}
+                        {{--<div class="">--}}
+                            {{--{!! Form::submit('Start', ['class'=>''])!!}--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--{!! Form::close() !!}--}}
 
-                {{--<form action="{{url('posts')}}" method="POST">--}}
-                    {{--<select id="topic">--}}
-                        {{--<option value="0">Sacramento</option>--}}
-                        {{--<option value="1">LA</option>--}}
-                    {{--</select><br><br>--}}
+                <form action="{{url('/posts')}}" method="POST">
+                    <select id="topic">
+                        <option value="0">Select a topic</option>
+                        <option value="1">LA</option>
+                    </select><br><br>
 
-                    {{--<input type="submit" value="submit">--}}
-                {{--</form>--}}
+                    <input type="submit" value="submit">
+                </form>
             </div>
         </section>
     </div>

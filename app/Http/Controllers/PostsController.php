@@ -14,7 +14,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return "IT WORKS";
+        return "IT WORKS index";
     }
 
     /**
@@ -40,7 +40,7 @@ class PostsController extends Controller
 //        Post::create($input);
 //        return redirect('/profile');
 
-          return $request->all();
+          return "IT WORKS STORE";
     }
 
     /**

@@ -39,7 +39,7 @@ Route::get('classmates', 'NerdController@index');
 
 Route::get('destroy/{id}', ['uses'=>'NerdController@destroy', 'as'=>'destroy']);
 
-Route::resource('posts', 'PostsController');
+Route::resource('/posts', 'PostsController');
 
 Route::get('project_files', function(){
     return view('project_files.index');
