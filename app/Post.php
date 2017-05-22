@@ -12,7 +12,8 @@ class Post extends Model
     	'topic',
         'discussion_date',
     	'post',
-    	'pic_id'
+    	'pic_id',
+        'posted_by'
     ];
 
     public function user(){

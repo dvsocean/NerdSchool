@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Facades\Session;
 
 class PostsController extends Controller
 {
@@ -35,12 +37,15 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-//        $input= $request->all();
-//        $input['user_id']= $request->input('id');
-//        Post::create($input);
-//        return redirect('/profile');
+        $user= User::findOrFail($request->input('user_id'));
+        $input= $request->all();
+        $post= Post::create($input);
 
-          return $request->all();
+        Session::flash('post_message', 'A new topic has been started by '. ucfirst($user->name));
+
+        return redirect('/discussions');
+
+//        return $request->all();
     }
 
     /**
@@ -51,7 +56,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post= Post::findOrFail($id);
+        return view('discussions.each', compact('post'));
     }
 
     /**

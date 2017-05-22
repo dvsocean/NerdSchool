@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->integer('user_id')->nullable();
             $table->integer('pic_id')->nullable();
             $table->string('title');
+            $table->string('posted_by');
             $table->char('discussion_date');
             $table->string('topic');
             $table->text('post');

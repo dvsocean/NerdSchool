@@ -31,7 +31,7 @@ class User extends Authenticatable
         return $this->belongsTo('App\Photo');
     }
 
-    public function post(){
-        $this->hasMany('App\Post');
+    public function posts(){
+        return $this->hasMany('App\Post');
     }
 }

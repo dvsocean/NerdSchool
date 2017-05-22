@@ -97,7 +97,7 @@ class NerdController extends Controller
         }
         $user->update($input);
 
-        Session::flash('message', ''. $user->name .'s profile has been updated');
+        Session::flash('message', ''. ucfirst($user->name) .'s profile has been updated');
 
        return redirect('/profile');
 

@@ -1,9 +1,11 @@
+<?php use App\Post;use App\User; ?>
 @if(Auth::user())
 <!DOCTYPE HTML>
 <html>
 <head>
     <title>Discussions</title>
     @include('includes.header')
+    <?php $user= Auth::user(); ?>
 </head>
 <body>
 
@@ -23,36 +25,49 @@
                 <header class="major">
                     <h1>Discussions</h1>
                 </header>
-                <span class="image main"><img src="page_images/discussions.png" alt="" /></span>
-                <p>Join a discussion or start one. We focus on web technologies, frameworks such as Angular and
-                MVC, the goal is to spend less time creating something and more time enjoying it. We'd love to have
-                your input...this is the place for nerds!</p>
+                <span><img src="page_images/discussions.png" height="150" width="300" class="center-block"/></span>
+                <p class="text-center">The focus is on web technologies that allow us to create dynamic sites. The goal is to spend less
+                    time struggling and more time coding, we'd love to have your input. These are the active discussions we currently have.
+                </p>
+                <br>
             </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        @if (Session::has('post_message'))
+                            <div class="alert alert-info text-center">{{ Session::get('post_message') }}</div><br>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <?php $posts= Post::all(); ?>
 
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table-hover">
                                 <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Firstname</th>
-                                    <th>Lastname</th>
-                                    <th>Age</th>
-                                    <th>City</th>
-                                    <th>Country</th>
+                                    <th>Date</th>
+                                    <th>Title</th>
+                                    <th>Topic</th>
+                                    <th>Post</th>
+                                    <th>Author</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($posts as $post)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Anna</td>
-                                    <td>Pitt</td>
-                                    <td>35</td>
-                                    <td>New York</td>
-                                    <td>USA</td>
+                                    <td>{{$post->discussion_date}}</td>
+                                    <td><a href="{{route('each', ['id'=> $post->id])}}">{{str_limit($post->title, 15)}}</a></td>
+                                    <td>{{$post->topic}}</td>
+                                    <td>{{str_limit($post->post, 15)}}</td>
+                                    <td>{{$post->posted_by}}</td>
                                 </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

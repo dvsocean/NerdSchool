@@ -42,8 +42,8 @@
                     e.preventDefault();
                 }
 
-                if(titleSelect.val().length < 3){
-                    alert('Title must be at least 3 characters long');
+                if(titleSelect.val().length < 3 || titleSelect.val().length > 20){
+                    alert('Title must be between 3 and 20 characters long');
                     e.preventDefault();
                 }
 
@@ -87,7 +87,7 @@
                     <!--PROJECT FILES OR DATABASE FOR ALL NERDS-->
                     <div class="col-md-12" align="right">
                         @if(Auth::user()->admin == 'yes')
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Database</button>
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Database</button><br><br>
                         @endif
                     </div>
                     <!--PROJECT FILES OR DATABASE FOR ALL NERDS-->
@@ -139,7 +139,7 @@
                       <br><br>
 
                       <div class="col-xs-12 col-sm-12 col-md-12" align="left">
-                        {!! Form::submit('Update', ['class'=>'']) !!}
+                        {!! Form::submit('Update', ['class'=>'']) !!}<br><br>
                       </div>
                     {!! Form::close() !!}
 
@@ -153,7 +153,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <div class="well">
+                            <div class="">
                                 <a href="{{route('projects')}}" class="control-box btn btn-default">Project Files</a><span> </span>
                                 <a href="" class="control-box btn btn-default">Library</a><span> </span>
                             </div>
@@ -164,6 +164,7 @@
                 <span class="image main"><!--PLACEHOLDER--></span>
             </div>
         </section>
+    </div>
 
 
         <!--MODAL-->
@@ -239,11 +240,11 @@
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-xs-12 col-md-4">
                             <!--PLACEHOLDER-->
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-xs-12 col-md-4">
                             <h3 align="center">Start a discussion</h3><br>
                             <form action="{{url('/posts')}}" method="POST" id="postForm">
                                 <select id="topic" name="topic">
@@ -256,50 +257,53 @@
                                 </select><br><br>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-xs-12 col-md-4">
                             <!--PLACEHOLDER-->
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-xs-12 col-md-2">
                             <!--PLACEHOLDER-->
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-xs-12 col-md-4">
                             <label for="title">Title</label><br>
                             <input type="text" name="title" id="title">
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-xs-12 col-md-4">
                             <label>Date</label><br>
-                            <input type="text" name="date" id="datepicker"><br><br>
+                            <input type="text" name="discussion_date" id="datepicker"><br><br>
                         </div>
 
-                        <div class="col-md-2">
+                        <div class="col-xs-12 col-md-2">
                             <!--PLACEHOLDER-->
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-2">
+                        <div class="col-xs-12 col-md-2">
                             <!--PLACEHOLDER-->
                         </div>
 
-                        <div class="col-md-8">
+                        <div class="col-xs-12 col-md-8">
                             <label>Discussion</label><br>
-                            <textarea rows="7" name="discussion"></textarea><br>
+                            <textarea rows="7" name="post" id="post"></textarea><br>
 
-                            <input type="submit" value="Start">
+                            <input type="hidden" name="user_id" value="{{$user->id}}">
+                            <input type="hidden" name="posted_by" value="{{$user->name}}">
+
+                            <input type="submit" value="Start"><br><br>
                             </form>
                         </div>
 
-                        <div class="col-md-2">
+                        <div class="col-xs-12 col-md-2">
                             <!--PLACEHOLDER-->
                         </div>
                     </div>
                 </div>
-    </div>
+
 
 @include('includes.footer')
 @include('includes.jquery-ui')

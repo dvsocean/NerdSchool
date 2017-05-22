@@ -44,3 +44,5 @@ Route::resource('/posts', 'PostsController');
 Route::get('project_files', function(){
     return view('project_files.index');
 })->name('projects');
+
+Route::get('each/{post_id}',['uses'=> 'PostsController@show', 'as'=>'each']);
