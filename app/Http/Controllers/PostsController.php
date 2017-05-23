@@ -80,6 +80,8 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $single_post= Post::findOrFail($id);
+
         //
     }
 

@@ -28,7 +28,12 @@
                 <br><br>
 
                 <div class="well">
-                    <p><strong>{{$post->posted_by}}</strong>: {{$post->post}}</p>
+                    <p><strong>{{$post->posted_by}}</strong>: {{$post->post}}</p><br>
+
+                    <form action="{{route('add_post', ['id'=> $post->id])}}" method="PATCH">
+                        <textarea rows="5" class="form-control" name="start_discussion"></textarea><br>
+                        <input type="submit" value="Reply">
+                    </form>
                 </div>
 
             </div>
