@@ -27,6 +27,7 @@ Route::get('/discussions', function(){
     return view('discussions.index');
 });
 
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::resource('nerd', 'NerdController');

@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 
 class PostsController extends Controller
 {
@@ -17,7 +18,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return "IT WORKS index";
+        //
     }
 
     /**
@@ -81,13 +82,12 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $single_post= Post::findOrFail($id);
+        $post= Post::findOrFail($id);
         $new_post= $request->all();
-        $new_post['post_id']= $single_post->id;
+        $new_post['post_id']= $post->id;
         Single::create($new_post);
-        redirect('/discussions');
-
-//        $new_single= Single::create();
+        $singles= Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->get();
+        return view('discussion.each');
 
     }
 

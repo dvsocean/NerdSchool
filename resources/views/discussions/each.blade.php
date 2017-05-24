@@ -23,21 +23,29 @@
         <section id="main" class="main">
             <div class="inner">
                 <header class="major">
-                    <h1>{{str_limit($post->title, 20)}}</h1>
+                    {{--<h1>{{str_limit($post->title, 20)}}</h1>--}}
                 </header>
                 <span><img src="../page_images/nerd_talk.png" height="150" width="300" class="center-block"/></span>
                 <br><br>
 
-                <div class="well">
-                    <p><strong>{{$post->posted_by}}</strong>: {{$post->post}}</p><br>
 
-                    <form action="{{route('add_post', ['id'=> $post->id])}}" method="PATCH">
-                        <input type="hidden" name="user_id" value="{{$user->id}}">
-                        <textarea rows="5" class="form-control" name="single_post"></textarea><br>
-                        <input type="submit" value="Reply">
-                    </form>
+                <div class="well">
+                    {{--<p><strong>{{$post->posted_by}}</strong>: {{$post->post}}</p><br>--}}
+
+                    {{--<form action="{{route('add_post', ['id'=> $post->id])}}" method="PATCH">--}}
+                        {{--<input type="hidden" name="user_id" value="{{$user->id}}">--}}
+                        {{--<textarea rows="5" class="form-control" name="single_post"></textarea><br>--}}
+                        {{--<input type="submit" value="Reply">--}}
+                    {{--</form>--}}
                 </div>
 
+                {{--@if(isset($singles))--}}
+                    {{--@foreach($singles as $single)--}}
+                        {{--<div class="well">--}}
+                            {{--{{$single->single_post}}--}}
+                        {{--</div>--}}
+                    {{--@endforeach--}}
+                {{--@endif--}}
             </div>
 
 
