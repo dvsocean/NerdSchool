@@ -83,11 +83,17 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $post = Post::findOrFail($id);
         $new_post = $request->all();
+        if($request->hasFile('post_image')){
+            $file=$request->file('post_image');
+            $name= time() . $file->getClientOriginalName();
+            $file->move('post_images/', $name);
+        }
         $new_post['post_id'] = $post->id;
         Single::create($new_post);
-        $singles = Single::where('post_id', '=', $id)->orderBy('created_at', 'desc');
+        $singles = Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->paginate(6);
         return view('discussions.each', compact('singles', 'post'));
     }
 

@@ -31,11 +31,12 @@
 
 
                 <div class="well">
-                    <p><strong>{{$post->posted_by}}</strong>: {{$post->post}}</p><br>
+                    <p><strong>Original question:</strong> {{$post->post}}</p><br>
 
-                    <form action="{{route('add_post', ['id'=> $post->id])}}" method="PUT">
+                    <form action="{{route('add_post', ['id'=> $post->id])}}" method="PUT" enctype="multipart/form-data">
                         <input type="hidden" name="user_id" value="{{$user->id}}">
                         <textarea rows="5" class="form-control" name="single_post"></textarea><br>
+                        <input type="file" name="post_image"><br>
                         <input type="submit" value="Reply">
                     </form>
                 </div>
