@@ -1,5 +1,6 @@
 <?php use App\Post;use App\User; ?>
 @if(Auth::user())
+<?php $user= Auth::user(); ?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -31,7 +32,8 @@
                     <p><strong>{{$post->posted_by}}</strong>: {{$post->post}}</p><br>
 
                     <form action="{{route('add_post', ['id'=> $post->id])}}" method="PATCH">
-                        <textarea rows="5" class="form-control" name="start_discussion"></textarea><br>
+                        <input type="hidden" name="user_id" value="{{$user->id}}">
+                        <textarea rows="5" class="form-control" name="single_post"></textarea><br>
                         <input type="submit" value="Reply">
                     </form>
                 </div>

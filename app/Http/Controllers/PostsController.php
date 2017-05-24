@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Single;
 use App\User;
 use Illuminate\Http\Request;
 use App\Post;
@@ -81,8 +82,13 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         $single_post= Post::findOrFail($id);
+        $new_post= $request->all();
+        $new_post['post_id']= $single_post->id;
+        Single::create($new_post);
+        redirect('/discussions');
 
-        //
+//        $new_single= Single::create();
+
     }
 
     /**
