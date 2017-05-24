@@ -48,4 +48,4 @@ Route::get('project_files', function(){
 
 Route::get('each/{post_id}',['uses'=> 'PostsController@show', 'as'=>'each']);
 
-Route::get('add_post/{post_id}/post', ['uses'=> 'PostsController@update', 'as'=>'add_post']);
+Route::get('add_post/{post_id}/post', ['uses'=> 'SingleController@update', 'as'=>'add_post']);

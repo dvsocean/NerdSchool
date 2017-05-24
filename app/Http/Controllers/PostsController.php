@@ -18,7 +18,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -59,7 +59,8 @@ class PostsController extends Controller
     public function show($id)
     {
         $post= Post::findOrFail($id);
-        return view('discussions.each', compact('post'));
+        $singles= Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->get();
+        return view('discussions.each', compact('post', 'singles'));
     }
 
     /**
@@ -82,13 +83,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post= Post::findOrFail($id);
-        $new_post= $request->all();
-        $new_post['post_id']= $post->id;
-        Single::create($new_post);
-        $singles= Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->get();
-        return view('discussion.each');
-
+        //
     }
 
     /**
