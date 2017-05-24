@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Single;
-use App\User;
-use Illuminate\Http\Request;
 use App\Post;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\View;
+use App\Single;
+use Illuminate\Http\Request;
 
-class PostsController extends Controller
+class SingleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +15,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -39,15 +36,7 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $user= User::findOrFail($request->input('user_id'));
-        $input= $request->all();
-        $post= Post::create($input);
-
-        Session::flash('post_message', 'A new topic has been started by '. ucfirst($user->name));
-
-        return redirect('/discussions');
-
-//        return $request->all();
+        //
     }
 
     /**
@@ -58,9 +47,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        $post= Post::findOrFail($id);
-        $singles= Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->paginate(6);
-        return view('discussions.each', compact('post', 'singles'));
+
+
     }
 
     /**
@@ -83,12 +71,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Post::findOrFail($id);
-        $new_post = $request->all();
-        $new_post['post_id'] = $post->id;
-        Single::create($new_post);
-        $singles = Single::where('post_id', '=', $id)->orderBy('created_at', 'desc');
-        return view('discussions.each', compact('singles', 'post'));
+        //
     }
 
     /**

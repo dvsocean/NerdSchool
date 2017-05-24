@@ -47,6 +47,7 @@
                         </div>
                     @endforeach
                 @endif
+                <h4 class="text-center">{{$singles->links()}}</h4>
             </div>
 
 

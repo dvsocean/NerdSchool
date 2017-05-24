@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <?php $posts= Post::all(); ?>
+            <?php $posts= Post::orderBy('created_at', 'desc')->paginate(10); ?>
 
             <div class="container">
                 <div class="row">
@@ -70,6 +70,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <h4 class="text-center">{{$posts->links()}}</h4>
                         </div>
                     </div>
                 </div>
