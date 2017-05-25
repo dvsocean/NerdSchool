@@ -33,13 +33,15 @@
                 <div class="well">
                     <p><strong>Original question:</strong> {{$post->post}}</p><br>
 
-                    <form action="{{route('add_post', ['id'=> $post->id])}}" method="PUT" enctype="multipart/form-data">
+                    <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" enctype="multipart/form-data">
+                        {!! csrf_field() !!}
                         <input type="hidden" name="user_id" value="{{$user->id}}">
                         <textarea rows="5" class="form-control" name="single_post"></textarea><br>
-                        <input type="file" name="post_image"><br>
+                        <input type="file" name="image"><br>
                         <input type="submit" value="Reply">
                     </form>
                 </div>
+
 
                 @if(isset($singles))
                     @foreach($singles as $single)

@@ -20,7 +20,7 @@ class Post extends Model
     	$this->belongsTo('App\User');
     }
 
-    public function singles(){
-        return $this->hasMany('App\Single');
+    public function images(){
+        return $this->belongsToMany('App\Image_post');
     }
 }
