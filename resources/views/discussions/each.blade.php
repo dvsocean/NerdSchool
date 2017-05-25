@@ -42,15 +42,19 @@
                     </form>
                 </div>
 
-
                 @if(isset($singles))
                     @foreach($singles as $single)
                         <div class="well">
                             <p><strong>{{$single->user->name}}:</strong> {{$single->single_post}}</p>
+                            @foreach($single->single_images as $img)
+                                <img src="../../post_images/{{$img->post_image}}" height="100" width="100" class="img-rounded">
+                                @endforeach
                         </div>
                     @endforeach
                 @endif
-                <h4 class="text-center">{{$singles->links()}}</h4>
+                <h4 class="text-center">
+                   {{--{{$singles->link()}}--}}
+                </h4>
             </div>
 
 

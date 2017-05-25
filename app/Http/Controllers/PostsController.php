@@ -62,9 +62,9 @@ class PostsController extends Controller
     {
         $post= Post::findOrFail($id);
         $singles= Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->paginate(6);
-        $images= Image_post::where('single_post_id', '=', $id);
-        return view('discussions.each', compact('post', 'singles', 'images'));
 
+
+        return view('discussions.each', compact('post', 'singles'));
     }
 
     /**
@@ -89,18 +89,21 @@ class PostsController extends Controller
     {
         $post = Post::findOrFail($id);
         $new_post = $request->all();
+        $new_post['post_id'] = $post->id;
+        $new_singles_record= Single::create($new_post);
+
         if($request->hasFile('image')){
             $file=$request->file('image');
             $name= time() . $file->getClientOriginalName();
             $size= $file->getSize();
             $file->move('post_images/', $name);
-            Image_post::create(['post_image'=> $name, 'file_size'=> $size, 'single_post_id'=> $id]);
+            Image_post::create(['post_image'=> $name, 'file_size'=> $size, 'single_id'=> $new_singles_record->id]);
         }
-        $new_post['post_id'] = $post->id;
-        Single::create($new_post);
+
         $singles = Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->paginate(6);
 
-        return view('discussions.each', compact('singles', 'post'));
+//        return view('discussions.each', compact('post', 'singles'));
+        return redirect('/discussions');
     }
 
     /**

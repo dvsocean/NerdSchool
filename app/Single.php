@@ -20,7 +20,7 @@ class Single extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function post_images(){
+    public function single_images(){
         return $this->hasMany('App\Image_post');
     }
 
