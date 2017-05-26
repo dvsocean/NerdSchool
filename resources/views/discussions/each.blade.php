@@ -31,7 +31,7 @@
 
 
                 <div class="well">
-                    <p><strong>Original question by {{$post->posted_by}}:</strong> {{$post->post}}</p><br>
+                    <p><strong>Original question by {{$post->posted_by}} :</strong> {{$post->post}}</p><br>
 
                     <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" enctype="multipart/form-data">
                         {!! csrf_field() !!}

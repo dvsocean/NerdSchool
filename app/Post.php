@@ -20,6 +20,10 @@ class Post extends Model
     	$this->belongsTo('App\User');
     }
 
+    public function profile_pic(){
+        return $this->belongsTo('App\Photo');
+    }
+
     public function images(){
         return $this->hasMany('App\Image_post');
     }
