@@ -31,7 +31,7 @@
 
 
                 <div class="well">
-                    <p><strong>Original question:</strong> {{$post->post}}</p><br>
+                    <p><strong>Original question by {{$post->posted_by}}:</strong> {{$post->post}}</p><br>
 
                     <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" enctype="multipart/form-data">
                         {!! csrf_field() !!}
@@ -47,7 +47,7 @@
                         <div class="well">
                             <p><strong>{{$single->user->name}}:</strong> {{$single->single_post}}</p>
                             @foreach($single->single_images as $img)
-                                <img src="../../post_images/{{$img->post_image}}" height="100" width="100" class="img-rounded">
+                                <a href="{{url('larger_view', ['id'=> $img->id])}}"><img src="../../post_images/{{$img->post_image}}" height="100" width="100" class="img-rounded"></a>
                                 @endforeach
                         </div>
                     @endforeach

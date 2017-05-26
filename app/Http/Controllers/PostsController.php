@@ -63,7 +63,6 @@ class PostsController extends Controller
         $post= Post::findOrFail($id);
         $singles= Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->paginate(6);
 
-
         return view('discussions.each', compact('post', 'singles'));
     }
 
@@ -100,9 +99,6 @@ class PostsController extends Controller
             Image_post::create(['post_image'=> $name, 'file_size'=> $size, 'single_id'=> $new_singles_record->id]);
         }
 
-        $singles = Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->paginate(6);
-
-//        return view('discussions.each', compact('post', 'singles'));
         return redirect('/discussions');
     }
 

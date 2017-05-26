@@ -49,3 +49,7 @@ Route::get('project_files', function(){
 Route::get('each/{post_id}',['uses'=> 'PostsController@show', 'as'=>'each']);
 
 Route::post('add_post/{post_id}', ['uses'=> 'PostsController@update', 'as'=>'add_post']);
+
+Route::get('larger_view/{id}', function($id){
+    return view('discussions.larger_view', compact('id'));
+});
