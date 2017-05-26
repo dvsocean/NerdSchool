@@ -23,13 +23,8 @@
         <section id="main" class="main">
             <div class="inner">
                 <header class="major">
-                    <h1><!--PLACEHOLDER--></h1>
+                    <h1></h1>
                 </header>
-                <span><!--PLACEHOLDER--></span>
-                <p class="text-center">
-                    <!--PLACEHOLDER-->
-                </p>
-                <br>
             </div>
 
             <div class="container">
@@ -41,7 +36,11 @@
                     </div>
                 </div>
 
-                <?php $larger_img= \App\Image_post::findOrFail($id); ?>
+                <?php
+
+                $larger_img= \App\Image_post::findOrFail($id);
+
+                ?>
 
                 <div class="row">
                     <div class="col-xs-12 col-md-12">

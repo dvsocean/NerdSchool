@@ -53,7 +53,7 @@
                     @endforeach
                 @endif
                 <h4 class="text-center">
-                   {{--{{$singles->link()}}--}}
+                    {{$singles->links()}}
                 </h4>
             </div>
 
