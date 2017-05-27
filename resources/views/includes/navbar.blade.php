@@ -1,5 +1,5 @@
 <header id="header">
-        <a href="/" class="logo"><!--PLACEHOLDER--></a>
+        <a href="" class="badge">{{count(auth()->user()->unreadNotifications)}}</a>
         <nav>
             <ul>
                 <li><a href="#menu">Menu</a></li>

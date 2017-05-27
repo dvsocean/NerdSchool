@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Image_post;
+use App\Notifications\PostAdded;
 use App\Single;
 use App\User;
 use Illuminate\Http\Request;
@@ -102,6 +103,8 @@ class PostsController extends Controller
                 Session::flash('FromPostController', 'Your photo exceeded max file size limit of 4MB');
             }
         }
+
+        auth()->user()->notify(new PostAdded());
 
         return redirect('/discussions');
     }
