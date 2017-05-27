@@ -153,10 +153,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <div class="">
-                                <a href="{{route('projects')}}" class="control-box btn btn-default">Project Files</a><span> </span>
-                                <a href="" class="control-box btn btn-default">Library</a><span> </span>
-                            </div>
+                            <!--PLACEHOLDER-->
                         </div>
                     </div>
 
@@ -208,36 +205,6 @@
         </div>
         <!--MODAL-->
 
-
-
-
-                {{--{!! Form::open(['method'=> 'POST', 'action'=>['PostsController@index', 'id'=>$user->id], 'id'=>'postForm']) !!}--}}
-
-                    {{--<div class="col-md-6">--}}
-                        {{--<div class="">--}}
-                            {{--{!! Form::label('topic', 'Topic:') !!}--}}
-                            {{--{!! Form::select('topic', ['', 'General', 'Web', 'Libraries', 'Frameworks', 'Bootstrap']) !!}--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-
-                    {{--<div class="col-md-6">--}}
-                        {{--{!! Form::label('title', 'Title:') !!}--}}
-                        {{--{!! Form::text('title', null, ['class'=>'']) !!}--}}
-                    {{--</div>--}}
-
-                    {{--<div class="col-md-12">--}}
-                        {{--{!! Form::label('post', 'Post:') !!}--}}
-                        {{--{!! Form::textarea('post', null, ['class'=>'']) !!}<br><br>--}}
-                    {{--</div>--}}
-
-
-                    {{--<div class="col-md-12">--}}
-                        {{--<div class="">--}}
-                            {{--{!! Form::submit('Start', ['class'=>''])!!}--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--{!! Form::close() !!}--}}
-
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12 col-md-4">
@@ -250,9 +217,14 @@
                                 <select id="topic" name="topic">
                                     <option value="0">Select a topic &#8681;</option>
                                     <option value="Server">Server</option>
-                                    <option value="Front end">Front end</option>
+                                    <option value="Client">Client</option>
+                                    <option value="Linux">Linux</option>
                                     <option value="PHP">PHP</option>
+                                    <option value="MVC">MVC</option>
                                     <option value="Javascript">Javascript</option>
+                                    <option value="JQuery">JQuery</option>
+                                    <option value="HTML">HTML</option>
+                                    <option value="CSS">CSS</option>
                                     <option value="General">General</option>
                                 </select><br><br>
                         </div>

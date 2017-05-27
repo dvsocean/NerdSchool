@@ -36,10 +36,10 @@
 
                 <script>
                     $(function(){
-                        $('#myFile').bind('change', function(){
-                            var size= this.files[0].size;
-                            if(size > 4000000){
-                                alert('FILE TOO BIG, WILL NOT UPLOAD/4MB LIMIT');
+                        $('#sp_form').submit(function(e){
+                            if($("#myFile")[0].files[0].size > 4000000){
+                                alert("FILE TOO BIG, WILL NOT UPLOAD/LIMIT 4MB");
+                                e.preventDefault();
                             }
                         });
                     });

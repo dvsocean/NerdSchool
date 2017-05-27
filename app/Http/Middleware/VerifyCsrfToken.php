@@ -13,6 +13,6 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         '/posts',
-        'add_post/{post_id}'
+        'add_post/{post_id}',
     ];
 }
