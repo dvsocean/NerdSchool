@@ -95,8 +95,10 @@ class PostsController extends Controller
             $file=$request->file('image');
             $name= time() . $file->getClientOriginalName();
             $size= $file->getSize();
-            $file->move('post_images/', $name);
-            Image_post::create(['post_image'=> $name, 'file_size'=> $size, 'single_id'=> $new_singles_record->id]);
+            if($size < 2000000){
+                $file->move('post_images/', $name);
+                Image_post::create(['post_image'=> $name, 'file_size'=> $size, 'single_id'=> $new_singles_record->id]);
+            }
         }
 
         return redirect('/discussions');

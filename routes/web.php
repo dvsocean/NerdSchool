@@ -27,6 +27,10 @@ Route::get('/discussions', function(){
     return view('discussions.index');
 });
 
+Route::get('/each_disc', function(){
+    return view('discussions.each');
+});
+
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

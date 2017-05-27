@@ -29,6 +29,17 @@
                 <a href="{{url('/discussions')}}" class="btn btn-default">All Discussions</a>
                 <br><br>
 
+                <script>
+                    $(function(){
+                        $('#myFile').bind('change', function(){
+                            var size= this.files[0].size;
+                            if(size > 2000000){
+                                alert('FILE TOO BIG');
+                            }
+                        });
+                    });
+                </script>
+
 
                 <div class="well">
                     <p><strong>Original question by {{$post->posted_by}} :</strong> {{$post->post}}</p><br>
@@ -37,7 +48,7 @@
                         {!! csrf_field() !!}
                         <input type="hidden" name="user_id" value="{{$user->id}}">
                         <textarea rows="5" class="form-control" name="single_post"></textarea><br>
-                        <input type="file" name="image"><br>
+                        <input type="file" name="image" id="myFile"><br>
                         <input type="submit" value="Reply">
                     </form>
                 </div>
