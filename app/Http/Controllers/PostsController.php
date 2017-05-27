@@ -95,9 +95,11 @@ class PostsController extends Controller
             $file=$request->file('image');
             $name= time() . $file->getClientOriginalName();
             $size= $file->getSize();
-            if($size < 2000000){
+            if($size < 4000000){
                 $file->move('post_images/', $name);
                 Image_post::create(['post_image'=> $name, 'file_size'=> $size, 'single_id'=> $new_singles_record->id]);
+            } else {
+                Session::flash('FromPostController', 'Your photo exceeded max file size limit of 4MB');
             }
         }
 

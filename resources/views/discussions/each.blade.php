@@ -25,6 +25,11 @@
                 <header class="major">
                     {{--<h1>{{str_limit($post->title, 20)}}</h1>--}}
                 </header>
+
+                @if (Session::has('FromPostController'))
+                    <div class="alert alert-danger text-center">{{ Session::get('message') }}</div><br>
+                @endif
+
                 <span><h2>{{$post->title}}</h2></span>
                 <a href="{{url('/discussions')}}" class="btn btn-default">All Discussions</a>
                 <br><br>
@@ -33,8 +38,8 @@
                     $(function(){
                         $('#myFile').bind('change', function(){
                             var size= this.files[0].size;
-                            if(size > 2000000){
-                                alert('FILE TOO BIG');
+                            if(size > 4000000){
+                                alert('FILE TOO BIG, WILL NOT UPLOAD/4MB LIMIT');
                             }
                         });
                     });
@@ -44,7 +49,7 @@
                 <div class="well">
                     <p><strong>Original question by {{$post->posted_by}} :</strong> {{$post->post}}</p><br>
 
-                    <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" id="sp_form" enctype="multipart/form-data">
                         {!! csrf_field() !!}
                         <input type="hidden" name="user_id" value="{{$user->id}}">
                         <textarea rows="5" class="form-control" name="single_post"></textarea><br>
