@@ -23,7 +23,12 @@
         <section id="main" class="main">
             <div class="inner">
                 <header class="major">
-                    <h1>Discussions</h1>
+                    <h1>Discussions</h1><br>
+
+                    @foreach(auth()->user()->unreadNotifications as $notification)
+                        @include('includes.notifications.'. snake_case(class_basename($notification->type)))<br>
+                    @endforeach
+
                 </header>
                 <span><img src="page_images/discussions.png" height="150" width="300" class="center-block"/></span>
                 <p class="text-center">The focus is on web technologies that allow us to create dynamic sites. The goal is to spend less

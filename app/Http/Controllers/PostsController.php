@@ -40,6 +40,11 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function start_thread(){
+
+    }
+
+
     public function store(Request $request)
     {
         $user= User::findOrFail($request->input('user_id'));

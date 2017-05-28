@@ -2,7 +2,7 @@
             @if(auth()->user())
         <div>
             Notifications
-            <a href="" class="badge">
+            <a href="{{url('/discussions')}}" class="badge">
                 {{count(auth()->user()->unreadNotifications)}}
             </a>
         </div>
@@ -46,3 +46,7 @@
         @endif
     </ul>
     </nav>
+
+    <!--NOTI MENU-->
+
+    <!--NOTI MENU-->
