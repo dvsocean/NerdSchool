@@ -1,5 +1,12 @@
 <header id="header">
-        <a href="" class="badge">{{count(auth()->user()->unreadNotifications)}}</a>
+            @if(auth()->user())
+        <div>
+            Notifications
+            <a href="" class="badge">
+                {{count(auth()->user()->unreadNotifications)}}
+            </a>
+        </div>
+            @endif
         <nav>
             <ul>
                 <li><a href="#menu">Menu</a></li>
