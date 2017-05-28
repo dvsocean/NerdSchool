@@ -90,6 +90,7 @@ class PostsController extends Controller
         $post = Post::findOrFail($id);
         $new_post = $request->all();
         $new_post['post_id'] = $post->id;
+        $notification= $request->input('topic');
         $new_singles_record= Single::create($new_post);
 
         if($request->hasFile('image')){
@@ -99,13 +100,9 @@ class PostsController extends Controller
             if($size < 4000000){
                 $file->move('post_images/', $name);
                 Image_post::create(['post_image'=> $name, 'file_size'=> $size, 'single_id'=> $new_singles_record->id]);
-            } else {
-                Session::flash('FromPostController', 'Your photo exceeded max file size limit of 4MB');
             }
         }
-
-        auth()->user()->notify(new PostAdded());
-
+        auth()->user()->notify(new PostAdded($notification));
         return redirect('/discussions');
     }
 

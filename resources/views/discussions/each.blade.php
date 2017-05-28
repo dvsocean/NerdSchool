@@ -52,6 +52,7 @@
                     <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" id="sp_form" enctype="multipart/form-data">
                         {!! csrf_field() !!}
                         <input type="hidden" name="user_id" value="{{$user->id}}">
+                        <input type="hidden" name="topic" value="{{$user->topic}}">
                         <textarea rows="5" class="form-control" name="single_post"></textarea><br>
                         <input type="file" name="image" id="myFile"><br>
                         <input type="submit" value="Reply">
