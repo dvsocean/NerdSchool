@@ -57,3 +57,7 @@ Route::post('add_post/{post_id}', ['uses'=> 'PostsController@update', 'as'=>'add
 Route::get('larger_view/{id}', function($id){
     return view('discussions.larger_view', compact('id'));
 });
+
+Route::get('/markAsRead', function(){
+    auth()->user()->unreadNotifications->markAsRead();
+});

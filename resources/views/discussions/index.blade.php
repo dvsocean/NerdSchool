@@ -25,9 +25,23 @@
                 <header class="major">
                     <h1>Discussions</h1><br>
 
+                    <script>
+                        $(function(){
+                            function notifyRead(){
+                                $.get('/markAsRead');
+                            }
+
+                            $('#markAsRead').click(function(){
+                                notifyRead();
+                            });
+                        });
+                    </script>
+
+                    <div id="markAsRead">
                     @foreach(auth()->user()->unreadNotifications as $notification)
                         @include('includes.notifications.'. snake_case(class_basename($notification->type)))<br>
                     @endforeach
+                    </div>
 
                 </header>
                 <span><img src="page_images/discussions.png" height="150" width="300" class="center-block"/></span>

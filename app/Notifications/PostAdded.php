@@ -12,14 +12,16 @@ class PostAdded extends Notification
 {
     use Queueable;
 
+    protected $new_post;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($new_post)
     {
-        //
+        $this->new_post= $new_post;
     }
 
     /**
@@ -36,7 +38,8 @@ class PostAdded extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'replied_time'=> Carbon::now()
+            'post'=> $this->new_post,
+            'user'=> $notifiable
         ];
     }
 

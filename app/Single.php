@@ -9,7 +9,8 @@ class Single extends Model
     protected $fillable=[
         'post_id',
         'user_id',
-        'single_post'
+        'single_post',
+        'topic'
     ];
 
     public function posts(){

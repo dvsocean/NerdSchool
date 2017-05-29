@@ -40,22 +40,36 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function start_thread(){
-
+    public function start_thread(Request $request, Post $post){
+//        $user= User::findOrFail($request->input('user_id'));
+//        $input= $request->all();
+//        Post::create($input);
+//        $post->user->notify(new PostAdded($post));
+//        Session::flash('post_message', 'A new topic has been started by '. ucfirst($user->name));
+//        return redirect('/discussions');
     }
 
 
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
+//        $user= User::findOrFail($request->input('user_id'));
+//        $input= $request->all();
+//        Post::create($input);
+//
+//        auth()->user()->notify(new PostAdded($post));
+//        Session::flash('post_message', 'A new topic has been started by '. ucfirst($user->name));
+//
+//        return redirect('/discussions');
         $user= User::findOrFail($request->input('user_id'));
         $input= $request->all();
-        $post= Post::create($input);
+        $new_post= Post::create($input);
+
+//        dd($new_post->user);
+        $new_post->user->notify(new PostAdded($new_post));
+
 
         Session::flash('post_message', 'A new topic has been started by '. ucfirst($user->name));
-
         return redirect('/discussions');
-
-//        return $request->all();
     }
 
     /**
@@ -95,7 +109,8 @@ class PostsController extends Controller
         $post = Post::findOrFail($id);
         $new_post = $request->all();
         $new_post['post_id'] = $post->id;
-        $notification= $request->input('topic');
+        $new_post['topic']= $request->input('topic');
+
         $new_singles_record= Single::create($new_post);
 
         if($request->hasFile('image')){
@@ -107,7 +122,7 @@ class PostsController extends Controller
                 Image_post::create(['post_image'=> $name, 'file_size'=> $size, 'single_id'=> $new_singles_record->id]);
             }
         }
-        auth()->user()->notify(new PostAdded($notification));
+        $post->user->notify(new PostAdded($post));
         return redirect('/discussions');
     }
 
