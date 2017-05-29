@@ -17,6 +17,7 @@ class CreateSinglesTable extends Migration
             $table->integer('post_id');
             $table->integer('user_id');
             $table->text('single_post');
+            $table->char('topic');
             $table->increments('id');
             $table->timestamps();
         });

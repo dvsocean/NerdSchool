@@ -64,7 +64,7 @@ class PostsController extends Controller
         $input= $request->all();
         $new_post= Post::create($input);
 
-//        dd($new_post->user);
+//        dd($new_post);
         $new_post->user->notify(new PostAdded($new_post));
 
 
@@ -123,6 +123,7 @@ class PostsController extends Controller
             }
         }
         $post->user->notify(new PostAdded($post));
+        Session::flash('post_message', 'You have added a comment to '.$post->topic);
         return redirect('/discussions');
     }
 

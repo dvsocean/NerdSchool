@@ -39,7 +39,7 @@ class PostAdded extends Notification
     {
         return [
             'post'=> $this->new_post,
-            'user'=> $notifiable
+            'user'=> auth()->user()
         ];
     }
 
