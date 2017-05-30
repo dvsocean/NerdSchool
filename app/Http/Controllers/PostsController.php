@@ -42,12 +42,7 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function start_thread(Request $request, Post $post){
-//        $user= User::findOrFail($request->input('user_id'));
-//        $input= $request->all();
-//        Post::create($input);
-//        $post->user->notify(new PostAdded($post));
-//        Session::flash('post_message', 'A new topic has been started by '. ucfirst($user->name));
-//        return redirect('/discussions');
+
     }
 
 
