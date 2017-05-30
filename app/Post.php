@@ -27,4 +27,8 @@ class Post extends Model
     public function images(){
         return $this->hasMany('App\Image_post');
     }
+
+    public function singles(){
+        return $this->hasMany('App\Single');
+    }
 }

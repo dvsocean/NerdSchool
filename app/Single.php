@@ -24,6 +24,4 @@ class Single extends Model
     public function single_images(){
         return $this->hasMany('App\Image_post');
     }
-
-
 }

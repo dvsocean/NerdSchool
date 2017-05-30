@@ -8,6 +8,7 @@ use App\Single;
 use App\User;
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
@@ -62,10 +63,10 @@ class PostsController extends Controller
 //        return redirect('/discussions');
         $user= User::findOrFail($request->input('user_id'));
         $input= $request->all();
-        $new_post= Post::create($input);
+        Post::create($input);
 
 //        dd($new_post);
-        $new_post->user->notify(new PostAdded($new_post));
+//        $new_post->user->notify(new PostAdded($new_post));
 
 
         Session::flash('post_message', 'A new topic has been started by '. ucfirst($user->name));
@@ -81,7 +82,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $post= Post::findOrFail($id);
-        $singles= Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->paginate(6);
+        $singles= Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->paginate(15);
 
         return view('discussions.each', compact('post', 'singles'));
     }
@@ -122,8 +123,10 @@ class PostsController extends Controller
                 Image_post::create(['post_image'=> $name, 'file_size'=> $size, 'single_id'=> $new_singles_record->id]);
             }
         }
-        $post->user->notify(new PostAdded($post));
-        Session::flash('post_message', 'You have added a comment to '.$post->topic);
+        if($post->user != Auth::user()){
+            $post->user->notify(new PostAdded($post));
+        }
+        Session::flash('post_message', 'You have added a comment to '. ucfirst($post->user->name) .'s '.$post->topic . ' thread');
         return redirect('/discussions');
     }
 

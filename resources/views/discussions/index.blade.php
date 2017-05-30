@@ -22,31 +22,23 @@
         <!-- Main -->
         <section id="main" class="main">
             <div class="inner">
+
+                <script>
+                    $(function(){
+                        function notifyRead(){
+                            $.get('/markAsRead');
+                        }
+
+                        $('#markAsRead').click(function(){
+                            notifyRead();
+                        });
+                    });
+                </script>
+
+
+
                 <header class="major">
                     <h1>Discussions</h1><br>
-
-                    <script>
-                        $(function(){
-                            function notifyRead(){
-                                $.get('/markAsRead');
-                            }
-
-                            $('#markAsRead').click(function(){
-                                notifyRead();
-                            });
-                        });
-                    </script>
-
-                    <div id="markAsRead">
-                    {{--@foreach(auth()->user()->unreadNotifications as $notification)--}}
-                        {{--@include('includes.notifications.'. snake_case(class_basename($notification->type)))<br>--}}
-                    {{--@endforeach--}}
-
-                        @foreach($user->unreadNotifications as $notification)
-                            @include('includes.notifications.'. snake_case(class_basename($notification->type)))<br>
-                        @endforeach
-                    </div>
-
                 </header>
                 <span><img src="page_images/discussions.png" height="150" width="300" class="center-block"/></span>
                 <p class="text-center">The focus is on web technologies that allow us to create dynamic sites. The goal is to spend less
@@ -61,11 +53,17 @@
                         @if (Session::has('post_message'))
                             <div class="alert alert-info text-center">{{ Session::get('post_message') }}</div><br>
                         @endif
+
+                            <div id="markAsRead" class="text-center">
+                                @foreach($user->unreadNotifications as $notification)
+                                    @include('includes.notifications.'. snake_case(class_basename($notification->type)))<br>
+                                @endforeach
+                            </div>
                     </div>
                 </div>
             </div>
 
-            <?php $posts= Post::orderBy('created_at', 'desc')->paginate(10); ?>
+            <?php $posts= Post::orderBy('created_at', 'desc')->paginate(15); ?>
 
             <div class="container">
                 <div class="row">
@@ -74,6 +72,7 @@
                             <table class="table-hover">
                                 <thead>
                                 <tr>
+                                    <th>Comments</th>
                                     <th>Date</th>
                                     <th>Title</th>
                                     <th>Topic</th>
@@ -84,11 +83,12 @@
                                 <tbody>
                                 @foreach($posts as $post)
                                 <tr>
+                                    <td>{{count($post->singles)}}</td>
                                     <td>{{$post->discussion_date}}</td>
                                     <td><a href="{{route('each', ['id'=> $post->id])}}">{{str_limit($post->title, 15)}}</a></td>
                                     <td>{{$post->topic}}</td>
-                                    <td>{{str_limit($post->post, 15)}}</td>
-                                    <td>{{$post->posted_by}}</td>
+                                    <td>{{str_limit($post->post, 30)}}</td>
+                                    <td>{{ucfirst($post->posted_by)}}</td>
                                 </tr>
                                 @endforeach
                                 </tbody>
