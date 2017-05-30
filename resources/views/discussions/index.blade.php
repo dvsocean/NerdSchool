@@ -38,9 +38,13 @@
                     </script>
 
                     <div id="markAsRead">
-                    @foreach(auth()->user()->unreadNotifications as $notification)
-                        @include('includes.notifications.'. snake_case(class_basename($notification->type)))<br>
-                    @endforeach
+                    {{--@foreach(auth()->user()->unreadNotifications as $notification)--}}
+                        {{--@include('includes.notifications.'. snake_case(class_basename($notification->type)))<br>--}}
+                    {{--@endforeach--}}
+
+                        @foreach($user->unreadNotifications as $notification)
+                            @include('includes.notifications.'. snake_case(class_basename($notification->type)))<br>
+                        @endforeach
                     </div>
 
                 </header>
