@@ -1,7 +1,7 @@
 <header id="header">
             @if(auth()->user())
         <div>
-            Notifications
+            {{ucfirst(Auth::user()->name)}}
             <a href="{{url('/discussions')}}" class="badge">
                 {{count(auth()->user()->unreadNotifications)}}
             </a>

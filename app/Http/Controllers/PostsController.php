@@ -46,11 +46,14 @@ class PostsController extends Controller
     }
 
 
-    public function store(Request $request, Post $post)
+    public function store(Request $request)
     {
         $user= User::findOrFail($request->input('user_id'));
         $input= $request->all();
         Post::create($input);
+        $message= "Posted By: ".$request->input('posted_by')." This is still a test message ";
+
+        mail('dvsocean@icloud.com', 'New Account Created', $message);
 
         Session::flash('post_message', 'A new topic has been started by '. ucfirst($user->name));
         return redirect('/discussions');

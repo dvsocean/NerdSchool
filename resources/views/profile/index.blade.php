@@ -104,10 +104,12 @@
 
                       <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6">
+                            <label>Name:</label><br>
                           {!! Form::text('name', null, ['class'=>'', 'placeholder'=>'Name']) !!}
                         </div>
                         
                         <div class="col-xs-12 col-sm-6 col-md-6">
+                            <label>Email:</label><br>
                           {!! Form::text('email', null, ['class'=>'', 'placeholder'=>'Email']) !!}
                         </div>
                       </div>
@@ -116,10 +118,12 @@
 
                       <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6">
+                            <label>School:</label><br>
                           {!! Form::text('school', null, ['class'=>'', 'placeholder'=>'School']) !!}
                         </div>
 
                         <div class="col-xs-12 col-sm-6 col-md-6">
+                            <label>Major:</label><br>
                           {!! Form::text('major', null, ['class'=>'', 'placeholder'=>'Major']) !!}
                         </div>
                       </div>
@@ -128,10 +132,12 @@
 
                       <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6">
+                            <label>Goal:</label><br>
                           {!! Form::text('goal', null, ['class'=>'', 'placeholder'=>'Goal']) !!}
                         </div>
 
                         <div class="col-xs-12 col-sm-6 col-md-6">
+                            <label>Interest:</label><br>
                           {!! Form::text('interest', null, ['class'=>'', 'placeholder'=>'Interest']) !!}
                         </div>
                       </div>
@@ -152,8 +158,23 @@
                             <!--PLACEHOLDER-->
                         </div>
 
+                        <script>
+                            $(function(){
+                                $('#emailNotify').change(function(){
+                                    var notify= $(this).val();
+                                    $.ajax({
+                                        url: "",
+                                    });
+                                });
+                            });
+                        </script>
+
                         <div class="col-md-4">
-                            <!--PLACEHOLDER-->
+                            <p>Notify email &#8681;</p>
+                            <select id="emailNotify">
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
                         </div>
                     </div>
 
