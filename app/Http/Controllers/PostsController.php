@@ -53,21 +53,9 @@ class PostsController extends Controller
 
     public function store(Request $request, Post $post)
     {
-//        $user= User::findOrFail($request->input('user_id'));
-//        $input= $request->all();
-//        Post::create($input);
-//
-//        auth()->user()->notify(new PostAdded($post));
-//        Session::flash('post_message', 'A new topic has been started by '. ucfirst($user->name));
-//
-//        return redirect('/discussions');
         $user= User::findOrFail($request->input('user_id'));
         $input= $request->all();
         Post::create($input);
-
-//        dd($new_post);
-//        $new_post->user->notify(new PostAdded($new_post));
-
 
         Session::flash('post_message', 'A new topic has been started by '. ucfirst($user->name));
         return redirect('/discussions');
