@@ -42,7 +42,7 @@
                     e.preventDefault();
                 }
 
-                if(titleSelect.val().length < 3 || titleSelect.val().length > 20){
+                if(titleSelect.val().length < 3 || titleSelect.val().length > 30){
                     alert('Title must be between 3 and 20 characters long');
                     e.preventDefault();
                 }
@@ -157,17 +157,6 @@
                         <div class="col-md-4">
                             <!--PLACEHOLDER-->
                         </div>
-
-                        <script>
-                            $(function(){
-                                $('#emailNotify').change(function(){
-                                    var notify= $(this).val();
-                                    $.ajax({
-                                        url: "",
-                                    });
-                                });
-                            });
-                        </script>
 
                         <div class="col-md-4">
                             <p>Notify email &#8681;</p>
@@ -286,6 +275,7 @@
 
                             <input type="hidden" name="user_id" value="{{$user->id}}">
                             <input type="hidden" name="posted_by" value="{{$user->name}}">
+                            <input type="hidden" name="email" value="{{$user->email}}">
 
                             <input type="submit" value="Start"><br><br>
                             </form>

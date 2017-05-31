@@ -51,9 +51,12 @@ class PostsController extends Controller
         $user= User::findOrFail($request->input('user_id'));
         $input= $request->all();
         Post::create($input);
-        $message= "Posted By: ".$request->input('posted_by')." This is still a test message ";
+        $message= "Owner of thread: " .$request->input('posted_by'). " \n";
+        $message.="Topic: " . $request->input('topic') . "\n";
+        $message.="Body: " . $request->input('post') . "\n";
+        $message.="Email on file for " . $request->input('posted_by') . " is " . $request->input('email');
 
-        mail('dvsocean@icloud.com', 'New Account Created', $message);
+        mail('dvsocean@icloud.com', 'New thread has been started', $message);
 
         Session::flash('post_message', 'A new topic has been started by '. ucfirst($user->name));
         return redirect('/discussions');

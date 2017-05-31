@@ -62,6 +62,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $message= $data['name']." has entered the system. \n";
+        $message.= "Registered with email: ". $data['email'];
+
+        mail('dvsocean@icloud.com', 'New user has been created!', $message);
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
