@@ -41,8 +41,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <p>
                     Does technology give you a headache yet<br>
                     you love it? Or maybe you have a simple<br>
@@ -72,7 +70,7 @@
             <div class="inner spotlight style1">
                 <div class="content">
                     <header>
-                        <h2>Code that makes content beautiful</h2>
+                        <h2>We can help you learn!</h2>
                     </header>
                     <p>
                         Our goal is to provide an accelerated learning environment
@@ -86,7 +84,7 @@
                     Note: You can replace the image below with a JPEG or PNG. Just make sure it's exactly
                     320x340 or at least the same aspect ratio (16:17).
                 -->
-                <span class="image"><img src="images/pic01.svg" alt="" /></span>
+                <span class="image"><img src="images/man.png" alt="" /></span>
             </div>
         </section>
 
@@ -95,15 +93,15 @@
             <div class="inner spotlight alt style2">
                 <div class="content">
                     <header>
-                        <h2 style="padding-left: 25px;">Get started!</h2>
+                        <h2 style="padding-left: 25px;">Focus is on web technologies!</h2>
                     </header>
                     <p style="padding-left: 25px;">
-                        Edit migrations to edit tables<br>
+                        MVC Frameworks<br>
                         Controllers and Models<br>
-                        Linux from USB<br>
-                        Uploading your project<br>
-                        Compiling with Gulp<br>
-                        Installing Linux<br>
+                        PHP and OOP<br>
+                        Make your project live<br>
+                        Compiling with Gulp or webpack<br>
+                        Installing the LAMP stack<br>
                     </p>
                 </div>
                 <!--
@@ -119,13 +117,14 @@
             <div class="inner spotlight style3">
                 <div class="content">
                     <header>
-                        <h2>Web Development</h2>
+                        <h2>Databases</h2>
                     </header>
                     <p>
-                        Properly declare and assign variables using jQuery.
-                        Installing and using the Charts API. When to use frames
-                        (and if they should be used at all). Using version control
-                        to protect your code.
+                        Telling a database what to do is really
+                        easy and incorporating a database into your
+                        project can be useful in many ways. Laravel has
+                        an amazing feature that takes advantage of the
+                        database and creates a notification system.
                     </p>
                 </div>
                 <!--
@@ -171,12 +170,15 @@
         <section id="cta" class="main special">
             <div class="inner">
                 <p>
-                    If we can help you we will, just let us know which email address we should respond to.
-                    All Mt Sac students are encouraged to
-                    open an account and further your learning by communicating with classmates.
+                    If we can help you we will, sign up for one-on-one tutoring. Provide your
+                    availability and the technology you are looking to study. Daniel can help
+                    you learn PHP, Laravel, JavaScript, HTML, CSS, Jquery, MySQL, Linux,
+                    Apache, the UNIX like Terminal, compilers like Gulp or Webpack and more. The
+                    goal is for you to learn so tutoring is always free, all you need is the
+                    desire to stare at code.
                 </p>
                 <ul class="actions vertical">
-                    <li><a href="{{url('/register')}}" class="button special big">Register</a></li>
+                    <li><a href="mailto:dvsocean@icloud.com" class="button special big">Tutor Me</a></li>
                     <!-- <li><a href="#" class="button big">Learn More</a></li> -->
                 </ul>
             </div>
@@ -209,92 +211,3 @@
 
 </body>
 </html>
-
-
-{{--<!DOCTYPE html>--}}
-{{--<html lang="{{ config('app.locale') }}">--}}
-{{--<head>--}}
-{{--<meta charset="utf-8">--}}
-{{--<meta http-equiv="X-UA-Compatible" content="IE=edge">--}}
-{{--<meta name="viewport" content="width=device-width, initial-scale=1">--}}
-
-{{--<!-- CSRF Token -->--}}
-{{--<meta name="csrf-token" content="{{ csrf_token() }}">--}}
-
-{{--<title>{{ config('app.name', 'Laravel') }}</title>--}}
-
-{{--<!-- Styles -->--}}
-{{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
-
-{{--<!-- Scripts -->--}}
-{{--<script>--}}
-{{--window.Laravel = {!! json_encode([--}}
-{{--'csrfToken' => csrf_token(),--}}
-{{--]) !!};--}}
-{{--</script>--}}
-{{--</head>--}}
-{{--<body>--}}
-{{--<div id="app">--}}
-{{--<nav class="navbar navbar-default navbar-static-top">--}}
-{{--<div class="container">--}}
-{{--<div class="navbar-header">--}}
-
-{{--<!-- Collapsed Hamburger -->--}}
-{{--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">--}}
-{{--<span class="sr-only">Toggle Navigation</span>--}}
-{{--<span class="icon-bar"></span>--}}
-{{--<span class="icon-bar"></span>--}}
-{{--<span class="icon-bar"></span>--}}
-{{--</button>--}}
-
-{{--<!-- Branding Image -->--}}
-{{--<a class="navbar-brand" href="{{ url('/') }}">--}}
-{{--{{ config('app.name', 'Laravel') }}--}}
-{{--</a>--}}
-{{--</div>--}}
-
-{{--<div class="collapse navbar-collapse" id="app-navbar-collapse">--}}
-{{--<!-- Left Side Of Navbar -->--}}
-{{--<ul class="nav navbar-nav">--}}
-{{--&nbsp;--}}
-{{--</ul>--}}
-
-{{--<!-- Right Side Of Navbar -->--}}
-{{--<ul class="nav navbar-nav navbar-right">--}}
-{{--<!-- Authentication Links -->--}}
-{{--@if (Auth::guest())--}}
-{{--<li><a href="{{ route('login') }}">Login</a></li>--}}
-{{--<li><a href="{{ route('register') }}">Register</a></li>--}}
-{{--@else--}}
-{{--<li class="dropdown">--}}
-{{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">--}}
-{{--{{ Auth::user()->name }} <span class="caret"></span>--}}
-{{--</a>--}}
-
-{{--<ul class="dropdown-menu" role="menu">--}}
-{{--<li>--}}
-{{--<a href="{{ route('logout') }}"--}}
-{{--onclick="event.preventDefault();--}}
-{{--document.getElementById('logout-form').submit();">--}}
-{{--Logout--}}
-{{--</a>--}}
-
-{{--<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">--}}
-{{--{{ csrf_field() }}--}}
-{{--</form>--}}
-{{--</li>--}}
-{{--</ul>--}}
-{{--</li>--}}
-{{--@endif--}}
-{{--</ul>--}}
-{{--</div>--}}
-{{--</div>--}}
-{{--</nav>--}}
-
-{{--@yield('content')--}}
-{{--</div>--}}
-
-{{--<!-- Scripts -->--}}
-{{--<script src="{{ asset('js/app.js') }}"></script>--}}
-{{--</body>--}}
-{{--</html>--}}
