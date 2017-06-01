@@ -9,7 +9,8 @@ class Image_post extends Model
     protected $fillable= [
         'post_image',
         'file_size',
-        'single_id'
+        'single_id',
+        'type'
     ];
 
     public function singles(){

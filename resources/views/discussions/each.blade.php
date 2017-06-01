@@ -64,7 +64,15 @@
                         <div class="well">
                             <p><strong>{{$single->user->name}}:</strong> {{$single->single_post}}</p>
                             @foreach($single->single_images as $img)
-                                <a href="{{url('larger_view', ['id'=> $img->id])}}"><img src="../../post_images/{{$img->post_image}}" height="100" width="100" class="img-rounded"></a>
+                                    @if($img->type == 'php')
+                                        <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/php.jpg" height="100" width="100"></a>
+
+                                        @elseif($img->type == 'html')
+                                    <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/html.jpg" height="100" width="100"></a>
+
+                                        @elseif($img->type == 'jpg' || $img->type == 'png' || $img->type == 'JPG')
+                                    <a href="{{url('larger_view', ['id'=> $img->id])}}"><img src="../../post_images/{{$img->post_image}}" height="100" width="100" class="img-rounded"></a>
+                                    @endif
                                 @endforeach
                         </div>
                     @endforeach

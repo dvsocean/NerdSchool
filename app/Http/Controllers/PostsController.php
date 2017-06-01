@@ -107,9 +107,18 @@ class PostsController extends Controller
             $file=$request->file('image');
             $name= time() . $file->getClientOriginalName();
             $size= $file->getSize();
-            if($size < 4000000){
-                $file->move('post_images/', $name);
-                Image_post::create(['post_image'=> $name, 'file_size'=> $size, 'single_id'=> $new_singles_record->id]);
+            $type= $file->getClientOriginalExtension();
+
+            if($type == 'jpg' || $type == 'png' || $type == 'JPG'){
+                if($size < 4000000){
+                    $file->move('post_images/', $name);
+                    Image_post::create(['post_image'=> $name, 'type'=> $type, 'file_size'=> $size, 'single_id'=> $new_singles_record->id]);
+                }
+            }
+
+            if($type == 'html' || $type == 'php'){
+                $file->move('post_files/', $name);
+                Image_post::create(['post_image'=> $name, 'type'=> $type, 'file_size'=> $size, 'single_id'=> $new_singles_record->id]);
             }
         }
         if($post->user != Auth::user()){
