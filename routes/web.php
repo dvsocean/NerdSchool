@@ -62,6 +62,4 @@ Route::get('/markAsRead', function(){
     auth()->user()->unreadNotifications->markAsRead();
 });
 
-Route::get('/thread', function(){
-    //I want to output something like $threads= App\Threads::all(); and see if I can use dep inj anywhere
-});
+Route::post('/checkEmailExists', 'AjaxController@checkEmailExists');

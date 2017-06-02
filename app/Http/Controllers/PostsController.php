@@ -121,9 +121,19 @@ class PostsController extends Controller
                 Session::flash('error_message', $type . ' is not a supported file extension, FILE upload failed!');
             }
         }
+
         if($post->user != Auth::user()){
             $post->user->notify(new PostAdded($post));
         }
+
+        if(Auth::user()->name != $post->user->name){
+            if($post->user->notifyEmail == 'yes'){
+                $message= ucfirst(Auth::user()->name) . " responded to the ".$new_singles_record->topic . " thread \n";
+                $message.="Response: " . $new_singles_record->single_post;
+                mail($post->user->email, $post->topic, $message);
+            }
+        }
+
         Session::flash('post_message', 'You have added a comment to '. ucfirst($post->user->name) .'s '.$post->topic . ' thread');
         return redirect('/discussions');
     }

@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>{{Auth::user()->name}}</title>
+    <meta name="_token" content="{{ csrf_token() }}" />
     <!--HEADER-->
     @include('includes.header')
     <!--HEADER-->
@@ -58,6 +59,8 @@
         });
     </script>
     <!--DELETE NERD JAVASCRIPT-->
+
+
 </head>
 
 
@@ -92,6 +95,28 @@
                     </div>
                     <!--PROJECT FILES OR DATABASE FOR ALL NERDS-->
 
+                    <!--AJAX TO VERIFY EMAIL-->
+                    <script>
+                        $(function(){
+                            $('.checkEmail').blur(function(){
+//                                var email= $('.checkEmail').val();
+//
+//                                $.ajax({
+//                                    url: "/checkEmailExists",
+//                                    type: "POST",
+//                                    data: {"email": email},
+//                                    success: function(data){
+//                                        $('#test').html(data);
+//                                    },
+//                                    error: document.write('ajax failed')
+//                                });
+                            });
+                        });
+                    </script>
+                    <!--AJAX TO VERIFY EMAIL-->
+
+                    <div id="test"></div>
+
                     <img src="{{$user->photo ? $user->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="150" width="150" class="img-circle"><br><br>
 
 
@@ -110,7 +135,7 @@
                         
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <label>Email:</label><br>
-                          {!! Form::text('email', null, ['class'=>'', 'placeholder'=>'Email']) !!}
+                          {!! Form::text('email', null, ['class'=>'checkEmail', 'placeholder'=>'Email']) !!}
                         </div>
                       </div>
 
@@ -143,10 +168,18 @@
                       </div>
 
                       <br><br>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                <label>Notify by email</label>
+                                {!! Form::select('notifyEmail', ['yes' => 'Yes', 'no' => 'No'], null, ['placeholder' => 'Click to select']) !!}
+                            </div>
 
-                      <div class="col-xs-12 col-sm-12 col-md-12" align="left">
-                        {!! Form::submit('Update', ['class'=>'']) !!}<br><br>
-                      </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6">
+                                {!! Form::submit('Update', ['class'=>'']) !!}<br><br>
+                            </div>
+                        </div>
+
+
                     {!! Form::close() !!}
 
                     <div class="row" align="right">
@@ -296,6 +329,12 @@
                         </div>
                     </div>
                 </div>
+
+    <script type="text/javascript">
+        $.ajax({
+            headers: {'X-CSRF-Token': $('meta[name=token]').attr('content')}
+        });
+    </script>
 
 
 @include('includes.footer')

@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 class AjaxController extends Controller
 {
-    public function notifyByEmail(Request $request){
-       //
+    public function checkEmailExists(Request $request){
+//        $data= $request->all();
+//
+//        dd($data);
     }
 }

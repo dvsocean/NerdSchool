@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('goal')->nullable();
             $table->string('interest')->nullable();
             $table->string('admin')->nullable();
+            $table->string('notifyEmail')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
