@@ -37,8 +37,14 @@
                 <script>
                     $(function(){
                         $('#sp_form').submit(function(e){
+
+                            if($("#single_post").val().length < 3){
+                                alert('Body must contain at least 3 characters to be considered a post');
+                                e.preventDefault();
+                            }
+
                             if($("#myFile")[0].files[0].size > 4000000){
-                                alert("FILE TOO BIG, WILL NOT UPLOAD/LIMIT 4MB");
+                                alert("FILE TOO BIG, LIMIT 4MB");
                                 e.preventDefault();
                             }
                         });
@@ -53,11 +59,15 @@
                         {!! csrf_field() !!}
                         <input type="hidden" name="user_id" value="{{$user->id}}">
                         <input type="hidden" name="topic" value="{{$post->topic}}">
-                        <textarea rows="5" class="form-control" name="single_post"></textarea><br>
+                        <textarea rows="5" class="form-control decline" name="single_post" id="single_post"></textarea><br>
                         <input type="file" name="image" id="myFile"><br>
                         <input type="submit" value="Reply">
                     </form>
+
+                    <a href="" id="testLink">TEST LINK</a>
                 </div>
+
+
 
                 @if(isset($singles))
                     @foreach($singles as $single)
@@ -65,13 +75,13 @@
                             <p><strong>{{$single->user->name}}:</strong> {{$single->single_post}}</p>
                             @foreach($single->single_images as $img)
                                     @if($img->type == 'php')
-                                        <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/php.jpg" height="100" width="100"></a>
+                                        <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/php.jpg" height="100" width="100" class="img-rounded"></a>
 
                                         @elseif($img->type == 'html')
-                                    <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/html.jpg" height="100" width="100"></a>
+                                        <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/html.jpg" height="100" width="100" class="img-rounded"></a>
 
                                         @elseif($img->type == 'jpg' || $img->type == 'png' || $img->type == 'JPG')
-                                    <a href="{{url('larger_view', ['id'=> $img->id])}}"><img src="../../post_images/{{$img->post_image}}" height="100" width="100" class="img-rounded"></a>
+                                        <a href="{{url('larger_view', ['id'=> $img->id])}}"><img src="../../post_images/{{$img->post_image}}" height="100" width="100" class="img-rounded"></a>
                                     @endif
                                 @endforeach
                         </div>
@@ -88,6 +98,7 @@
 
 
 @include('includes.footer')
+
 
 </body>
 </html>
