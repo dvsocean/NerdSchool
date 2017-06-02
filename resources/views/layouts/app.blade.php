@@ -75,9 +75,10 @@
                     <p>
                         Our goal is to provide an accelerated learning environment
                         by allowing you to communicate with others who are learning
-                        the same material. Nerdschool provides an option to implement
-                        what you have learned by making your content live. You may upload
-                        up-to 3 pages and test your nerdy creation. Details inside.
+                        the same material. You may ask questions, upload and download
+                        pictures or other files. If your question goes unanswered the
+                        developer of nerdschool will help you, all you have to do is
+                        put it out there.
                     </p>
                 </div>
                 <!--
@@ -171,7 +172,7 @@
             <div class="inner">
                 <p>
                     If we can help you we will, sign up for one-on-one tutoring. Provide your
-                    availability and the technology you are looking to study. Daniel can help
+                    availability and the technology you are looking to study. We can help
                     you learn PHP, Laravel, JavaScript, HTML, CSS, Jquery, MySQL, Linux,
                     Apache, the UNIX like Terminal, compilers like Gulp or Webpack and more. The
                     goal is for you to learn so tutoring is always free, all you need is the

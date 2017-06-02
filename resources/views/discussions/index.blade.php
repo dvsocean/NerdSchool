@@ -54,6 +54,10 @@
                             <div class="alert alert-info text-center">{{ Session::get('post_message') }}</div><br>
                         @endif
 
+                        @if (Session::has('error_message'))
+                            <div class="alert alert-danger text-center">{{ Session::get('error_message') }}</div><br>
+                        @endif
+
                             <div id="markAsRead" class="text-center">
                                 @foreach($user->unreadNotifications as $notification)
                                     @include('includes.notifications.'. snake_case(class_basename($notification->type)))<br>

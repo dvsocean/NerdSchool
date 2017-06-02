@@ -109,16 +109,16 @@ class PostsController extends Controller
             $size= $file->getSize();
             $type= $file->getClientOriginalExtension();
 
-            if($type == 'jpg' || $type == 'png' || $type == 'JPG'){
-                if($size < 4000000){
+            if($type == 'jpg' || $type == 'png' || $type == 'JPG' || $type == 'gif' || $type == 'jpeg' || $type == 'PNG') {
+                if ($size < 4000000) {
                     $file->move('post_images/', $name);
-                    Image_post::create(['post_image'=> $name, 'type'=> $type, 'file_size'=> $size, 'single_id'=> $new_singles_record->id]);
+                    Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'single_id' => $new_singles_record->id]);
                 }
-            }
-
-            if($type == 'html' || $type == 'php'){
+            } elseif ($type == 'html' || $type == 'php' || $type == 'txt' || $type == 'sql') {
                 $file->move('post_files/', $name);
-                Image_post::create(['post_image'=> $name, 'type'=> $type, 'file_size'=> $size, 'single_id'=> $new_singles_record->id]);
+                Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'single_id' => $new_singles_record->id]);
+            } else {
+                Session::flash('error_message', $type . ' is not a supported file extension, FILE upload failed!');
             }
         }
         if($post->user != Auth::user()){

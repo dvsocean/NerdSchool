@@ -159,11 +159,11 @@
                         </div>
 
                         <div class="col-md-4">
-                            <p>Notify email &#8681;</p>
-                            <select id="emailNotify">
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
-                            </select>
+                            {{--<p>Notify email &#8681;</p>--}}
+                            {{--<select id="emailNotify">--}}
+                                {{--<option value="yes">Yes</option>--}}
+                                {{--<option value="no">No</option>--}}
+                            {{--</select>--}}
                         </div>
                     </div>
 
@@ -266,7 +266,12 @@
 
                     <div class="row">
                         <div class="col-xs-12 col-md-2">
-                            <!--PLACEHOLDER-->
+                            <p>
+                                You can modify your question by
+                                opening it through the <strong>discussions</strong> menu. You may
+                                also post files or photos from the <strong>discussions</strong>
+                                menu page.
+                            </p><br>
                         </div>
 
                         <div class="col-xs-12 col-md-8">
@@ -282,7 +287,12 @@
                         </div>
 
                         <div class="col-xs-12 col-md-2">
-                            <!--PLACEHOLDER-->
+                            <p>
+                                You will be notified as soon as someone
+                                responds to your thread. To view the response
+                                click the badge icon next to your name in the
+                                top-left corner.
+                            </p>
                         </div>
                     </div>
                 </div>
