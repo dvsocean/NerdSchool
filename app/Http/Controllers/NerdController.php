@@ -81,7 +81,7 @@ class NerdController extends Controller
     {
         $user= User::findOrFail($id);
 
-        $input= $request->except('name');
+        $input= $request->except('name', 'email');
         if ($request->hasFile('photo_id')) {
           $file= $request->file('photo_id');
           if ($user->photo_id) {

@@ -170,8 +170,9 @@
                       <br><br>
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-6">
-                                <label>Notify by email</label>
+                                <label>Notify by email &#8681;</label>
                                 {!! Form::select('notifyEmail', ['yes' => 'Yes', 'no' => 'No'], null, ['placeholder' => 'Click to select']) !!}
+                                <p>Get notified when someone leaves you a comment</p>
                             </div>
 
                             <div class="col-xs-12 col-sm-12 col-md-6">
@@ -192,11 +193,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            {{--<p>Notify email &#8681;</p>--}}
-                            {{--<select id="emailNotify">--}}
-                                {{--<option value="yes">Yes</option>--}}
-                                {{--<option value="no">No</option>--}}
-                            {{--</select>--}}
+                            <!--PLACEHOLDER-->
                         </div>
                     </div>
 
@@ -300,10 +297,9 @@
                     <div class="row">
                         <div class="col-xs-12 col-md-2">
                             <p>
-                                You can modify your question by
-                                opening it through the <strong>discussions</strong> menu. You may
-                                also post files or photos from the <strong>discussions</strong>
-                                menu page.
+                                Add to your question by
+                                opening it through the <strong>discussions</strong> page. You may
+                                also post files or photos.
                             </p><br>
                         </div>
 
@@ -321,10 +317,9 @@
 
                         <div class="col-xs-12 col-md-2">
                             <p>
-                                You will be notified as soon as someone
-                                responds to your thread. To view the response
-                                click the badge icon next to your name in the
-                                top-left corner.
+                                Your account will be notified when someone
+                                responds to your thread. Just click the badge
+                                icon next to your name.
                             </p>
                         </div>
                     </div>
