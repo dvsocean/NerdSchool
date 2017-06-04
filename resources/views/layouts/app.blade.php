@@ -73,12 +73,13 @@
                         <h2>We can help you learn!</h2>
                     </header>
                     <p>
-                        Our goal is to provide an accelerated learning environment
+                        The goal is to provide an accelerated learning environment
                         by allowing you to communicate with others who are learning
-                        the same material. You may ask questions, upload and download
-                        pictures or other files. If your question goes unanswered the
-                        developer of nerdschool will help you, all you have to do is
-                        put it out there.
+                        the same material. You may ask questions, you can also upload
+                        and download files if you need. The developer of nerdschool is
+                        automatically notified of all discussions so, if your question
+                        goes unanswered Ocean himself will help you. All you have to
+                        do is take the first step and put your problem out there.
                     </p>
                 </div>
                 <!--
@@ -98,11 +99,13 @@
                     </header>
                     <p style="padding-left: 25px;">
                         MVC Frameworks<br>
-                        Controllers and Models<br>
-                        PHP and OOP<br>
-                        Make your project live<br>
-                        Compiling with Gulp or webpack<br>
+                        Controllers, Models, Views<br>
+                        PHP, Javascript and OOP code in general<br>
+                        Making your project live<br>
+                        Compiling with Gulp or Webpack<br>
                         Installing the LAMP stack<br>
+                        Using VCS to protect your code<br>
+                        Managing your database<br>
                     </p>
                 </div>
                 <!--
@@ -123,9 +126,15 @@
                     <p>
                         Telling a database what to do is really
                         easy and incorporating a database into your
-                        project can be useful in many ways. Laravel has
-                        an amazing feature that takes advantage of the
-                        database and creates a notification system.
+                        project can be useful in many ways. For example,
+                        Laravel has an amazing feature that takes advantage
+                        of the database and creates a notification system.
+                        Another great feature is the user authentication
+                        functionality which utilizes the database and turns
+                        management into a breeze. Also learn about security
+                        and middleware or other features that are built into
+                        most MVC frameworks. Either way a database is an essential
+                        part of the web so learn how to use it and be more powerful.
                     </p>
                 </div>
                 <!--
@@ -156,7 +165,7 @@
                     <section>
                         <span class="icon major fa fa-graduation-cap"></span>
                         <h3>Pro libraries</h3>
-                        <p>React, Angular, Laravel and more take web pages into the future</p>
+                        <p>Laravel, jQuery, Bootstrap and more take web pages into the future</p>
                     </section>
                     <section>
                         <span class="icon major fa fa-picture-o"></span>
