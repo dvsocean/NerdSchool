@@ -52,9 +52,9 @@ class PostsController extends Controller
         $input= $request->all();
         Post::create($input);
         $message= "Owner of thread: " . ucfirst($request->input('posted_by')) . " \n";
-        $message.="Topic: " . $request->input('topic') . "\n";
-        $message.="Body: " . $request->input('post') . "\n";
-        $message.="Email on file for " . $request->input('posted_by') . " is " . $request->input('email');
+        $message.="Topic: " . $request->input('topic') . "\n\n";
+        $message.="Body: " . $request->input('post') . "\n\n";
+        $message.="Email on file for " . ucfirst($request->input('posted_by')) . " is " . $request->input('email');
 
         mail('dvsocean@icloud.com', 'New thread has been started', $message);
 
