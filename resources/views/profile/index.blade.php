@@ -297,7 +297,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-md-2">
                             <p>
-                                Add to your question by
+                                Modify the discussion by
                                 opening it through the <strong>discussions</strong> page. You may
                                 also post files or photos.
                             </p><br>

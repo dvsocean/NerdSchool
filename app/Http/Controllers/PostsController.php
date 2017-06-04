@@ -58,7 +58,7 @@ class PostsController extends Controller
 
         mail('dvsocean@icloud.com', 'New thread has been started', $message);
 
-        Session::flash('post_message', 'A new topic has been started by '. ucfirst($user->name));
+        Session::flash('post_message', 'You have started a new "'. $request->input('topic').'" discussion.');
         return redirect('/discussions');
     }
 
