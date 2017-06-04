@@ -49,7 +49,7 @@
 
 
                 <div class="well">
-                    <p><strong>Original question by {{$post->posted_by}} :</strong> {{$post->post}}</p><br>
+                    <p><strong>Original question by {{ucfirst($post->posted_by)}} :</strong> {{$post->post}}</p><br>
 
                     <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" id="sp_form" enctype="multipart/form-data">
                         {!! csrf_field() !!}
@@ -67,7 +67,7 @@
                 @if(isset($singles))
                     @foreach($singles as $single)
                         <div class="well">
-                            <p><strong>{{$single->user->name}}:</strong> {{$single->single_post}}</p>
+                            <p><strong>{{ucfirst($single->user->name)}}:</strong> {{$single->single_post}}</p>
                             @foreach($single->single_images as $img)
                                     @if($img->type == 'php')
                                         <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/php.png" height="100" width="100" class="img-rounded"></a>

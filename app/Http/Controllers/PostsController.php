@@ -135,7 +135,12 @@ class PostsController extends Controller
             }
         }
 
-        Session::flash("post_message", "You have added a comment to ". ucfirst($post->user->name) ."'s ".$post->topic . " thread");
+        if(Auth::user()->name != $post->user->name){
+            Session::flash("post_message", "You have added a comment to ". ucfirst($post->user->name) ."'s ".$post->topic . " thread");
+        } else {
+            Session::flash('post_message', 'You have added a comment to your own thread "'. $post->topic . '".');
+        }
+
         return redirect('/discussions');
     }
 
