@@ -260,6 +260,7 @@
                                     <option value="Client">Client</option>
                                     <option value="Linux">Linux</option>
                                     <option value="PHP">PHP</option>
+                                    <option value="MySQL">MySQL</option>
                                     <option value="MVC">MVC</option>
                                     <option value="Javascript">Javascript</option>
                                     <option value="JQuery">JQuery</option>

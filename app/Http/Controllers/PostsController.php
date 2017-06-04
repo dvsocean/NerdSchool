@@ -51,7 +51,7 @@ class PostsController extends Controller
         $user= User::findOrFail($request->input('user_id'));
         $input= $request->all();
         Post::create($input);
-        $message= "Owner of thread: " .$request->input('posted_by'). " \n";
+        $message= "Owner of thread: " . ucfirst($request->input('posted_by')) . " \n";
         $message.="Topic: " . $request->input('topic') . "\n";
         $message.="Body: " . $request->input('post') . "\n";
         $message.="Email on file for " . $request->input('posted_by') . " is " . $request->input('email');
