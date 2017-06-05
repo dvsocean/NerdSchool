@@ -78,7 +78,7 @@
                         the same material. You may ask questions, you can also upload
                         and download files if you need. The developer of nerdschool is
                         automatically notified of all discussions so, if your question
-                        goes unanswered Ocean himself will help you. All you have to
+                        goes unanswered he himself will help you. All you have to
                         do is take the first step and put your problem out there.
                     </p>
                 </div>

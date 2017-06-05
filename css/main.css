@@ -3328,7 +3328,7 @@
 /* Banner */
 
 	#banner {
-		background-color: #333333;
+		background-color: white;
 		color: rgba(255, 255, 255, 0.75);
 		padding: 8em 0 6em 0 ;
 		-moz-align-items: center;
