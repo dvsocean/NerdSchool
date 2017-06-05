@@ -63,3 +63,7 @@ Route::get('/markAsRead', function(){
 });
 
 Route::post('/checkEmailExists', 'AjaxController@checkEmailExists');
+
+Route::get('/details/{id}', function($id){
+    return view('classmates.details', compact('id'));
+})->name('details');

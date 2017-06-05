@@ -162,26 +162,24 @@
                         </div>
 
                         <div class="col-xs-12 col-sm-6 col-md-6">
-                            <label>Interest:</label><br>
-                          {!! Form::text('interest', null, ['class'=>'', 'placeholder'=>'Interest']) !!}
+                            <label>Notify by email &#8681;</label>
+                            {!! Form::select('notifyEmail', ['yes' => 'Yes', 'no' => 'No'], null, ['id'=>'notifySelect', 'placeholder' => 'Click to select']) !!}
+                            <p>Get notified when someone leaves you a comment</p>
                         </div>
                       </div>
 
-                      <br><br>
+
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-6">
-                                <label>Notify by email &#8681;</label>
-                                {!! Form::select('notifyEmail', ['yes' => 'Yes', 'no' => 'No'], null, ['placeholder' => 'Click to select']) !!}
-                                <p>Get notified when someone leaves you a comment</p>
+                                <label>About me:</label><br>
+                                {!! Form::textarea('interest', null, ['class'=>'', 'placeholder'=>'Interest']) !!}<br><br>
                             </div>
 
                             <div class="col-xs-12 col-sm-12 col-md-6">
-                                {!! Form::submit('Update', ['class'=>'']) !!}<br><br>
+                                <!--PLACEHOLDER-->
                             </div>
                         </div>
 
-
-                    {!! Form::close() !!}
 
                     <div class="row" align="right">
                         <div class="col-md-4">
@@ -193,8 +191,9 @@
                         </div>
 
                         <div class="col-md-4">
-                            <!--PLACEHOLDER-->
+                            {!! Form::submit('Update Profile', ['class'=>'update_profile']) !!}
                         </div>
+                        {!! Form::close() !!}
                     </div>
 
                 </header>
@@ -244,6 +243,8 @@
             </div>
         </div>
         <!--MODAL-->
+                <br><br>
+                <br><br>
 
                 <div class="container">
                     <div class="row">
@@ -334,7 +335,7 @@
 
 
 @include('includes.footer')
-@include('includes.jquery-ui')
+
 </body>
 </html>
 

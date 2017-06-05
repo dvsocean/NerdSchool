@@ -1,4 +1,5 @@
-<?php use App\Post;use App\User; ?>
+<?php use App\Post;
+use App\User; ?>
 @if(Auth::user())
 <!DOCTYPE HTML>
 <html>
@@ -41,7 +42,7 @@
                     <h1>Discussions</h1><br>
                 </header>
                 <span><img src="page_images/discussions.png" height="150" width="300" class="center-block"/></span>
-                <p class="text-center">The focus is on web technologies that allow us to create dynamic sites. The goal is to spend less
+                <p class="text-center">Focus is on web technologies that allow us to create dynamic sites. The goal is to spend less
                     time struggling and more time coding, we'd love to have your input. These are the active discussions we currently have.
                 </p>
                 <br>
@@ -74,28 +75,23 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="table-responsive">
                             <table class="table-hover">
-                                <thead>
                                 <tr>
-                                    <th>Comments</th>
-                                    <th>Date</th>
-                                    <th>Title</th>
-                                    <th>Topic</th>
-                                    <th>Post</th>
-                                    <th>Author</th>
+                                    <td><strong>Comments</strong></td>
+                                    <td><strong>Started on</strong></td>
+                                    <td><strong>Title</strong></td>
+                                    <td><strong>Title</strong></td>
+                                    <td><strong>Author</strong></td>
                                 </tr>
-                                </thead>
-                                <tbody>
+
                                 @foreach($posts as $post)
                                 <tr>
                                     <td>{{count($post->singles)}}</td>
                                     <td>{{$post->discussion_date}}</td>
                                     <td><a href="{{route('each', ['id'=> $post->id])}}">{{str_limit($post->title, 15)}}</a></td>
                                     <td>{{$post->topic}}</td>
-                                    <td>{{str_limit($post->post, 30)}}</td>
                                     <td>{{ucfirst($post->posted_by)}}</td>
                                 </tr>
                                 @endforeach
-                                </tbody>
                             </table>
                             <h4 class="text-center">{{$posts->links()}}</h4>
                         </div>
