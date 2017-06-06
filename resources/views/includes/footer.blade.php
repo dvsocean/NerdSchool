@@ -1,3 +1,11 @@
+<style>
+    #footer {
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+    }
+</style>
 <!-- Footer -->
 <footer id="footer">
     <div class="inner">
