@@ -67,3 +67,10 @@ Route::post('/checkEmailExists', 'AjaxController@checkEmailExists');
 Route::get('/details/{id}', function($id){
     return view('classmates.details', compact('id'));
 })->name('details');
+
+Route::get('/settings', function(){
+    return view('settings.index');
+})->name('settings');
+
+Route::resource('settings_panel', 'SettingsController');
+
