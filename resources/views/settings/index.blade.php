@@ -36,9 +36,17 @@
                         </form><br><br>
                     </div>
 
+                    <script>
+                        $(function(){
+                           $('#notifyEmailForm').change(function(){
+                               $('#notifyEmailForm').submit();
+                           });
+                        });
+                    </script>
+
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <h4>Notify my email when someone responds to my thread</h4><br>
-                        {!! Form::model($user, ['method'=> 'PATCH', 'action'=>['SettingsController@update', $user->id]]) !!}
+                        {!! Form::model($user, ['method'=> 'PATCH', 'action'=>['SettingsController@update', $user->id], 'id'=>'notifyEmailForm']) !!}
 
                             {!! csrf_field() !!}
 
@@ -48,29 +56,80 @@
                             {!! Form::label('notifyEmail', 'No Dont') !!}
                             {!! Form::radio('notifyEmail', 'no', null, ['class'=>'']) !!}
 
-                            {!! Form::submit('Done', ['class'=>'btn btn-default', 'id'=>'settings_done']) !!}
-                        {!! Form::close() !!}
+                            {{--{!! Form::submit('Done', ['class'=>'btn btn-default', 'id'=>'settings_done']) !!}--}}
+                        {!! Form::close() !!}<br><br>
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <h4>Change my on-file email</h4>
-                        <p>This email is used to notify you of thread responses and any
-                        changes your account may encounter</p><br>
+                        <p>This email is used to notify you of thread responses and other
+                        changes to your account</p><br>
 
-                        <form action="" method="POST">
+                        <script>
+                            $(function(){
+                               $('#old_email').blur(function(){
+                                   var email= $(this).val();
+                                   $.ajax({
+                                       url:"/verifyEmail",
+                                       method:"GET",
+                                       data: {email:email},
+                                       success: function(data){
+                                           if(data){
+                                               $('#return_message').html("<div class='alert alert-success text-center'>" + data + "</div>");
+                                           } else {
+                                               $('#return_message').html("<div class='alert alert-danger text-center'>NOT YOUR EMAIL ADDRESS</div>");
+                                               $('#old_email').focus();
+                                           }
+                                        }
+                                   });
+                               });
+
+
+                               $('#change_email_form').submit(function(e){
+                                   var originalEmail= $('#old_email');
+                                   var newEmail= $('#new_email');
+                                   if(originalEmail.val() == '' || newEmail.val() == ''){
+                                       $('#return_message').html("<div class='alert alert-danger text-center'>Fields cannot be blank</div>");
+                                       e.preventDefault();
+                                   }
+                               });
+
+                            });
+                        </script>
+                        <div id="return_message"></div>
+
+                        <form action="{{url('/updateEmail')}}" method="POST" id="change_email_form">
+                            {!! csrf_field() !!}
                             <label>Old email</label><br>
-                            <input type="text" name="old_email" class="form-control"><br>
+                            <input type="text" name="old_email" class="form-control" id="old_email"><br>
 
                             <label>New email</label><br>
-                            <input type="text" name="new_email" class="form-control"><br>
+                            <input type="text" name="new_email" class="form-control" id="new_email"><br>
+                            <input type="hidden" name="id" value="{{$user->id}}">
 
-                            <input type="submit" name="email_submit" value="Change Email" class="btn btn-default">
+                            <input type="submit" value="Change Email" class="btn btn-default">
                         </form><br><br>
+                    </div>
+                </div>
 
+                <br><br>
 
+                <div class="row" align="right">
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <!--PLACEHOLDER-->
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <!--PLACEHOLDER-->
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <a href="{{route('profile')}}" class="btn btn-default">Done</a>
                     </div>
                 </div>
             </div>
+
+            <br><br><br>
         </section>
         <!--CUSTOM SETTINGS PAGE-->
 

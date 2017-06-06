@@ -62,8 +62,6 @@ Route::get('/markAsRead', function(){
     auth()->user()->unreadNotifications->markAsRead();
 });
 
-Route::post('/checkEmailExists', 'AjaxController@checkEmailExists');
-
 Route::get('/details/{id}', function($id){
     return view('classmates.details', compact('id'));
 })->name('details');
@@ -73,4 +71,8 @@ Route::get('/settings', function(){
 })->name('settings');
 
 Route::resource('settings_panel', 'SettingsController');
+
+Route::get('/verifyEmail', 'SettingsController@verifyEmail');
+
+Route::post('/updateEmail', 'SettingsController@updateEmailAddress' );
 

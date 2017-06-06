@@ -4,12 +4,6 @@
     text-align: center;
 }
 
-#settings_done{
-    position: fixed;
-    bottom: 45px;
-    right: 45px;
-}
-
 #gears{
     position: fixed;
     left: 270px;
