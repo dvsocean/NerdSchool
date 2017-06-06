@@ -67,6 +67,12 @@
 
                         <script>
                             $(function(){
+
+                                function validateEmail(Email) {
+                                    var pattern = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+                                    return pattern.test(Email);
+                                }
+
                                $('#old_email').blur(function(){
                                    var email= $(this).val();
                                    $.ajax({
@@ -92,6 +98,10 @@
                                        $('#return_message').html("<div class='alert alert-danger text-center'>Fields cannot be blank</div>");
                                        e.preventDefault();
                                    }
+//                                   if(!validateEmail(newEmail)){
+//                                       $('#return_message').html("<div class='alert alert-danger text-center'>Your new email address is the wrong format</div>");
+//                                       e.preventDefault();
+//                                   }
                                });
 
                             });
@@ -104,7 +114,7 @@
                             <input type="text" name="old_email" class="form-control" id="old_email"><br>
 
                             <label>New email</label><br>
-                            <input type="text" name="new_email" class="form-control" id="new_email"><br>
+                            <input type="email" name="new_email" class="form-control" id="new_email"><br>
                             <input type="hidden" name="id" value="{{$user->id}}">
 
                             <input type="submit" value="Change Email" class="btn btn-default">
