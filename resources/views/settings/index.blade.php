@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <h4>Change your password</h4><br>
-                        <form action="" method="POST">
+                        <form action="" method="">
                             <label>Old Password</label><br>
                             <input type="text" name="old_password" class="form-control"><br>
 
@@ -84,6 +84,7 @@
                                                $('#return_message').html("<div class='alert alert-success text-center'>" + data + "</div>");
                                            } else {
                                                $('#return_message').html("<div class='alert alert-danger text-center'>NOT YOUR EMAIL ADDRESS</div>");
+                                               $('#return_message').delay(3000).fadeOut('slow');
                                                $('#old_email').focus();
                                            }
                                         }
@@ -95,18 +96,20 @@
                                    var originalEmail= $('#old_email');
                                    var newEmail= $('#new_email');
                                    if(originalEmail.val() == '' || newEmail.val() == ''){
-                                       $('#return_message').html("<div class='alert alert-danger text-center'>Fields cannot be blank</div>");
+                                       $('#return_matching').html("<div class='alert alert-danger text-center'>Fields cannot be blank</div>");
+                                       e.preventDefault();
+                                       $('#return_matching').delay(5000).fadeOut('slow');
+                                   }
+                                   if(!validateEmail(newEmail.val())){
+                                       $('#return_message').html("<div class='alert alert-danger text-center'>Your new email address is the wrong format</div>");
                                        e.preventDefault();
                                    }
-//                                   if(!validateEmail(newEmail)){
-//                                       $('#return_message').html("<div class='alert alert-danger text-center'>Your new email address is the wrong format</div>");
-//                                       e.preventDefault();
-//                                   }
                                });
 
                             });
                         </script>
                         <div id="return_message"></div>
+                        <div id="return_matching"></div>
 
                         <form action="{{url('/updateEmail')}}" method="POST" id="change_email_form">
                             {!! csrf_field() !!}
