@@ -17,22 +17,83 @@
 
 <br><br>
         <!--CUSTOM SETTINGS PAGE-->
+        <script>
+            $(function(){
+                //Declarations
+                var old_password= $('#old_password');
+                var new_password= $('#new_password');
+                var submitButton= $('#submitButton');
+                var old_password_confirm= $('#old_password_confirm');
+                var old_password_error= $('#old_password_error');
+                var empty_field_error= $('#empty_field_error');
+                var password_match_error= $('#password_match_error');
+
+                //Automatically disable submit button
+                submitButton.prop('disabled', true);
+
+                //First check that the user knows his original password
+                old_password.blur(function(){
+                    var old_password= $('#old_password').val();
+                    var user_id= $('#user_id').val();
+                    $.ajax({
+                        url:"/ajax_verify",
+                        type:"GET",
+                        data:{old_password: old_password, user_id: user_id},
+                        success: function(data){
+                            if(data){
+                                old_password_confirm.html("<div class='alert alert-success text-center'>" + data + "</div>");
+                                old_password_confirm.delay(5000).fadeOut('slow');
+                                submitButton.prop('disabled', false);
+                            } else {
+                                $('#old_password').focus();
+                                old_password_error.html("<div class='alert alert-danger text-center'>NOT YOUR ORIGINAL PASSWORD</div>");
+                                old_password_error.delay(5000).fadeOut('slow');
+                                submitButton.prop('disabled', true);
+
+                            }
+                        }
+                    });
+
+                    $('#passwordForm').submit(function(e){
+                        if($('#new_password').val() == '' || $('#retype_password').val() == ''){
+                            empty_field_error.html("<div class='alert alert-danger text-center'>Fields cannot be left blank</div>");
+                            e.preventDefault();
+                        }
+
+                        if($('#new_password').val() != $('#retype_password').val()){
+                            password_match_error.html("<div class='alert alert-danger text-center'>Your passwords do not match</div>");
+                            e.preventDefault();
+                        }
+                    });
+                });
+            });
+        </script>
+
         <section id="main" class="main">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <h4>Change your password</h4><br>
-                        <form action="" method="">
+                        <form action="{{url('change_password')}}" method="POST" id="passwordForm">
+                            {{csrf_field()}}
+
+                            <div id="old_password_confirm"></div>
+                            <div id="old_password_error"></div>
+                            <div id="empty_field_error"></div>
+                            <div id="password_match_error"></div>
+
                             <label>Old Password</label><br>
-                            <input type="text" name="old_password" class="form-control"><br>
+                            <input type="password" name="old_password" class="form-control" id="old_password"><br>
 
                             <label>New Password</label><br>
-                            <input type="text" name="new_password" class="form-control"><br>
+                            <input type="password" name="new_password" class="form-control" id="new_password"><br>
 
                             <label>Re-type New Password</label><br>
-                            <input type="text" name="retype_password" class="form-control"><br>
+                            <input type="password" name="retype_password" class="form-control" id="retype_password"><br>
 
-                            <input type="submit" name="submit" value="Change Password" class="btn btn-default">
+                            <input type="hidden" name="user_id" value="{{$user->id}}" id="user_id">
+
+                            <input type="submit" value="Change Password" class="btn btn-default" id="submitButton">
                         </form><br><br>
                     </div>
 

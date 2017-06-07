@@ -95,30 +95,8 @@
                     </div>
                     <!--PROJECT FILES OR DATABASE FOR ALL NERDS-->
 
-                    <!--AJAX TO VERIFY EMAIL-->
-                    <script>
-                        $(function(){
-                            $('.checkEmail').blur(function(){
-//                                var email= $('.checkEmail').val();
-//
-//                                $.ajax({
-//                                    url: "/checkEmailExists",
-//                                    type: "POST",
-//                                    data: {"email": email},
-//                                    success: function(data){
-//                                        $('#test').html(data);
-//                                    },
-//                                    error: document.write('ajax failed')
-//                                });
-                            });
-                        });
-                    </script>
-                    <!--AJAX TO VERIFY EMAIL-->
-
                     <div id="test"></div>
-
-                    <img src="{{$user->photo ? $user->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="150" width="150" class="img-circle"><br><br>
-
+                        <img src="{{$user->photo ? $user->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="150" width="150" class="img-circle"><br><br>
 
                     {!! Form::model($user, ['method'=> 'PATCH', 'action'=>['NerdController@update', $user->id], 'files'=> true]) !!}
 

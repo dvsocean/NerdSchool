@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class SettingsController extends Controller
@@ -85,15 +86,28 @@ class SettingsController extends Controller
         return redirect('profile');
     }
 
-    public function verifyEmail(Request $request){
+    public function ajaxVerifyEmail(Request $request){
         $user= Auth::user();
         if($user->email == $request->email){
             return"EMAIL IS VALID";
         }
     }
 
-    public function changePassword(){
-        //
+    public function ajaxVerifyPassword(Request $request){
+        $user= User::findOrFail($request->input('user_id'));
+
+        if(Hash::check($request->input('old_password'), $user->password)){
+            return"PASSWORD CONFIRMED";
+        }
+    }
+
+    public function changePassword(Request $request){
+        $user= User::findOrFail($request->input('user_id'));
+        $new_pass['password']= Hash::make($request->input('new_password'));
+        $user->update($new_pass);
+
+        Session::flash('message', 'Your password has been updated');
+        return redirect('profile');
     }
 
     /**

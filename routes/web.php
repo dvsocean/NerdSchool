@@ -72,7 +72,11 @@ Route::get('/settings', function(){
 
 Route::resource('settings_panel', 'SettingsController');
 
-Route::get('/verifyEmail', 'SettingsController@verifyEmail');
+Route::get('/verifyEmail', 'SettingsController@ajaxVerifyEmail');
 
-Route::post('/updateEmail', 'SettingsController@updateEmailAddress' );
+Route::post('/updateEmail', 'SettingsController@updateEmailAddress');
+
+Route::get('/ajax_verify', 'SettingsController@ajaxVerifyPassword');
+
+Route::post('change_password', 'SettingsController@changePassword');
 
