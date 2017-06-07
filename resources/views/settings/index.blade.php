@@ -83,7 +83,7 @@
                                            if(data){
                                                $('#return_message').html("<div class='alert alert-success text-center'>" + data + "</div>");
                                            } else {
-                                               $('#return_message').html("<div class='alert alert-danger text-center'>NOT YOUR EMAIL ADDRESS</div>");
+                                               $('#return_message').html("<div class='alert alert-danger text-center'>EMAIL ADDRESS NOT VALID!</div>");
                                                $('#return_message').delay(3000).fadeOut('slow');
                                                $('#old_email').focus();
                                            }
