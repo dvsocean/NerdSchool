@@ -1,4 +1,11 @@
+<!--JQUERY CORE-->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+<!--JQUERY CORE-->
 
 <!-- BOOTSTRAP JS -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <!-- BOOTSTRAP JS-->
+
+<!--VALIDATION AND NOTIFY SETTINGS JS-->
+<script src="assets/js/custom_validation.js"></script>
+<!--VALIDATION AND NOTIFY SETTINGS JS-->

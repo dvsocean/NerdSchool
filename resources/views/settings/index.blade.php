@@ -7,17 +7,13 @@
     @include('includes.settings_header')
     <!--HEADER-->
 
+    <!--CUSTOM STYLE SHEET-->
+    <link rel="stylesheet" href="assets/css/settings_styles.css">
+    <!--CUSTOM STYLE SHEET-->
+
     <!--GOOGLE FONT-->
     <link href="https://fonts.googleapis.com/css?family=Modak" rel="stylesheet">
     <!--GOOGLE FONT-->
-
-    <!--SETTINGS PAGE STYLES-->
-    <link rel="stylesheet" href="assets/css/settings_page_styles.css">
-    <!--SETTINGS PAGE STYLES-->
-
-    <style>
-
-    </style>
 </head>
 <body>
 <?php $user= Auth::user(); ?>
@@ -73,6 +69,7 @@
                         {!! Form::close() !!}<br><br>
                     </div>
 
+
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                         <h4>Change my on-file email</h4>
                         <p>This email is used to notify you of thread responses and other
@@ -90,7 +87,7 @@
                             <input type="email" name="new_email" class="form-control" id="new_email"><br>
                             <input type="hidden" name="id" value="{{$user->id}}">
 
-                            <input type="submit" value="Change Email" class="btn btn-default">
+                            <input type="submit" value="Change Email" class="btn btn-default" id="changeEmailButton">
                         </form><br><br>
                     </div>
                 </div>
@@ -116,13 +113,7 @@
         </section>
         <!--CUSTOM SETTINGS PAGE-->
 
-
-<!--VALIDATION AND NOTIFY SETTINGS JS-->
-<script src="assets/js/custom_validation.js"></script>
-<!--VALIDATION AND NOTIFY SETTINGS JS-->
-
 @include('includes.settings_footer')
-
 </body>
 </html>
 

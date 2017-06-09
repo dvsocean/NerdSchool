@@ -2,6 +2,7 @@
  * Created by ocean on 6/7/17.
  */
 $(function(){
+
     //Declarations
     var old_password= $('#old_password');
     var new_password= $('#new_password');
@@ -10,9 +11,11 @@ $(function(){
     var old_password_error= $('#old_password_error');
     var empty_field_error= $('#empty_field_error');
     var password_match_error= $('#password_match_error');
+    var changeEmailButton= $('#changeEmailButton');
 
     //Automatically disable submit button on page load
     submitButton.prop('disabled', true);
+    changeEmailButton.prop('disabled', true);
 
     //First check that the user knows his original password
     old_password.blur(function(){
@@ -26,13 +29,11 @@ $(function(){
                 if(data){
                     old_password_confirm.html("<div class='alert alert-success text-center'>" + data + "</div>");
                     old_password_confirm.delay(5000).fadeOut('slow');
-                    submitButton.prop('disabled', false);
+                    $('#changeEmailButton').prop('disabled', false);
                 } else {
                     $('#old_password').focus();
                     old_password_error.html("<div class='alert alert-danger text-center'>NOT YOUR ORIGINAL PASSWORD</div>");
                     old_password_error.delay(5000).fadeOut('slow');
-                    submitButton.prop('disabled', true);
-
                 }
             }
         });
@@ -67,6 +68,7 @@ $(function(){
         return pattern.test(Email);
     }
 
+
     $('#old_email').blur(function(){
         var email= $(this).val();
         $.ajax({
@@ -76,10 +78,12 @@ $(function(){
             success: function(data){
                 if(data){
                     $('#return_message').html("<div class='alert alert-success text-center'>" + data + "</div>");
+                    changeEmailButton.prop('disabled', false);
                 } else {
                     $('#return_message').html("<div class='alert alert-danger text-center'>EMAIL ADDRESS NOT VALID!</div>");
                     $('#return_message').delay(3000).fadeOut('slow');
                     $('#old_email').focus();
+                    changeEmailButton.prop('disabled', true);
                 }
             }
         });
