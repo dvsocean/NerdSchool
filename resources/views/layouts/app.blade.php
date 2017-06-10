@@ -145,7 +145,7 @@
             </div>
         </section>
 
-        <!-- Four -->
+        <!-- Section Four -->
         <section id="four" class="main special">
             <div class="inner">
                 <header>
