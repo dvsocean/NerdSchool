@@ -44,15 +44,25 @@ Route::get('classmates', 'NerdController@index');
 
 Route::get('destroy/{id}', ['uses'=>'NerdController@destroy', 'as'=>'destroy']);
 
-Route::resource('/posts', 'PostsController');
+
 
 Route::get('project_files', function(){
     return view('project_files.index');
 })->name('projects');
 
+//Route::resource('/posts', 'PostsController');
+
+Route::resource('/post', 'PostsController');
+
+Route::resource('add_post', 'EachController');
+
+
+
 Route::get('each/{post_id}',['uses'=> 'PostsController@show', 'as'=>'each']);
 
-Route::post('add_post/{post_id}', ['uses'=> 'PostsController@update', 'as'=>'add_post']);
+Route::post('add_post/{post_id}', ['uses'=> 'EachController@store', 'as'=>'add_post']);
+
+//Route::patch('add_post/{post_id}', 'PostsController@update')->name('add_post');
 
 Route::get('larger_view/{id}', function($id){
     return view('discussions.larger_view', compact('id'));

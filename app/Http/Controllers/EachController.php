@@ -4,16 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Image_post;
 use App\Notifications\PostAdded;
-use App\Single;
-use App\User;
-use Illuminate\Http\Request;
 use App\Post;
+use App\Single;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\View;
 
-class PostsController extends Controller
+class EachController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,7 +19,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return"HITTING INDEX";
+        //
     }
 
     /**
@@ -32,7 +29,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -41,61 +38,9 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function start_thread(Request $request, Post $post){
-
-    }
-
-
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        $user= User::findOrFail($request->input('user_id'));
-        $input= $request->all();
-        Post::create($input);
-        $message= "Owner of thread: " . ucfirst($request->input('posted_by')) . " \n";
-        $message.="Topic: " . $request->input('topic') . "\n\n";
-        $message.="Body: " . $request->input('post') . "\n\n";
-        $message.="Email on file for " . ucfirst($request->input('posted_by')) . " is " . $request->input('email');
-
-        mail('dvsocean@icloud.com', 'New thread has been started', $message);
-
-        Session::flash('post_message', 'You have started a new "'. $request->input('topic').'" discussion.');
-        return redirect('/discussions');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $post= Post::findOrFail($id);
-        $singles= Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->paginate(15);
-
-        return view('discussions.each', compact('post', 'singles'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
+        //POST METHOD ONLY HITS STORE
         $post = Post::findOrFail($id);
         $new_post = $request->all();
         $new_post['post_id'] = $post->id;
@@ -142,6 +87,40 @@ class PostsController extends Controller
         }
 
         return redirect('/discussions');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
     }
 
     /**

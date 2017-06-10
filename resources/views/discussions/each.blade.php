@@ -47,12 +47,12 @@
                     });
                 </script>
 
-
                 <div class="well">
                     <p><strong>Original question by {{ucfirst($post->posted_by)}} :</strong> {{$post->post}}</p><br>
 
-                    <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" id="sp_form" enctype="multipart/form-data">
+                    <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" id="sp_form" enctype="multipart/form-data" accept-charset="UTF-8">
                         {!! csrf_field() !!}
+
                         <input type="hidden" name="user_id" value="{{$user->id}}">
                         <input type="hidden" name="topic" value="{{$post->topic}}">
                         <textarea rows="5" class="form-control decline" name="single_post" id="single_post"></textarea><br>
