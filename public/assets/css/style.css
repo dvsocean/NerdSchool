@@ -6,6 +6,7 @@ body {
     color: #888;
     line-height: 30px;
     text-align: center;
+	background-color: #2ab27b;
 }
 
 strong { font-weight: 500; }
@@ -152,7 +153,7 @@ img { max-width: 100%; }
 }
 
 .form-bottom form textarea {
-	height: 100px;
+	height: 00px;
 }
 
 .form-bottom form button.btn {
