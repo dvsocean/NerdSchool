@@ -13,8 +13,8 @@
 <div id="page-wrapper">
 
     <!--NAV BAR-->
-@include('includes.navbar')
-<!--NAV BAR-->
+    @include('includes.navbar')
+    <!--NAV BAR-->
 
     <!-- Wrapper -->
     <div id="wrapper">
@@ -33,7 +33,6 @@
                 <script>
                     $(function(){
                         $('#sp_form').submit(function(e){
-
                             if($("#single_post").val().length < 3){
                                 alert('Body must contain at least 3 characters to be considered a post');
                                 e.preventDefault();
@@ -43,6 +42,12 @@
                                 alert("FILE TOO BIG, LIMIT 4MB");
                                 e.preventDefault();
                             }
+
+                            if($("#single_post").val().length > 0){
+                                alert('ITWORKS');
+                                e.preventDefault();
+                            }
+
                         });
                     });
                 </script>
@@ -52,10 +57,9 @@
 
                     <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" id="sp_form" enctype="multipart/form-data" accept-charset="UTF-8">
                         {!! csrf_field() !!}
-
                         <input type="hidden" name="user_id" value="{{$user->id}}">
                         <input type="hidden" name="topic" value="{{$post->topic}}">
-                        <textarea rows="5" class="form-control decline" name="single_post" id="single_post"></textarea><br>
+                        <textarea rows="5" class="form-control decline" name="single_post" id="single_post" pattern="[A-Za-z]"></textarea><br>
                         <p>You may attach a JPG, PNG, GIF, PHP, SQL, TXT, and HTML file</p>
                         <input type="file" name="image" id="myFile"><br>
                         <input type="submit" value="Reply">

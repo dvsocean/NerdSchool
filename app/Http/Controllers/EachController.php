@@ -38,13 +38,19 @@ class EachController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request, $id)
     {
+
         //POST METHOD ONLY HITS STORE
         $post = Post::findOrFail($id);
-        $new_post = $request->all();
+        $new_post= $request->all();
+        $raw= $request->input('single_post');
+//        $new_post= preg_replace('/[\*]+/', '', $request->all());
+        $new_post_raw= mb_ereg_replace('/[\*]+/', '', $raw);
         $new_post['post_id'] = $post->id;
         $new_post['topic']= $request->input('topic');
+        $new_post['single_post']= $new_post_raw;
 
         $new_singles_record= Single::create($new_post);
 
