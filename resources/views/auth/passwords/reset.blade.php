@@ -1,11 +1,23 @@
-@extends('layouts.app')
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Reset your password</title>
+    <!--HEADER-->
+@include('includes.header')
+<!--HEADER-->
+</head>
+<body>
 
-@section('content')
+<br><br>
+<br><br>
+<br><br>
+
+<!--PASS RESET FORM-->
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
+                <div class="panel-heading"><h5 align="center">Reset Password</h5></div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -62,7 +74,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-default">
                                     Reset Password
                                 </button>
                             </div>
@@ -73,4 +85,14 @@
         </div>
     </div>
 </div>
-@endsection
+<!--PASS RESET FORM-->
+
+<br><br>
+<br><br>
+<br><br>
+
+@include('includes.footer')
+</body>
+</html>
+
+

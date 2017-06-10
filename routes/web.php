@@ -80,3 +80,7 @@ Route::get('/ajax_verify', 'SettingsController@ajaxVerifyPassword');
 
 Route::post('change_password', 'SettingsController@changePassword');
 
+Route::get('/password_req', function(){
+    return view('auth.passwords.email');
+})->name('password_req');
+
