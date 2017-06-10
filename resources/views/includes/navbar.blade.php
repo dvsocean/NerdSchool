@@ -46,7 +46,3 @@
         @endif
     </ul>
     </nav>
-
-    <!--NOTI MENU-->
-
-    <!--NOTI MENU-->
