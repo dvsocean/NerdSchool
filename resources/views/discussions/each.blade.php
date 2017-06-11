@@ -30,9 +30,14 @@
                 <a href="{{url('/discussions')}}" class="btn btn-default">All Discussions</a>
                 <br><br>
 
-                <div class="well">
-                    <p><strong>Original question by {{ucfirst($post->posted_by)}} :</strong> {{$post->post}}</p><br>
+                <style>
+                    .timestamp, .well_timestamp {
+                        text-align: right;
+                    }
+                </style>
 
+                <div class="well">
+                    <p><strong><img src="{{$post->user->photo ? '../'.$post->user->photo->file : '../PLACEHOLDER/avatar.JPG'}}" height="50" width="50" class="img-circle"> by {{ucfirst($post->posted_by)}} :</strong> {{$post->post}}</p><br>
                     <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" id="sp_form" name="sp_form" enctype="multipart/form-data" accept-charset="UTF-8">
                         {!! csrf_field() !!}
                         <input type="hidden" name="user_id" value="{{$user->id}}">
@@ -42,6 +47,10 @@
                         <input type="file" name="image" id="myFile"><br>
                         <input type="submit" value="Reply">
                     </form>
+
+                    <div class="timestamp">
+                        <p>Thread started {{$post->created_at->diffForHumans()}}</p>
+                    </div>
                 </div>
 
 
@@ -49,7 +58,7 @@
                 @if(isset($singles))
                     @foreach($singles as $single)
                         <div class="well">
-                            <p><img src="../{{$single->user->photo ? $single->user->photo->file : '../PLACEHOLDER/avatar.JPG'}}" height="40" width="40" class="img-circle">
+                            <p><img src="../{{$single->user->photo ? $single->user->photo->file : '../PLACEHOLDER/avatar.JPG'}}" height="30" width="30" class="img-circle">
                                 <strong>{{ucfirst($single->user->name)}}:</strong> {{$single->single_post}}</p>
                             @foreach($single->single_images as $img)
                                     @if($img->type == 'php')
@@ -68,6 +77,9 @@
                                         <a href="{{url('larger_view', ['id'=> $img->id])}}"><img src="../../post_images/{{$img->post_image}}" height="100" width="100" class="img-rounded"></a>
                                     @endif
                                 @endforeach
+                            <div class="well_timestamp">
+                                {{$single->created_at->diffForHumans()}}
+                            </div>
                         </div>
                     @endforeach
                 @endif

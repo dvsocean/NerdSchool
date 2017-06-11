@@ -105,7 +105,7 @@
                                 us with the ability to see who you are. Every time
                                 you add a comment or create a discussion, your image
                                 gets included. Or, you can use the GIF format to
-                                exaggerate it a bit.
+                                exaggerate it a bit.<br><br>
                             </p>
                         </div>
 
