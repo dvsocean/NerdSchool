@@ -22,7 +22,9 @@
     <li><a href="{{url('/profile')}}">Profile</a></li>
     <li><a href="{{url('/discussions')}}">Discussions</a></li>
     <li><a href="{{url('/classmates')}}">Classmates</a></li>
+    <li><a href="">Go Live</a></li>
     <li><a href="{{route('settings')}}">Settings</a></li>
+    <li><a href="">Contact</a></li>
     @endif
     </ul>
     <br>

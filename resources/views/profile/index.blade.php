@@ -44,6 +44,7 @@
             <div class="inner">
                 <header class="major">
 
+<!--MAIN PROFILE SECTION MAIN PROFILE SECTION MAIN PROFILE SECTION MAIN PROFILE SECTION -->
                     <h1>{{$user->name}}'s Profile</h1><br>
                     @if (Session::has('message'))
                       <div class="alert alert-info text-center">{{ Session::get('message') }}</div><br>
@@ -147,52 +148,20 @@
             </div>
         </section>
     </div>
+<!--MAIN PROFILE SECTION MAIN PROFILE SECTION MAIN PROFILE SECTION MAIN PROFILE SECTION -->
 
 
-        <!--MODAL-->
-        <style>
-            .modal-content {
-                padding: 25px;
-            }
-        </style>
-        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <?php $all_nerds= User::all(); ?>
-                        <div class="table-responsive">
-                            <table class="table-striped">
-                                <thead>
-                                    <td>ID</td>
-                                    <td>Photo</td>
-                                    <td>Name</td>
-                                    <td>Email</td>
-                                    <td>School</td>
-                                    <td>Delete</td>
-                                </thead>
-                                <tbody>
-                                    @foreach($all_nerds as $nerd)
-                                        <tr>
-                                            <td>{{$nerd->id}}</td>
-                                            <td><img src="{{$nerd->photo ? $nerd->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="62" width="62" class="img-circle"></td>
-                                            <td>{{$nerd->name}}</td>
-                                            <td>{{$nerd->email}}</td>
-                                            <td>{{$nerd->school}}</td>
-                                            <td>
-                                              <a href="{{route('destroy', ['id'=> $nerd->id])}}" class="btn btn-danger desNerd">DELETE</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                </div>
-            </div>
-        </div>
-        <!--MODAL-->
+
+<!-- START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA -->
                 <br><br>
                 <br><br>
 
                 <div class="container">
+
+
+
+
+
                     <div class="row">
                         <div class="col-xs-12 col-md-4">
                             <!--PLACEHOLDER-->
@@ -200,7 +169,7 @@
 
                         <div class="col-xs-12 col-md-4">
                             <h3 align="center">Start a discussion</h3><br>
-                            <form action="{{url('/posts')}}" method="POST" id="postForm" name="postForm">
+                            <form action="{{url('/posts')}}" method="POST" id="postForm" name="postForm" enctype="multipart/form-data">
                                 <select id="topic" name="topic">
                                     <option value="0">Select a topic &#8681;</option>
                                     <option value="Server">Server</option>
@@ -218,9 +187,14 @@
                         </div>
 
                         <div class="col-xs-12 col-md-4">
-                            <!--PLACEHOLDER-->
+                            <input type="file" name="attachment">
                         </div>
                     </div>
+
+
+
+
+
 
                     <div class="row">
                         <div class="col-xs-12 col-md-2">
@@ -259,11 +233,9 @@
                         <div class="col-xs-12 col-md-8">
                             <label>Discussion</label><br>
                             <textarea rows="7" name="post" id="post"></textarea><br>
-
                             <input type="hidden" name="user_id" value="{{$user->id}}">
                             <input type="hidden" name="posted_by" value="{{$user->name}}">
                             <input type="hidden" name="email" value="{{$user->email}}">
-
                             <input type="submit" value="Start Discussion"><br><br>
                             </form>
                         </div>
@@ -281,6 +253,49 @@
                         </div>
                     </div>
                 </div>
+<!-- START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA -->
+
+
+<!--MODAL-->
+<style>
+    .modal-content {
+        padding: 25px;
+    }
+</style>
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <?php $all_nerds= User::all(); ?>
+            <div class="table-responsive">
+                <table class="table-striped">
+                    <thead>
+                    <td>ID</td>
+                    <td>Photo</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>School</td>
+                    <td>Delete</td>
+                    </thead>
+                    <tbody>
+                    @foreach($all_nerds as $nerd)
+                        <tr>
+                            <td>{{$nerd->id}}</td>
+                            <td><img src="{{$nerd->photo ? $nerd->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="62" width="62" class="img-circle"></td>
+                            <td>{{$nerd->name}}</td>
+                            <td>{{$nerd->email}}</td>
+                            <td>{{$nerd->school}}</td>
+                            <td>
+                                <a href="{{route('destroy', ['id'=> $nerd->id])}}" class="btn btn-danger desNerd">DELETE</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--MODAL-->
 
     <script type="text/javascript">
         $.ajax({

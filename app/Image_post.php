@@ -10,7 +10,8 @@ class Image_post extends Model
         'post_image',
         'file_size',
         'single_id',
-        'type'
+        'type',
+        'post_id'
     ];
 
     public function singles(){
