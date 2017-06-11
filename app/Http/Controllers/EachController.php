@@ -6,6 +6,7 @@ use App\Image_post;
 use App\Notifications\PostAdded;
 use App\Post;
 use App\Single;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -43,7 +44,17 @@ class EachController extends Controller
     {
         //POST METHOD ONLY HITS STORE BECAUSE THAT'S WHERE PHP ARTISAN ROUTE:LIST POINTS
         $post = Post::findOrFail($id);
-        $new_post= $request->all();
+
+        try{
+            if(!$new_post= $request->all()){
+                throw new Exception("Malicious entry, please re-type");
+            }
+        } catch (Exception $a){
+            $msg= $a->getMessage();
+            Session::flash('error_message', $msg);
+            return redirect('/discussions');
+        }
+
         $raw= $request->input('single_post');
 
         $new_post_raw= mb_ereg_replace('/[\*]+/', '', $raw);
