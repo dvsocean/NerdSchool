@@ -43,10 +43,10 @@
                                 e.preventDefault();
                             }
 
-                            if($("#single_post").val().length > 0){
-                                alert('ITWORKS');
-                                e.preventDefault();
-                            }
+//                            if($("#single_post").val().length > 0){
+//                                alert('ITWORKS');
+//                                e.preventDefault();
+//                            }
 
                         });
                     });
@@ -71,7 +71,8 @@
                 @if(isset($singles))
                     @foreach($singles as $single)
                         <div class="well">
-                            <p><strong>{{ucfirst($single->user->name)}}:</strong> {{$single->single_post}}</p>
+                            <p><img src="../{{$single->user->photo->file}}" height="40" width="40" class="img-circle">
+                                <strong>{{ucfirst($single->user->name)}}:</strong> {{$single->single_post}}</p>
                             @foreach($single->single_images as $img)
                                     @if($img->type == 'php')
                                         <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/php.png" height="100" width="100" class="img-rounded"></a>

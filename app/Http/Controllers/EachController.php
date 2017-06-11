@@ -41,12 +41,11 @@ class EachController extends Controller
 
     public function store(Request $request, $id)
     {
-
-        //POST METHOD ONLY HITS STORE
+        //POST METHOD ONLY HITS STORE BECAUSE THAT'S WHERE PHP ARTISAN ROUTE:LIST POINTS
         $post = Post::findOrFail($id);
         $new_post= $request->all();
         $raw= $request->input('single_post');
-//        $new_post= preg_replace('/[\*]+/', '', $request->all());
+
         $new_post_raw= mb_ereg_replace('/[\*]+/', '', $raw);
         $new_post['post_id'] = $post->id;
         $new_post['topic']= $request->input('topic');

@@ -15,67 +15,82 @@ Route::get('/', function () {
     return view('welcome');
 })->name('homePage');
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index');
 
+
+//PROFILE
 Route::get('/profile', function(){
     return view('profile.index');
 })->name('profile');
+//PROFILE
 
+
+
+//AUTH
+Auth::routes();
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+//AUTH
+
+
+
+// POSTS or DISCUSSIONS
 Route::get('/discussions', function(){
     return view('discussions.index');
 });
+
+Route::resource('/posts', 'PostsController');
+
+Route::get('/posts', function(){
+    return view('discussions.index');
+});
+
+Route::get('each/{post_id}',['uses'=> 'PostsController@show', 'as'=>'each']);
 
 Route::get('/each_disc', function(){
     return view('discussions.each');
 });
 
-
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
-Route::resource('nerd', 'NerdController');
-
-Route::get('/classmates', function(){
-  return view('classmates.index');
-});
-
-Route::get('classmates', 'NerdController@index');
-
-Route::get('destroy/{id}', ['uses'=>'NerdController@destroy', 'as'=>'destroy']);
-
-
-
-Route::get('project_files', function(){
-    return view('project_files.index');
-})->name('projects');
-
-//Route::resource('/posts', 'PostsController');
-
-Route::resource('/post', 'PostsController');
-
 Route::resource('add_post', 'EachController');
 
-
-
-Route::get('each/{post_id}',['uses'=> 'PostsController@show', 'as'=>'each']);
-
 Route::post('add_post/{post_id}', ['uses'=> 'EachController@store', 'as'=>'add_post']);
-
-//Route::patch('add_post/{post_id}', 'PostsController@update')->name('add_post');
 
 Route::get('larger_view/{id}', function($id){
     return view('discussions.larger_view', compact('id'));
 });
+// POSTS or DISCUSSIONS
 
+
+
+
+//MARK NOTIFICATION AS READ
 Route::get('/markAsRead', function(){
     auth()->user()->unreadNotifications->markAsRead();
 });
+//MARK NOTIFICATION AS READ
+
+
+
+//CLASSMATES PAGE
+Route::get('destroy/{id}', ['uses'=>'NerdController@destroy', 'as'=>'destroy']);
+
+Route::resource('nerd', 'NerdController');
+
+Route::get('/classmates', function(){
+    return view('classmates.index');
+});
+
+Route::get('classmates', 'NerdController@index');
 
 Route::get('/details/{id}', function($id){
     return view('classmates.details', compact('id'));
 })->name('details');
+//CLASSMATES PAGE
 
+
+
+
+//SETTINGS PAGE
 Route::get('/settings', function(){
     return view('settings.index');
 })->name('settings');
@@ -89,8 +104,13 @@ Route::post('/updateEmail', 'SettingsController@updateEmailAddress');
 Route::get('/ajax_verify', 'SettingsController@ajaxVerifyPassword');
 
 Route::post('change_password', 'SettingsController@changePassword');
+//SETTINGS PAGE
 
+
+
+
+//SEND PASSWORD RESET LINK
 Route::get('/password_req', function(){
     return view('auth.passwords.email');
 })->name('password_req');
-
+//SEND PASSWORD RESET LINK
