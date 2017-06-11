@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab 7</title>
+	<style>
+		header {
+			text-align: right;
+			margin-right: 35px;
+		}
+
+		#chp14, #chp15 {
+			text-indent: 25px;
+			padding: 35px;
+		}
+	</style>
+
+	<script type="text/javascript">
+    function showHide() {
+       if (!document.getElementById) return;
+       var heading1 = document.getElementById("chap14");
+       var heading2 = document.getElementById("chap15");
+       var showheading1 = document.checkboxform.checkbox1.checked;
+       var showheading2 = document.checkboxform.checkbox2.checked;
+       heading1.style.visibility=(showheading1) ? "visible" : "hidden";
+       heading2.style.visibility=(showheading2) ? "visible" : "hidden";
+    }
+    </script>
+</head>
+<body>
+	<header>
+		<h2>
+			Daniel Ocean<br>
+			CRN 40398<br>
+			5.3.17
+		</h2>
+	</header>
+
+	<br><br>
+
+	<div id="checks">	
+		<form name="checkboxform">
+		     <input type="checkbox" name="checkbox1" 
+		            onclick="showHide();" checked="checked" />
+		     <span style="font-weight:bold">Show Chapter 14</span><br/>
+		     <input type="checkbox" name="checkbox2" 
+		           onclick="showHide();" checked="checked" />
+		     <span style="font-weight:bold">Show Chapter 15</span><br/>
+	     </form>
+	</div>     
+
+	<div id="chap14">
+		<section id="chp14">
+			<h2>Chapter 14</h2>
+			<p>This chapter kicks off with the basic JavaScript concepts, it also briefly covers JSON (JavaScript object notation). JavaScript is a language that works with conceptual objects, it doesn't have classes but it does have objects. For example the document is an object, the system date and time is an object, buttons on a page are objects etc. When working with variables, you must first declare the variable by using the keyword "var".. for example var test. After that you may reference the variable without the keyword. Like other programming languages JavaScript also supports the use of loops. This would be a simple construct that repeats a statement a certain number of times. JavaScript uses something called event handlers, it basically works like this... whenever there is an event like a mouse click or a page load, this "event" signals to JavaScript to perform an action or to execute a particular segment of code. The use of reserved words is also mentioned and how they cannot be used in variable names. These are basically words that are already in use by the JavaScript language, if, else, return, function ...etc. Most text editors render these words in a specific color, so you would know that something is up. JSON is discussed towards the end of the chapter, this is a convenient way of storing data. You're basically storing key, value pairs.. all this is enclosed in curly braces which forms and object. So it gets the proper name of JavaScript object notation.</p>
+		</section>
+	</div>	
+
+	<div id="chap15">
+		<section id="chp15">
+			<h2>Chapter 15</h2>
+			<p>This chapter lays out the DOM in great detail, explaining windows, the document and the object model. Essentially the DOM can be pictured like a tree, a hierarchy tree. All these branches lead up to the window which is a parent to all elements. This is a representation of a web document. To know your way around a Web document is to have the ability to traverse the DOM. Say for example I want to grab the value of a particular input field, if I know how to traverse the DOM I can write something similar to.."section.form.nameInput.value". Then there are properties of the document that will provide information such as document.URL or document.title. The concept of parents and children is seen in the DOM, since we are dealing with a hierarchy tree, almost everything has a parent. The document for example is a child to the window object while the document itself has children of its own. Two elements that have the same parents are known as siblings. Basically everything in the document object model is an object, knowing your way around this model will enable you to access different objects. Each object has properties and methods. Node methods and document methods differ since these are different objects. </p>
+		</section>
+	</div>	
+</body>
+</html>

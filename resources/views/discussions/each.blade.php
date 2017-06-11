@@ -6,6 +6,12 @@
 <head>
     <title>{{str_limit($post->title, 15)}}</title>
     @include('includes.header')
+
+    <style>
+        .timestamp, .well_timestamp {
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
 
@@ -30,12 +36,6 @@
                 <a href="{{url('/discussions')}}" class="btn btn-default">All Discussions</a>
                 <br><br>
 
-                <style>
-                    .timestamp, .well_timestamp {
-                        text-align: right;
-                    }
-                </style>
-
                 <div class="well">
                     <p><strong><img src="{{$post->user->photo ? '../'.$post->user->photo->file : '../PLACEHOLDER/avatar.JPG'}}" height="50" width="50" class="img-circle"> by {{ucfirst($post->posted_by)}} :</strong> {{$post->post}}</p><br>
                     <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" id="sp_form" name="sp_form" enctype="multipart/form-data" accept-charset="UTF-8">
@@ -52,8 +52,6 @@
                         <p>Thread started {{$post->created_at->diffForHumans()}}</p>
                     </div>
                 </div>
-
-
 
                 @if(isset($singles))
                     @foreach($singles as $single)
@@ -87,7 +85,6 @@
                     {{$singles->links()}}
                 </h4>
             </div>
-
 
         </section>
     </div>
