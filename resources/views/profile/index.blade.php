@@ -43,8 +43,8 @@
                     e.preventDefault();
                 }
 
-                if(titleSelect.val().length < 3 || titleSelect.val().length > 30){
-                    alert('Title must be between 3 and 20 characters long');
+                if(titleSelect.val().length < 3 || titleSelect.val().length > 50){
+                    alert('Title must be between 3 and 50 characters long');
                     e.preventDefault();
                 }
 
