@@ -23,44 +23,6 @@
             padding-right: 10px;
         }
     </style>
-
-    <!--DELETE NERD JAVASCRIPT-->
-    <script>
-        $(function(){
-            var topicSelect= $('#topic');
-            var titleSelect= $('#title');
-            var textAreaSelect= $('#post');
-
-            $('.desNerd').click(function(e){
-                if(!confirm('Are you sure you want to delete?')){
-                    e.preventDefault();
-                }
-            });
-
-            $('#postForm').submit(function(e){
-                if(topicSelect.val() < 1){
-                    alert('Please select a topic');
-                    e.preventDefault();
-                }
-
-                if(titleSelect.val().length < 3 || titleSelect.val().length > 50){
-                    alert('Title must be between 3 and 50 characters long');
-                    e.preventDefault();
-                }
-
-                if(textAreaSelect.val().length < 10){
-                    alert('Your post must be at least 10 characters long');
-                    e.preventDefault();
-                }
-            });
-
-            $('#datepicker').datepicker();
-            $('#datepicker').datepicker('setDate', new Date());
-        });
-    </script>
-    <!--DELETE NERD JAVASCRIPT-->
-
-
 </head>
 
 
@@ -137,6 +99,14 @@
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <label>Goal:</label><br>
                           {!! Form::text('goal', null, ['class'=>'', 'placeholder'=>'Goal']) !!}
+                            <br><br>
+                            <p>
+                                Uploading a profile picture provides the rest of
+                                us with the ability to see who you are. Every time
+                                you add a comment or create a discussion, your image
+                                gets included. Or, you can use the GIF format to
+                                exaggerate it a bit.
+                            </p>
                         </div>
 
                         <div class="col-xs-12 col-sm-6 col-md-6">
@@ -230,7 +200,7 @@
 
                         <div class="col-xs-12 col-md-4">
                             <h3 align="center">Start a discussion</h3><br>
-                            <form action="{{url('/posts')}}" method="POST" id="postForm">
+                            <form action="{{url('/posts')}}" method="POST" id="postForm" name="postForm">
                                 <select id="topic" name="topic">
                                     <option value="0">Select a topic &#8681;</option>
                                     <option value="Server">Server</option>
@@ -278,6 +248,11 @@
                                 Modify the discussion by
                                 opening it through the <strong>discussions</strong> page. You may
                                 also post files or photos.
+                                <br><br>
+
+                                <strong>Note</strong>: words that are part of
+                                SQL statements will automatically be mis-spelled
+                                to prevent database issues.
                             </p><br>
                         </div>
 
@@ -289,7 +264,7 @@
                             <input type="hidden" name="posted_by" value="{{$user->name}}">
                             <input type="hidden" name="email" value="{{$user->email}}">
 
-                            <input type="submit" value="Start"><br><br>
+                            <input type="submit" value="Start Discussion"><br><br>
                             </form>
                         </div>
 
@@ -298,6 +273,10 @@
                                 Your account will be notified when someone
                                 responds to your thread. Just click the badge
                                 icon next to your name.
+                                <br><br>
+
+                                You may optionally select to be notified by email.
+                                Don't forget to checkout the settings page.
                             </p>
                         </div>
                     </div>
@@ -309,6 +288,9 @@
         });
     </script>
 
+<!--JAVASCRIPT FILE-->
+@include('includes.validation_and_deletes')
+<!--JAVASCRIPT FILE-->
 
 @include('includes.footer')
 

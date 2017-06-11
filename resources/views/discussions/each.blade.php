@@ -30,32 +30,10 @@
                 <a href="{{url('/discussions')}}" class="btn btn-default">All Discussions</a>
                 <br><br>
 
-                <script>
-                    $(function(){
-                        $('#sp_form').submit(function(e){
-                            if($("#single_post").val().length < 3){
-                                alert('Body must contain at least 3 characters to be considered a post');
-                                e.preventDefault();
-                            }
-
-                            if($("#myFile")[0].files[0].size > 4000000){
-                                alert("FILE TOO BIG, LIMIT 4MB");
-                                e.preventDefault();
-                            }
-
-//                            if($("#single_post").val().length > 0){
-//                                alert('ITWORKS');
-//                                e.preventDefault();
-//                            }
-
-                        });
-                    });
-                </script>
-
                 <div class="well">
                     <p><strong>Original question by {{ucfirst($post->posted_by)}} :</strong> {{$post->post}}</p><br>
 
-                    <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" id="sp_form" enctype="multipart/form-data" accept-charset="UTF-8">
+                    <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" id="sp_form" name="sp_form" enctype="multipart/form-data" accept-charset="UTF-8">
                         {!! csrf_field() !!}
                         <input type="hidden" name="user_id" value="{{$user->id}}">
                         <input type="hidden" name="topic" value="{{$post->topic}}">
@@ -71,7 +49,7 @@
                 @if(isset($singles))
                     @foreach($singles as $single)
                         <div class="well">
-                            <p><img src="../{{$single->user->photo->file}}" height="40" width="40" class="img-circle">
+                            <p><img src="../{{$single->user->photo ? $single->user->photo->file : '../PLACEHOLDER/avatar.JPG'}}" height="40" width="40" class="img-circle">
                                 <strong>{{ucfirst($single->user->name)}}:</strong> {{$single->single_post}}</p>
                             @foreach($single->single_images as $img)
                                     @if($img->type == 'php')
@@ -102,6 +80,9 @@
         </section>
     </div>
 
+<!--JAVASCRIPT FILE-->
+@include('includes.word_validation')
+<!--JAVASCRIPT FILE-->
 
 @include('includes.footer')
 

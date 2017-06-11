@@ -87,11 +87,18 @@
 </div>
 <!--PASS RESET FORM-->
 
-<br><br>
-<br><br>
-<br><br>
+    <style>
+        .reset_pass_footer {
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+            left: 0px;
+        }
+    </style>
 
-@include('includes.footer')
+    <div class="reset_pass_footer">
+        @include('includes.footer')
+    </div>
 </body>
 </html>
 
