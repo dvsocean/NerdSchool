@@ -6,7 +6,15 @@ body {
     color: #888;
     line-height: 30px;
     text-align: center;
-	background-color: #2ab27b;
+	background-color: #7d8693;
+}
+
+.danika_errors{
+	color: #fdf918;
+}
+
+.danika-control{
+	border-color: #fdf918;
 }
 
 strong { font-weight: 500; }

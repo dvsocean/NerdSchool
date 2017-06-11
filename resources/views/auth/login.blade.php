@@ -30,24 +30,26 @@
 	                            <div class="form-bottom">
 
 
+
+
                               <form role="form" action="{{ url('/login') }}" method="post" class="login-form">
                                 {{ csrf_field() }}
 
-                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                                <div class="form-group ">
     			                    		<label class="sr-only" for="form-username">Email</label>
-    			                        	<input type="text" name="email" placeholder="Email..." class="form-username form-control" id="email" value="{{ old('email') }}" autofocus>
+    			                        	<input type="text" name="email" placeholder="Email..." class="danika-control form-control" id="{{ $errors->has('email') ? ' has-error' : '' }}" value="{{ old('email') }}" autofocus>
                                     @if ($errors->has('email'))
-                                        <span class="help-block">
+                                        <span class="danika_errors">
                                             <strong>{{ $errors->first('email') }}</strong>
                                         </span>
                                     @endif
                                   </div>
 
-    			                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+    			                        <div class="form-group ">
     			                        	<label class="sr-only" for="form-password">Password</label>
-    			                        	<input type="password" id="password" name="password" placeholder="Password..." class="form-password form-control" id="password">
+    			                        	<input type="password" id="password" name="password" placeholder="Password..." class="danika-control form-control" id="{{ $errors->has('password') ? ' has-error' : '' }}">
                                     @if ($errors->has('password'))
-                                       <span class="help-block">
+                                       <span class="danika_errors">
                                            <strong>{{ $errors->first('password') }}</strong>
                                        </span>
                                    @endif

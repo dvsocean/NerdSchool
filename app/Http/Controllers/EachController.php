@@ -78,7 +78,7 @@ class EachController extends Controller
 
         if(Auth::user()->name != $post->user->name){
             if($post->user->notifyEmail == 'yes'){
-                $message= ucfirst(Auth::user()->name) . " responded to the ".$new_singles_record->topic . " thread \n\n";
+                $message= ucfirst(Auth::user()->name) . " responded to your ". $new_singles_record->topic . " thread \n\n";
                 $message.="Response: " . $new_singles_record->single_post. " \n\n";
                 $message.=ucfirst(Auth::user()->name)."'s email address is ". Auth::user()->email;
                 mail($post->user->email, $post->topic, $message);
