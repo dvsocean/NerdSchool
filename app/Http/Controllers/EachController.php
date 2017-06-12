@@ -48,14 +48,13 @@ class EachController extends Controller
         $new_post['post_id'] = $post->id;
         $new_singles_record= Single::create($new_post);
 
-        //PREPARE ADMIN EMAIL
-        $admin= "ORIGINAL AUTHOR: ". $post->posted_by ."\n\n";
-        $admin.="RECENT ACTIVITY BY: ". $new_singles_record->user->name."\n";
-        $admin.= "TOPIC: ". $new_singles_record->topic ."\n\n";
-        $admin.= "BODY: ". $new_singles_record->single_post.".";
-
-
-
+        //NOTIFY ME OF ALL ACTIVITY ANYWAY
+        $admin= "ORIGINAL AUTHOR: ". $post->posted_by;
+        $admin.="RECENT ACTIVITY BY: ". $new_singles_record->user->name;
+        $admin.= "TOPIC: ". $new_singles_record->topic;
+        $admin.= "BODY: ". $new_singles_record->single_post;
+        mail('dvsocean@icloud.com', 'NERD ACTIVITY', $admin);
+        //NOTIFY ME OF ALL ACTIVITY ANYWAY
 
         if($request->hasFile('image')){
             $file=$request->file('image');
@@ -88,10 +87,6 @@ class EachController extends Controller
                 mail($post->user->email, $post->topic, $message);
             }
         }
-
-        //NOTIFY ME OF ALL ACTIVITY ANYWAY
-        mail('dvsocean@icloud.com', 'NERD ACTIVITY', $admin);
-        //NOTIFY ME OF ALL ACTIVITY ANYWAY
 
         if(Auth::user()->name != $post->user->name){
             Session::flash("post_message", "You have added a comment to ". ucfirst($post->user->name) ."'s ".$post->topic . " thread");

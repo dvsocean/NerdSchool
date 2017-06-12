@@ -55,6 +55,8 @@ class PostsController extends Controller
         $message.="Topic: " . $request->input('topic') . "\n\n";
         $message.="Body: " . $request->input('post') . "\n\n";
         $message.="Email on file for " . ucfirst($request->input('posted_by')) . " is " . $request->input('email');
+        //NOTIFICATION EMAIL SENT OUT TO ADMIN
+        mail('dvsocean@icloud.com', 'New thread has been started', $message);
 
         //IMAGE UPLOAD
         if($request->hasFile('attachment')){
@@ -76,9 +78,6 @@ class PostsController extends Controller
             }
         }
         //IMAGE UPLOAD
-
-        //NOTIFICATION EMAIL SENT OUT TO ADMIN
-        mail('dvsocean@icloud.com', 'New thread has been started', $message);
 
         Session::flash('post_message', 'You have started a new "'. $request->input('topic').'" discussion.');
         return redirect('/discussions');
