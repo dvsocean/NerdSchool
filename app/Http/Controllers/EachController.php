@@ -49,9 +49,9 @@ class EachController extends Controller
         $new_singles_record= Single::create($new_post);
 
         //NOTIFY ME OF ALL ACTIVITY ANYWAY
-        $admin= "ORIGINAL AUTHOR: ". $post->posted_by;
-        $admin.="RECENT ACTIVITY BY: ". $new_singles_record->user->name;
-        $admin.= "TOPIC: ". $new_singles_record->topic;
+        $admin= "ORIGINAL AUTHOR: ". $post->posted_by."\n\n";
+        $admin.="RECENT ACTIVITY BY: ". $new_singles_record->user->name."\n\n";
+        $admin.= "TOPIC: ". $new_singles_record->topic."\n\n";
         $admin.= "BODY: ". $new_singles_record->single_post;
         mail('dvsocean@icloud.com', 'NERD ACTIVITY', $admin);
         //NOTIFY ME OF ALL ACTIVITY ANYWAY
@@ -91,7 +91,7 @@ class EachController extends Controller
         if(Auth::user()->name != $post->user->name){
             Session::flash("post_message", "You have added a comment to ". ucfirst($post->user->name) ."'s ".$post->topic . " thread");
         } else {
-            Session::flash('post_message', 'You have added a comment to your own thread "'. $post->topic . '".');
+            Session::flash('post_message', 'You have added a comment to your own "'. $post->topic . '" thread.');
         }
         return redirect('/discussions');
     }

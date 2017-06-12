@@ -70,7 +70,7 @@ class PostsController extends Controller
                     $file->move('post_images/', $name);
                     Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'post_id'=> $post->id]);
                 }
-            } elseif ($type == 'html' || $type == 'php' || $type == 'txt' || $type == 'sql') {
+            } elseif ($type == 'html' || $type == 'txt' || $type == 'sql' || $type == 'docx') {
                 $file->move('post_files/', $name);
                 Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'post_id'=> $post->id]);
             } else {
@@ -92,7 +92,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $post= Post::findOrFail($id);
-        $singles= Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->paginate(15);
+        $singles= Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->paginate(10);
 
         return view('discussions.each', compact('post', 'singles'));
     }
