@@ -55,7 +55,7 @@
                         {{--<a href="{{url('larger_view', ['id'=> $post->images->id])}}"><img src="../../post_images/{{$post->images->post_image}}" height="100" width="100" class="img-rounded"></a>--}}
                     {{--@endif--}}
 
-                    <img src="{{$post->images ? $post->images->post_image : ''}}" height="50" width="50" class="img-rounded"><br><br>
+                    {{--<img src="{{$post->images ? $post->images->post_image : ''}}" height="50" width="50" class="img-rounded"><br><br>--}}
 
 
                     <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" id="sp_form" name="sp_form" enctype="multipart/form-data" accept-charset="UTF-8">

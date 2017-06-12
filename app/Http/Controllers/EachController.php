@@ -44,25 +44,18 @@ class EachController extends Controller
     {
         //POST METHOD ONLY HITS STORE BECAUSE THAT'S WHERE PHP ARTISAN ROUTE:LIST POINTS
         $post = Post::findOrFail($id);
-
-        try{
-            if(!$new_post= $request->all()){
-                throw new Exception("Malicious entry, please re-type");
-            }
-        } catch (Exception $a){
-            $msg= $a->getMessage();
-            Session::flash('error_message', $msg);
-            return redirect('/discussions');
-        }
-
-        $raw= $request->input('single_post');
-
-        $new_post_raw= mb_ereg_replace('/[\*]+/', '', $raw);
+        $new_post= $request->all();
         $new_post['post_id'] = $post->id;
-        $new_post['topic']= $request->input('topic');
-        $new_post['single_post']= $new_post_raw;
-
         $new_singles_record= Single::create($new_post);
+
+        //PREPARE ADMIN EMAIL
+        $admin= "ORIGINAL AUTHOR: ". $post->posted_by ."\n\n";
+        $admin.="RECENT ACTIVITY BY: ". $new_singles_record->user->name."\n";
+        $admin.= "TOPIC: ". $new_singles_record->topic ."\n\n";
+        $admin.= "BODY: ". $new_singles_record->single_post.".";
+
+
+
 
         if($request->hasFile('image')){
             $file=$request->file('image');
@@ -96,12 +89,15 @@ class EachController extends Controller
             }
         }
 
+        //NOTIFY ME OF ALL ACTIVITY ANYWAY
+        mail('dvsocean@icloud.com', 'NERD ACTIVITY', $admin);
+        //NOTIFY ME OF ALL ACTIVITY ANYWAY
+
         if(Auth::user()->name != $post->user->name){
             Session::flash("post_message", "You have added a comment to ". ucfirst($post->user->name) ."'s ".$post->topic . " thread");
         } else {
             Session::flash('post_message', 'You have added a comment to your own thread "'. $post->topic . '".');
         }
-
         return redirect('/discussions');
     }
 

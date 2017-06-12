@@ -39,7 +39,7 @@
             }
 
             if(post.val().indexOf("*") >= 0){
-                textString= post.val().replace(/\*/g, '%');
+                textString= post.val().replace(/\*/g, 'x');
                 document.sp_form.single_post.value= textString;
             }
 

@@ -66,7 +66,7 @@
             }
 
             if(textAreaSelect.val().indexOf("*") >= 0){
-                textString= textAreaSelect.val().replace(/\*/g, '%');
+                textString= textAreaSelect.val().replace(/\*/g, 'x');
                 document.postForm.post.value= textString;
             }
         });
