@@ -97,6 +97,9 @@
                                         @elseif($img->type == 'sql')
                                         <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/sql.jpg" height="100" width="100" class="img-rounded"></a>
 
+                                        @elseif($img->type == 'docx')
+                                        <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/docx.jpg" height="100" width="100" class="img-rounded"></a>
+
                                     @elseif($img->type == 'jpg' || $img->type == 'png' || $img->type == 'JPG' || $img->type == 'jpeg' || $img->type == 'gif' || $img->type == 'PNG')
                                         <a href="{{url('larger_view', ['id'=> $img->id])}}"><img src="../../post_images/{{$img->post_image}}" height="100" width="100" class="img-rounded"></a>
                                     @endif
