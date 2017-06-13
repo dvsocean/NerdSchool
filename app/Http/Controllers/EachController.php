@@ -48,14 +48,16 @@ class EachController extends Controller
         $new_post['post_id'] = $post->id;
         $new_singles_record= Single::create($new_post);
 
-        //NOTIFY ME OF ALL ACTIVITY ANYWAY
+        //NOTIFY ADMIN OF ALL ACTIVITY ANYWAY
         $admin= "ORIGINAL AUTHOR: ". $post->posted_by."\n\n";
         $admin.="RECENT ACTIVITY BY: ". $new_singles_record->user->name."\n\n";
         $admin.= "TOPIC: ". $new_singles_record->topic."\n\n";
+        $admin.= "TITLE: ". $post->title ."\n\n";
         $admin.= "BODY: ". $new_singles_record->single_post;
         mail('dvsocean@icloud.com', 'NERD ACTIVITY', $admin);
-        //NOTIFY ME OF ALL ACTIVITY ANYWAY
+        //NOTIFY ADMIN OF ALL ACTIVITY ANYWAY
 
+        //IF USER IS INCLUDING A PHOTO, UPLOAD IT
         if($request->hasFile('image')){
            Post::upload_file_for_each($request->file('image'), $new_singles_record);
         }

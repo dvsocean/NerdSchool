@@ -182,7 +182,7 @@
                         </div>
 
                         <div class="col-xs-12 col-md-4">
-                            <p>You may attach a JPG, PNG, GIF, SQL, TXT, DOCX and HTML file</p>
+                            <p>You may attach a JPG, PNG, GIF, SQL, TXT, DOCX, CSS or HTML file</p>
                             <input type="file" name="attachment"><br><br>
                         </div>
                     </div>
