@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('interest')->nullable();
             $table->string('admin')->nullable();
             $table->string('notifyEmail')->nullable();
+            $table->string('notifyAdditionals')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

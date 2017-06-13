@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Additional;
 use App\Image_post;
 use App\Notifications\PostAdded;
 use App\Post;
@@ -9,6 +10,7 @@ use App\Single;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class EachController extends Controller
@@ -61,6 +63,32 @@ class EachController extends Controller
         if($request->hasFile('image')){
            Post::upload_file_for_each($request->file('image'), $new_singles_record);
         }
+
+        //STORE ADDITIONAL USERS TO NOTIFY
+        $check_adds= Additional::where('user_id', Auth::user()->id)->get();
+
+        if(Auth::user() != $post->user){
+            if($check_adds->isEmpty()){
+                $input = [
+                    'post_id' => $post->id,
+                    'user_id' => Auth::user()->id,
+                    'name' => Auth::user()->name,
+                    'email' => Auth::user()->email
+                ];
+                Additional::create($input);
+            }
+        }
+
+        $additionals= Additional::where('post_id', $post->id)->get();
+
+        $additionals->each(function($email){
+            $mail_addition="Content: ";
+            mail($email, "Activity on thread ", $mail_addition);
+        });
+
+        //STORE ADDITIONAL USERS TO NOTIFY
+
+
 
         if($post->user != Auth::user()){
             $post->user->notify(new PostAdded($post));
