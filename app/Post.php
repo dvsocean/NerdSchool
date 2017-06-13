@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class Post extends Model
@@ -56,7 +57,6 @@ class Post extends Model
         }
     }
 
-
     //USED IN THE EACH CONTROLLER
     public static function upload_file_for_each($file_array, $new_singles_record){
         $file=$file_array;
@@ -77,13 +77,23 @@ class Post extends Model
         }
     }
 
-
     //SEND THE ADMINS AN EMAIL NOTIFICATION OF ALL ACTIVITY
-//    public static function notify_admin_all_activity($post, $new_singles_record){
-//        $admin= "ORIGINAL AUTHOR: ". $post->posted_by."\n\n";
-//        $admin.="RECENT ACTIVITY BY: ". $new_singles_record->user->name."\n\n";
-//        $admin.= "TOPIC: ". $new_singles_record->topic."\n\n";
-//        $admin.= "BODY: ". $new_singles_record->single_post;
-//        mail('dvsocean@icloud.com', 'NERD ACTIVITY', $admin);
-//    }
+    public static function notify_admin_all_activity($post, $new_singles_record){
+        $admin= "ORIGINAL AUTHOR: ". $post->posted_by."\n\n";
+        $admin.="RECENT ACTIVITY BY: ". $new_singles_record->user->name."\n\n";
+        $admin.= "TOPIC: ". $new_singles_record->topic."\n\n";
+        $admin.= "BODY: ". $new_singles_record->single_post;
+        mail('dvsocean@icloud.com', 'NERD ACTIVITY', $admin);
+    }
+
+    //SEND OWNER OF THE POST A NOTIFICATION ONLY IF HE WANTS IT
+    //FUNCTION NOT WORKING FOR SOME REASON, IMPLEMENTATION ON HOLD
+    public static function notify_user($post, $new_singles_record){
+        if($post->user->notifyEmail == 'yes'){
+            $message= ucfirst(Auth::user()->name) . " responded to your ". $new_singles_record->topic . " thread \n\n";
+            $message.="Response: " . $new_singles_record->single_post. " \n\n";
+            $message.=ucfirst(Auth::user()->name)."'s email address is ". Auth::user()->email;
+            mail($post->user->email, $post->topic, $message);
+        }
+    }
 }
