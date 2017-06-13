@@ -60,22 +60,7 @@ class PostsController extends Controller
 
         //IMAGE UPLOAD
         if($request->hasFile('attachment')){
-            $file=$request->file('attachment');
-            $name= time() . $file->getClientOriginalName();
-            $size= $file->getSize();
-            $type= $file->getClientOriginalExtension();
-
-            if($type == 'jpg' || $type == 'png' || $type == 'JPG' || $type == 'gif' || $type == 'jpeg' || $type == 'PNG') {
-                if ($size < 4000000) {
-                    $file->move('post_images/', $name);
-                    Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'post_id'=> $post->id]);
-                }
-            } elseif ($type == 'html' || $type == 'php' || $type == 'txt' || $type == 'sql') {
-                $file->move('post_files/', $name);
-                Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'post_id'=> $post->id]);
-            } else {
-                Session::flash('error_message', $type . ' is not a supported file extension, FILE upload failed!');
-            }
+            Post::upload_file($request->file('attachment'), $post);
         }
         //IMAGE UPLOAD
 
@@ -92,7 +77,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $post= Post::findOrFail($id);
-        $singles= Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->paginate(15);
+        $singles= Single::where('post_id', '=', $id)->orderBy('created_at', 'desc')->paginate(10);
 
         return view('discussions.each', compact('post', 'singles'));
     }

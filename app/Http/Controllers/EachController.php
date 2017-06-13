@@ -48,31 +48,18 @@ class EachController extends Controller
         $new_post['post_id'] = $post->id;
         $new_singles_record= Single::create($new_post);
 
-        //NOTIFY ME OF ALL ACTIVITY ANYWAY
-        $admin= "ORIGINAL AUTHOR: ". $post->posted_by;
-        $admin.="RECENT ACTIVITY BY: ". $new_singles_record->user->name;
-        $admin.= "TOPIC: ". $new_singles_record->topic;
+        //NOTIFY ADMIN OF ALL ACTIVITY ANYWAY
+        $admin= "ORIGINAL AUTHOR: ". $post->posted_by."\n\n";
+        $admin.="RECENT ACTIVITY BY: ". $new_singles_record->user->name."\n\n";
+        $admin.= "TOPIC: ". $new_singles_record->topic."\n\n";
+        $admin.= "TITLE: ". $post->title ."\n\n";
         $admin.= "BODY: ". $new_singles_record->single_post;
         mail('dvsocean@icloud.com', 'NERD ACTIVITY', $admin);
-        //NOTIFY ME OF ALL ACTIVITY ANYWAY
+        //NOTIFY ADMIN OF ALL ACTIVITY ANYWAY
 
+        //IF USER IS INCLUDING A PHOTO, UPLOAD IT
         if($request->hasFile('image')){
-            $file=$request->file('image');
-            $name= time() . $file->getClientOriginalName();
-            $size= $file->getSize();
-            $type= $file->getClientOriginalExtension();
-
-            if($type == 'jpg' || $type == 'png' || $type == 'JPG' || $type == 'gif' || $type == 'jpeg' || $type == 'PNG') {
-                if ($size < 4000000) {
-                    $file->move('post_images/', $name);
-                    Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'single_id' => $new_singles_record->id]);
-                }
-            } elseif ($type == 'html' || $type == 'php' || $type == 'txt' || $type == 'sql') {
-                $file->move('post_files/', $name);
-                Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'single_id' => $new_singles_record->id]);
-            } else {
-                Session::flash('error_message', $type . ' is not a supported file extension, FILE upload failed!');
-            }
+           Post::upload_file_for_each($request->file('image'), $new_singles_record);
         }
 
         if($post->user != Auth::user()){
@@ -91,7 +78,7 @@ class EachController extends Controller
         if(Auth::user()->name != $post->user->name){
             Session::flash("post_message", "You have added a comment to ". ucfirst($post->user->name) ."'s ".$post->topic . " thread");
         } else {
-            Session::flash('post_message', 'You have added a comment to your own thread "'. $post->topic . '".');
+            Session::flash('post_message', 'You have added a comment to your own "'. $post->topic . '" thread.');
         }
         return redirect('/discussions');
     }

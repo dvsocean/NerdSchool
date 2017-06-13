@@ -36,34 +36,42 @@
                 <a href="{{url('/discussions')}}" class="btn btn-default">All Discussions</a>
                 <br><br>
 
+                <style>
+                    .post_main_image {
+                        text-align: left;
+                    }
+                </style>
+
                 <div class="well">
                     <p><strong><img src="{{$post->user->photo ? '../'.$post->user->photo->file : '../PLACEHOLDER/avatar.JPG'}}" height="50" width="50" class="img-circle"> by {{ucfirst($post->posted_by)}} :</strong> {{$post->post}}</p><br>
 
+                    <div class="post_main_image">
+                        @if($post->images)
+                            {{--@if($post->images->type == 'php')--}}
+                                {{--<a href="../../post_files/{{$post->images->post_image}}" download><img src="../../PLACEHOLDER/php.png" height="100" width="100" class="img-rounded"></a><br><br>--}}
+                            @if($post->images->type == 'html')
+                                <a href="../../post_files/{{$post->images->post_image}}" download><img src="../../PLACEHOLDER/html.jpg" height="100" width="100" class="img-rounded"></a><br><br>
+                            @elseif($post->images->type == 'txt')
+                                <a href="../../post_files/{{$post->images->post_image}}" download><img src="../../PLACEHOLDER/txt.png" height="100" width="100" class="img-rounded"></a><br><br>
+                            @elseif($post->images->type == 'sql')
+                                <a href="../../post_files/{{$post->images->post_image}}" download><img src="../../PLACEHOLDER/sql.jpg" height="100" width="100" class="img-rounded"></a><br><br>
+                            @elseif($post->images->type == 'docx')
+                                <a href="../../post_files/{{$post->images->post_image}}" download><img src="../../PLACEHOLDER/docx.jpg" height="100" width="100" class="img-rounded"></a><br><br>
+                            @elseif($post->images->type == 'css')
+                                <a href="../../post_files/{{$post->images->post_image}}" download><img src="../../PLACEHOLDER/css.jpg" height="100" width="100" class="img-rounded"></a><br><br>
 
-
-                    {{--@if($post->images->type == 'php')--}}
-                        {{--<a href="../../post_files/{{$post->images->post_image}}" download><img src="../../PLACEHOLDER/php.png" height="100" width="100" class="img-rounded"></a>--}}
-                    {{--@elseif($post->images->type == 'html')--}}
-                        {{--<a href="../../post_files/{{$post->images->post_image}}" download><img src="../../PLACEHOLDER/html.jpg" height="100" width="100" class="img-rounded"></a>--}}
-                    {{--@elseif($post->images->type == 'txt')--}}
-                        {{--<a href="../../post_files/{{$post->images->post_image}}" download><img src="../../PLACEHOLDER/txt.png" height="100" width="100" class="img-rounded"></a>--}}
-                    {{--@elseif($post->images->type == 'sql')--}}
-                        {{--<a href="../../post_files/{{$post->images->post_image}}" download><img src="../../PLACEHOLDER/sql.jpg" height="100" width="100" class="img-rounded"></a>--}}
-
-
-                    {{--@elseif($post->images->type == 'jpg' || $post->images->type == 'png' || $post->images->type == 'JPG' || $post->images->type == 'jpeg' || $post->images->type == 'gif' || $post->images->type == 'PNG')--}}
-                        {{--<a href="{{url('larger_view', ['id'=> $post->images->id])}}"><img src="../../post_images/{{$post->images->post_image}}" height="100" width="100" class="img-rounded"></a>--}}
-                    {{--@endif--}}
-
-                    {{--<img src="{{$post->images ? $post->images->post_image : ''}}" height="50" width="50" class="img-rounded"><br><br>--}}
-
+                            @elseif($post->images->type == 'jpg' || $post->images->type == 'png' || $post->images->type == 'JPG' || $post->images->type == 'jpeg' || $post->images->type == 'gif' || $post->images->type == 'PNG')
+                                <a href="{{url('larger_view', ['id'=> $post->images->id])}}"><img src="../../post_images/{{$post->images->post_image}}" height="100" width="100" class="img-rounded"></a><br><br>
+                            @endif
+                        @endif
+                    </div>
 
                     <form action="{{route('add_post', ['id'=> $post->id])}}" method="POST" id="sp_form" name="sp_form" enctype="multipart/form-data" accept-charset="UTF-8">
                         {!! csrf_field() !!}
                         <input type="hidden" name="user_id" value="{{$user->id}}">
                         <input type="hidden" name="topic" value="{{$post->topic}}">
                         <textarea rows="5" class="form-control decline" name="single_post" id="single_post" pattern="[A-Za-z]"></textarea><br>
-                        <p>You may attach a JPG, PNG, GIF, PHP, SQL, TXT, and HTML file</p>
+                        <p>You may attach a JPG, PNG, GIF, SQL, TXT, DOCX, CSS or HTML file</p>
                         <input type="file" name="image" id="myFile"><br>
                         <input type="submit" value="Reply">
                     </form>
@@ -79,10 +87,10 @@
                             <p><img src="../{{$single->user->photo ? $single->user->photo->file : '../PLACEHOLDER/avatar.JPG'}}" height="30" width="30" class="img-circle">
                                 <strong>{{ucfirst($single->user->name)}}:</strong> {{$single->single_post}}</p>
                             @foreach($single->single_images as $img)
-                                    @if($img->type == 'php')
-                                        <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/php.png" height="100" width="100" class="img-rounded"></a>
+                                    {{--@if($img->type == 'php')--}}
+                                        {{--<a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/php.png" height="100" width="100" class="img-rounded"></a>--}}
 
-                                        @elseif($img->type == 'html')
+                                        @if($img->type == 'html')
                                         <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/html.jpg" height="100" width="100" class="img-rounded"></a>
 
                                         @elseif($img->type == 'txt')
@@ -91,7 +99,13 @@
                                         @elseif($img->type == 'sql')
                                         <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/sql.jpg" height="100" width="100" class="img-rounded"></a>
 
-                                    @elseif($img->type == 'jpg' || $img->type == 'png' || $img->type == 'JPG' || $img->type == 'jpeg' || $img->type == 'gif' || $img->type == 'PNG')
+                                        @elseif($img->type == 'docx')
+                                        <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/docx.jpg" height="100" width="100" class="img-rounded"></a>
+
+                                        @elseif($img->type == 'css')
+                                        <a href="../../post_files/{{$img->post_image}}" download><img src="../../PLACEHOLDER/css.jpg" height="100" width="100" class="img-rounded"></a>
+
+                                @elseif($img->type == 'jpg' || $img->type == 'png' || $img->type == 'JPG' || $img->type == 'jpeg' || $img->type == 'gif' || $img->type == 'PNG')
                                         <a href="{{url('larger_view', ['id'=> $img->id])}}"><img src="../../post_images/{{$img->post_image}}" height="100" width="100" class="img-rounded"></a>
                                     @endif
                                 @endforeach

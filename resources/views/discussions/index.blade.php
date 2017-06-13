@@ -79,7 +79,7 @@ use App\User; ?>
                                     <td><strong>Comments</strong></td>
                                     <td><strong>Started on</strong></td>
                                     <td><strong>Title</strong></td>
-                                    <td><strong>Title</strong></td>
+                                    <td><strong>Thread</strong></td>
                                     <td><strong>Author</strong></td>
                                 </tr>
 

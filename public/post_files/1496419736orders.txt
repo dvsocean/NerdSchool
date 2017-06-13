@@ -1,7 +1,0 @@
-18:55, 16th April 2013  4 tires  1 oil  6 spark plugs  $477.4 22 Short St, Smalltown
-18:56, 16th April 2013  1 tires  0 oil  0 spark plugs  $110   33 Main Rd, Oldtown
-18:57, 16th April 2013  0 tires  1 oil  4 spark plugs  $28.6  127 Acacia St,
-Springfield03:58, 29th May 2017	0 tires 	0 oil	0 spark plugs	$0	
-00:59, 30th May 2017	0 tires 	0 oil	0 spark plugs	$0	
-01:36, 30th May 2017	23 tires 	3 oil	32 spark plugs	$2703.8	2322 fell st boston, ma
-02:43, 30th May 2017	0 tires 	0 oil	0 spark plugs	$0	
