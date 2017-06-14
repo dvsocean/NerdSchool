@@ -36,6 +36,10 @@ class Post extends Model
         return $this->hasMany('App\Single');
     }
 
+    public function additionals(){
+        return $this->hasMany('App\Additional');
+    }
+
 
     //USED IN THE POST CONTROLLER
     public static function upload_file($file_array, $post){
