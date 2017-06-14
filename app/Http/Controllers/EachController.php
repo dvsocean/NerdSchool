@@ -61,7 +61,7 @@ class EachController extends Controller
         }
 
         //STORE ADDITIONAL USERS AND NOTIFY
-        if($post->additionals){
+//        if($post->additionals){
 
             $check_adds= $post->additionals->where('user_id', Auth::user()->id)->first();
             //IF AUTH USER IS NOT OWNER OF POST ONLY THEN ADD HIM TO THE LIST
@@ -77,7 +77,7 @@ class EachController extends Controller
                     Additional::create($input);
                 }
             }
-        }
+//        }
         //PULL OUT ALL RECORDS FROM ADDITIONALS TABLE
         $additionals= Additional::where('post_id', $post->id)->get();
         //EMAIL EACH USER OF RECENT ACTIVITY ON THREAD
