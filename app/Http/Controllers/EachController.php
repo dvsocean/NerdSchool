@@ -64,8 +64,9 @@ class EachController extends Controller
         if($post->additionals){
 
             $check_adds= $post->additionals->where('user_id', Auth::user()->id)->first();
-
+            //IF AUTH USER IS NOT OWNER OF POST ONLY THEN ADD HIM TO THE LIST
             if(Auth::user() != $post->user){
+                //IF USER ALREADY EXISTS IN TABLE, DON'T ADD HIM
                 if(!$check_adds){
                     $input = [
                         'post_id' => $post->id,
@@ -77,9 +78,9 @@ class EachController extends Controller
                 }
             }
         }
-
+        //PULL OUT ALL RECORDS FROM ADDITIONALS TABLE
         $additionals= Additional::where('post_id', $post->id)->get();
-
+        //EMAIL EACH USER OF RECENT ACTIVITY ON THREAD
         foreach ($additionals as $additional){
             $mail_addition="Content: ".$new_singles_record->single_post;
             mail($additional->email, "Activity on thread ", $mail_addition);
