@@ -13,7 +13,7 @@ class Single extends Model
         'topic'
     ];
 
-    public function posts(){
+    public function post(){
         return $this->belongsTo('App\Post');
     }
 

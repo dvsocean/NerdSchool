@@ -16,7 +16,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'school', 'photo_id', 'major', 'goal', 'interest', 'notifyEmail'
+        'name',
+        'email',
+        'password',
+        'school',
+        'photo_id',
+        'major',
+        'goal',
+        'interest',
+        'notifyEmail',
+        'notifyAdditionals'
     ];
 
     /**
@@ -39,5 +48,13 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    public function additionals(){
+        return $this->hasMany('App\Additional');
+    }
+
+    public function singles(){
+        return $this->hasMany('App\Single');
     }
 }

@@ -74,6 +74,7 @@ class SettingsController extends Controller
     {
         $user= User::findOrFail($id);
         $input['notifyEmail']= $request->input('notifyEmail');
+        $input['notifyAdditionals']= $request->input('notifyAdditionals');
         $user->update($input);
         return redirect('settings');
     }

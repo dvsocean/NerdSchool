@@ -54,18 +54,26 @@
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                        <h4>Notify my email when someone responds to my thread</h4><br>
+                        <h4>Notify email on my thread response</h4><br>
                         {!! Form::model($user, ['method'=> 'PATCH', 'action'=>['SettingsController@update', $user->id], 'id'=>'notifyEmailForm']) !!}
 
                             {!! csrf_field() !!}
 
-                            {!! Form::label('notifyEmail', 'Notify Me') !!}
+                            {!! Form::label('notifyEmail', 'Notify me') !!}
                             {!! Form::radio('notifyEmail', 'yes', null, ['class'=>'']) !!}<br>
 
                             {!! Form::label('notifyEmail', 'No Dont') !!}
                             {!! Form::radio('notifyEmail', 'no', null, ['class'=>'']) !!}
 
-                            {{--{!! Form::submit('Done', ['class'=>'btn btn-default', 'id'=>'settings_done']) !!}--}}
+                            <br><br>
+                            <br><br>
+                            <h4>Notify email on joined thread activity</h4><br>
+                            {!! Form::label('notifyAdditionals', 'Notify me') !!}
+                            {!! Form::radio('notifyAdditionals', 'yes', null, ['class'=>'']) !!}<br>
+
+                            {!! Form::label('notifyAdditionals', 'No Dont') !!}
+                            {!! Form::radio('notifyAdditionals', 'no', null, ['class'=>'']) !!}
+
                         {!! Form::close() !!}<br><br>
                     </div>
 
