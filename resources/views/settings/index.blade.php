@@ -54,7 +54,7 @@
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                        <h4>Notify email on my thread response</h4><br>
+                        <h4>Notify email on my thread activity</h4><br>
                         {!! Form::model($user, ['method'=> 'PATCH', 'action'=>['SettingsController@update', $user->id], 'id'=>'notifyEmailForm']) !!}
 
                             {!! csrf_field() !!}
