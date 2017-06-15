@@ -3,7 +3,7 @@
 <footer id="footer">
     <div class="inner">
         <ul class="icons">
-            <li><a href="https://github.com/dvsocean/nerdschool" class="icon alt fa-github"><span class="label">Github</span></a></li>
+            <li><a href="https://github.com/dvsocean/nerdschool" class="icon alt fa-github" id="gitTooltip"><span class="label">Github</span></a></li>
             <li><a href="https://www.linkedin.com/in/daniel-ocean-4ab9918a/" class="icon alt fa fa-linkedin"><span class="label">Instagram</span></a></li>
             <li><a href="mailto:dvsocean@icloud.com" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
         </ul>
