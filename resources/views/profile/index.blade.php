@@ -23,6 +23,8 @@
             padding-right: 10px;
         }
     </style>
+
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 </head>
 
 
@@ -164,7 +166,7 @@
 
                         <div class="col-xs-12 col-md-4">
                             <h3 align="center">Start a discussion</h3><br>
-                            <form action="{{url('/posts')}}" method="POST" id="postForm" name="postForm" enctype="multipart/form-data">
+                            <form action="{{url('/posts')}}" method="POST" id="postForm" name="postForm">
                                 <select id="topic" name="topic">
                                     <option value="0">Select a topic &#8681;</option>
                                     <option value="Server">Server</option>
@@ -182,8 +184,7 @@
                         </div>
 
                         <div class="col-xs-12 col-md-4">
-                            <p>You may attach a JPG, PNG, GIF, SQL, TXT, DOCX, CSS or HTML file</p>
-                            <input type="file" name="attachment"><br><br>
+                            <!--PLACEHOLDER-->
                         </div>
                     </div>
 
@@ -228,7 +229,6 @@
                             <input type="hidden" name="posted_by" value="{{$user->name}}">
                             <input type="hidden" name="email" value="{{$user->email}}">
                             <input type="submit" value="Start Discussion"><br><br>
-                            </form>
                         </div>
 
                         <div class="col-xs-12 col-md-2">
@@ -241,6 +241,24 @@
                                 You may optionally select to be notified by email.
                                 Don't forget to checkout the settings page.
                             </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-8 col-md-4 col-lg-4">
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-8 col-md-4 col-lg-4">
+                            <p>TEST FORM</p>
+                            <form action="" class="dropzone" id="my-awesome-dropzone"></form>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-8 col-md-4 col-lg-4">
+
                         </div>
                     </div>
                 </div>
@@ -293,6 +311,10 @@
             headers: {'X-CSRF-Token': $('meta[name=token]').attr('content')}
         });
     </script>
+
+<!--DROPZONE-->
+<script src="dropzone/dropzone.js"></script>
+<!--DROPZONE-->
 
 <!--JAVASCRIPT FILE-->
 @include('includes.validation_and_deletes')

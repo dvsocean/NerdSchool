@@ -68,6 +68,19 @@ class PostsController extends Controller
         return redirect('/discussions');
     }
 
+    public function dropzone_uploads(Request $request){
+
+        $file=$request->input('attachment');
+        $name= time() . $file->getClientOriginalName();
+        $size= $file->getSize();
+        $type= $file->getClientOriginalExtension();
+
+        $file->move('post_images/', $name);
+
+        Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'post_id'=> 999]);
+
+    }
+
     /**
      * Display the specified resource.
      *
