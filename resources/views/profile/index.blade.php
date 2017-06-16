@@ -9,6 +9,10 @@
     @include('includes.header')
     <!--HEADER-->
 
+    <!--DROPZONE-->
+    <script src="dropzone/dropzone.js"></script>
+    <!--DROPZONE-->
+
     <style>
         .well {
             text-align: left;
@@ -166,7 +170,8 @@
 
                         <div class="col-xs-12 col-md-4">
                             <h3 align="center">Start a discussion</h3><br>
-                            <form action="{{url('/posts')}}" method="POST" id="postForm" name="postForm">
+                            <form action="{{url('/posts')}}" method="POST" id="postForm" class="dropzone" name="postForm">
+                                {{csrf_field()}}
                                 <select id="topic" name="topic">
                                     <option value="0">Select a topic &#8681;</option>
                                     <option value="Server">Server</option>
@@ -246,23 +251,37 @@
                     </div>
                 </div>
 
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-8 col-md-4 col-lg-4">
+                {{--<div class="container">--}}
+                    {{--<div class="row">--}}
+                        {{--<div class="col-xs-12 col-sm-8 col-md-4 col-lg-4">--}}
 
-                        </div>
+                        {{--</div>--}}
 
-                        <div class="col-xs-12 col-sm-8 col-md-4 col-lg-4">
-                            <p>TEST FORM</p>
-                            <form action="" class="dropzone" id="my-awesome-dropzone"></form>
-                        </div>
+                        {{--<div class="col-xs-12 col-sm-8 col-md-4 col-lg-4">--}}
+                            {{--<p>TEST FORM</p>--}}
+                            {{--<form action="{{url('/posts')}}" method="POST" class="dropzone">--}}
+                                {{--{{csrf_field()}}--}}
+                            {{--</form>--}}
+                        {{--</div>--}}
 
-                        <div class="col-xs-12 col-sm-8 col-md-4 col-lg-4">
+                        {{--<div class="col-xs-12 col-sm-8 col-md-4 col-lg-4">--}}
 
-                        </div>
-                    </div>
-                </div>
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 <!-- START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA -->
+
+<!--jQUERY DROPZONE-->
+<script>
+    $(function(){
+
+
+
+    });
+</script>
+<!--jQUERY DROPZONE-->
+
+
 
 
 <!--MODAL-->
@@ -312,9 +331,7 @@
         });
     </script>
 
-<!--DROPZONE-->
-<script src="dropzone/dropzone.js"></script>
-<!--DROPZONE-->
+
 
 <!--JAVASCRIPT FILE-->
 @include('includes.validation_and_deletes')

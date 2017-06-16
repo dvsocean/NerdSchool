@@ -41,7 +41,9 @@ Route::get('/discussions', function(){
 
 Route::resource('/posts', 'PostsController');
 
-Route::post('dz_posts', 'PostsController@dropzone_uploads');
+Route::post('dz_posts', 'PostsController@dropzone_uploads')->name('drop_post');
+
+Route::get('/dz_posts', 'PostsController@dropzone_uploads');
 
 Route::get('/posts', function(){
     return view('discussions.index');
