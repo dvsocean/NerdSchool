@@ -92,7 +92,7 @@ class Post extends Model
 
     //SEND OWNER OF THE POST A NOTIFICATION ONLY IF HE WANTS IT
     //FUNCTION NOT WORKING FOR SOME REASON, IMPLEMENTATION ON HOLD
-    public static function notify_user($post, $new_singles_record){
+    public static function notify_thread_owner($post, $new_singles_record){
         if($post->user->notifyEmail == 'yes'){
             $message= ucfirst(Auth::user()->name) . " responded to your ". $new_singles_record->topic . " thread \n\n";
             $message.="Response: " . $new_singles_record->single_post. " \n\n";
@@ -100,4 +100,6 @@ class Post extends Model
             mail($post->user->email, $post->topic, $message);
         }
     }
+
+
 }

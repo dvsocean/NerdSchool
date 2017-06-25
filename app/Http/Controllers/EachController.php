@@ -46,53 +46,37 @@ class EachController extends Controller
         $new_post['post_id'] = $post->id;
         $new_singles_record= Single::create($new_post);
 
-        //NOTIFY ADMIN OF ALL ACTIVITY ANYWAY
+        //NOTIFY ADMIN OF ALL ACTIVITY REGARDLESS
         $admin= "ORIGINAL AUTHOR: ". $post->posted_by."\n\n";
         $admin.="RECENT ACTIVITY BY: ". $new_singles_record->user->name."\n\n";
         $admin.= "TOPIC: ". $new_singles_record->topic."\n\n";
         $admin.= "TITLE: ". $post->title ."\n\n";
         $admin.= "BODY: ". $new_singles_record->single_post;
         mail('dvsocean@icloud.com', 'NERD ACTIVITY', $admin);
-        //NOTIFY ADMIN OF ALL ACTIVITY ANYWAY
 
         //IF USER IS INCLUDING A PHOTO, UPLOAD IT
         if($request->hasFile('image')){
            Post::upload_file_for_each($request->file('image'), $new_singles_record);
         }
 
-        //STORE ADDITIONAL USERS AND NOTIFY
+        //STORE USERS AND NOTIFY ALL MEMBERS OF A THREAD
             $check_adds= $post->additionals->where('user_id', Auth::user()->id)->first();
             //IF AUTH USER IS NOT OWNER OF POST ONLY THEN ADD HIM TO THE LIST
             if(Auth::user() != $post->user){
-                //IF USER ALREADY EXISTS IN TABLE, DON'T ADD HIM
-                if(!$check_adds){
-                    $input = [
-                        'post_id' => $post->id,
-                        'user_id' => Auth::user()->id,
-                        'name' => Auth::user()->name,
-                        'email' => Auth::user()->email
-                    ];
-                    Additional::create($input);
-                }
+                Additional::store_thread_members($check_adds, $post);
             }
 
         //PULL OUT ALL RECORDS FROM ADDITIONALS TABLE
         $additionals= Additional::where('post_id', $post->id)->get();
 
         //EMAIL EACH USER OF RECENT ACTIVITY ON THREAD
-        foreach ($additionals as $additional){
-            if($additional->user->notifyAdditionals == 'yes'){
-                $mail_addition= ucfirst($new_singles_record->user->name)." wrote: ".$new_singles_record->single_post;
-                mail($additional->email, "Activity by " . ucfirst($new_singles_record->user->name), $mail_addition);
-            }
-        }
-        //STORE ADDITIONAL USERS AND NOTIFY
-
+        Additional::notify_each_member($additionals, $new_singles_record);
 
         if($post->user != Auth::user()){
             $post->user->notify(new PostAdded($post));
         }
 
+        //NOTIFY ON RESPONSE TO MY THREAD
         if(Auth::user()->name != $post->user->name){
             if($post->user->notifyEmail == 'yes'){
                 $message= ucfirst(Auth::user()->name) . " responded to your ". $new_singles_record->topic . " thread \n\n";
