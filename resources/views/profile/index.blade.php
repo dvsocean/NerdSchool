@@ -303,8 +303,10 @@
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['My Posts', <?php echo $user->posts->count(); ?>],
-                ['Joined Posts', <?php echo $user->singles->count(); ?>]
+                ['Posts', <?php echo $user->posts->count(); ?>],
+                ['Comments', <?php echo $user->singles->count(); ?>],
+                ['Files', <?php echo $user->files->count(); ?>],
+                ['Email notify', <?php echo $user->additionals->count(); ?>]
             ]);
             var options = {
                 title: 'Nerd Activity',
@@ -335,21 +337,21 @@
                 <!--HTML SETUP-->
                 <div class="row placeholders">
                     <div class="col-xs-6 col-sm-3 placeholder">
-                        <h4>My Posts</h4>
+                        <h4>Posts</h4>
                         <h1><?php echo $user->posts->count(); ?></h1>
                     </div>
                     <div class="col-xs-6 col-sm-3 placeholder">
-                        <h4>Joined posts</h4>
+                        <h4>Comments</h4>
                         <h1><?php echo $user->singles->count(); ?></h1>
                     </div>
                     <div class="col-xs-6 col-sm-3 placeholder">
                         <h4>Files</h4>
-                        <h1><?php ?></h1>
+                        <h1><?php echo $user->files->count(); ?></h1>
                     </div>
 
                     <div class="col-xs-6 col-sm-3 placeholder">
-                        <h4>PLACEHOLDER</h4>
-                        <h1><?php  ?></h1>
+                        <h4>Email notify</h4>
+                        <h1><?php  echo $user->additionals->count(); ?></h1>
                     </div>
                 </div>
                 <!--HTML SETUP-->

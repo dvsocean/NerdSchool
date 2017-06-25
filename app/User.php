@@ -45,6 +45,10 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function files(){
+        return $this->hasMany('App\Image_post');
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));

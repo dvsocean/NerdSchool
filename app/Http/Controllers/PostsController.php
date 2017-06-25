@@ -60,7 +60,7 @@ class PostsController extends Controller
 
         //IMAGE UPLOAD
         if($request->hasFile('attachment')){
-            Post::upload_file($request->file('attachment'), $post);
+            Post::upload_file($request->file('attachment'), $post, $request->input('user_id'));
         }
         //IMAGE UPLOAD
 
