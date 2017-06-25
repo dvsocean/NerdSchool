@@ -9,6 +9,9 @@
     @include('includes.header')
     <!--HEADER-->
 
+    <!--GOOGLE CHART API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!--GOOGLE CHART API-->
     <style>
         .well {
             text-align: left;
@@ -55,6 +58,7 @@
                         @if(Auth::user()->admin == 'yes')
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Database</button><br><br>
                         @endif
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".stats">Statistics</button><br><br>
                     </div>
                     <!--PROJECT FILES OR DATABASE FOR ALL NERDS-->
 
@@ -247,6 +251,9 @@
 <!-- START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA -->
 
 
+
+
+
 <!--MODAL-->
 <style>
     .modal-content {
@@ -287,6 +294,69 @@
     </div>
 </div>
 <!--MODAL-->
+
+
+    <!-- JS API-->
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['My Posts', <?php echo $user->posts->count(); ?>],
+                ['Joined Posts', <?php echo $user->singles->count(); ?>]
+            ]);
+            var options = {
+                title: 'Nerd Activity',
+                backgroundColor: 'transparent',
+                is3D: true
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    </script>
+    <!-- JS API-->
+
+
+
+    <!--MODAL-->
+    <style>
+        .modal-content {
+            padding: 25px;
+        }
+    </style>
+    <div class="modal fade stats" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <!--CHART-->
+                <div id="piechart"></div>
+                <!--CHART-->
+
+                <!--HTML SETUP-->
+                <div class="row placeholders">
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <h4>My Posts</h4>
+                        <h1><?php echo $user->posts->count(); ?></h1>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <h4>Joined posts</h4>
+                        <h1><?php echo $user->singles->count(); ?></h1>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <h4>Files</h4>
+                        <h1><?php ?></h1>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <h4>PLACEHOLDER</h4>
+                        <h1><?php  ?></h1>
+                    </div>
+                </div>
+                <!--HTML SETUP-->
+            </div>
+        </div>
+    </div>
+    <!--MODAL-->
 
     <script type="text/javascript">
         $.ajax({
