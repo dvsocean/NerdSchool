@@ -89,12 +89,12 @@
                       <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <label>School:</label><br>
-                          {!! Form::text('school', null, ['class'=>'', 'placeholder'=>'School']) !!}
+                          {!! Form::text('school', null, ['class'=>'', 'placeholder'=>'School your affiliated with']) !!}
                         </div>
 
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <label>Major:</label><br>
-                          {!! Form::text('major', null, ['class'=>'', 'placeholder'=>'Major']) !!}
+                          {!! Form::text('major', null, ['class'=>'', 'placeholder'=>'Major your want']) !!}
                         </div>
                       </div>
 
@@ -103,7 +103,7 @@
                       <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <label>Goal:</label><br>
-                          {!! Form::text('goal', null, ['class'=>'', 'placeholder'=>'Goal']) !!}
+                          {!! Form::text('goal', null, ['class'=>'', 'placeholder'=>'Goal you want to achieve']) !!}
                             <br><br>
                             <p>
                                 Uploading a profile picture provides the rest of
@@ -116,7 +116,7 @@
 
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <label>About me:</label><br>
-                            {!! Form::textarea('interest', null, ['class'=>'', 'placeholder'=>'Describe yourself a little']) !!}<br><br>
+                            {!! Form::textarea('interest', null, ['class'=>'', 'placeholder'=>'Describe yourself']) !!}<br><br>
                         </div>
                       </div>
 
