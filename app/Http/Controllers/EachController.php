@@ -63,7 +63,9 @@ class EachController extends Controller
             $check_adds= $post->additionals->where('user_id', Auth::user()->id)->first();
             //IF AUTH USER IS NOT OWNER OF POST ONLY THEN ADD HIM TO THE LIST
             if(Auth::user() != $post->user){
-                Additional::store_thread_members($check_adds, $post);
+                if (Auth::user()->notifyAdditionals == 'yes'){
+                    Additional::store_thread_members($check_adds, $post);
+                }
             }
 
         //PULL OUT ALL RECORDS FROM ADDITIONALS TABLE
