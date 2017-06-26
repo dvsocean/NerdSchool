@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Image_post;
 use App\Notifications\PostAdded;
-use App\Photo;
 use App\Single;
 use App\User;
 use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 
@@ -51,83 +48,25 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
-
-        $file=$request->file('file');
-
         $input= $request->all();
-
         $post= Post::create($input);
+        //EMAIL IS BEING PREPARED AS SOON AS POST GETS CREATED
+        $message= "Owner of thread: " . ucfirst($request->input('posted_by')) . " \n";
+        $message.="Topic: " . $request->input('topic') . "\n\n";
+        $message.="Body: " . $request->input('post') . "\n\n";
+        $message.="Email on file for " . ucfirst($request->input('posted_by')) . " is " . $request->input('email');
+        //NOTIFICATION EMAIL SENT OUT TO ADMIN
+        mail('dvsocean@icloud.com', 'New thread has been started', $message);
 
-//        $post= Post::create([
-//            'user_id'=> $request->input('user_id')
-//        ]);
+        //IMAGE UPLOAD
+        if($request->hasFile('attachment')){
+            Post::upload_file($request->file('attachment'), $post, $request->input('user_id'));
+        }
+        //IMAGE UPLOAD
 
-
-//        //IMAGE UPLOAD
-//        if($file){
-//            $name= time() . $file->getClientOriginalName();
-//            $size= $file->getSize();
-//            $type= $file->getClientOriginalExtension();
-//
-//            if($type == 'jpg' || $type == 'png' || $type == 'JPG' || $type == 'gif' || $type == 'jpeg' || $type == 'PNG') {
-//                if ($size < 4000000) {
-//                    $file->move('post_images/', $name);
-//                    Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'post_id'=> $post->id]);
-//                }
-//            } elseif ($type == 'html' || $type == 'txt' || $type == 'sql' || $type == 'docx' || $type == 'css') {
-//                $file->move('post_files/', $name);
-//                Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'post_id'=> $post->id]);
-//            } else {
-//                Session::flash('error_message', $type . ' is not a supported file extension, FILE upload failed!');
-//            }
-//        }
-//        //IMAGE UPLOAD
-//
-//        //EMAIL IS BEING PREPARED AS SOON AS POST GETS CREATED
-//        $message= "Owner of thread: " . ucfirst($request->input('posted_by')) . " \n";
-//        $message.="Topic: " . $request->input('topic') . "\n\n";
-//        $message.="Body: " . $request->input('post') . "\n\n";
-//        $message.="Email on file for " . ucfirst($request->input('posted_by')) . " is " . $request->input('email');
-//        //NOTIFICATION EMAIL SENT OUT TO ADMIN
-//        mail('dvsocean@icloud.com', 'New thread has been started', $message);
-//
-//        //IMAGE UPLOAD
-//        if($request->hasFile('file')){
-//            Post::upload_file($request->file('file'), $post);
-//        }
-//        //IMAGE UPLOAD
-//
-//        Session::flash('post_message', 'You have started a new "'. $request->input('topic').'" discussion.');
-//        return redirect('/discussions');
+        Session::flash('post_message', 'You have started a new "'. $request->input('topic').'" discussion.');
+        return redirect('/discussions');
     }
-
-
-
-
-
-
-
-
-    public function dropzone_uploads(Request $request){
-
-        $file=$request->file('attachment');
-        $name= time() . $file->getClientOriginalName();
-        $size= $file->getSize();
-        $type= $file->getClientOriginalExtension();
-
-        $file->move('post_images/', $name);
-
-        Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'post_id'=> 999]);
-
-    }
-
-
-
-
-
-
-
-
 
     /**
      * Display the specified resource.

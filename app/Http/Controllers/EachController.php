@@ -56,7 +56,7 @@ class EachController extends Controller
 
         //IF USER IS INCLUDING A PHOTO, UPLOAD IT
         if($request->hasFile('image')){
-           Post::upload_file_for_each($request->file('image'), $new_singles_record);
+           Post::upload_file_for_each($request->file('image'), $new_singles_record, $request->input('user_id'));
         }
 
         //STORE USERS AND NOTIFY ALL MEMBERS OF A THREAD

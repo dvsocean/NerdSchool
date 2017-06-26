@@ -9,10 +9,9 @@
     @include('includes.header')
     <!--HEADER-->
 
-    <!--DROPZONE-->
-    <script src="dropzone/dropzone.js"></script>
-    <!--DROPZONE-->
-
+    <!--GOOGLE CHART API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!--GOOGLE CHART API-->
     <style>
         .well {
             text-align: left;
@@ -27,8 +26,6 @@
             padding-right: 10px;
         }
     </style>
-
-    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 </head>
 
 
@@ -61,6 +58,7 @@
                         @if(Auth::user()->admin == 'yes')
                         <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Database</button><br><br>
                         @endif
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".stats">Statistics</button><br><br>
                     </div>
                     <!--PROJECT FILES OR DATABASE FOR ALL NERDS-->
 
@@ -170,8 +168,7 @@
 
                         <div class="col-xs-12 col-md-4">
                             <h3 align="center">Start a discussion</h3><br>
-                            <form action="{{url('/posts')}}" method="POST" id="postForm" class="dropzone" name="postForm">
-                                {{csrf_field()}}
+                            <form action="{{url('/posts')}}" method="POST" id="postForm" name="postForm" enctype="multipart/form-data">
                                 <select id="topic" name="topic">
                                     <option value="0">Select a topic &#8681;</option>
                                     <option value="Server">Server</option>
@@ -189,7 +186,8 @@
                         </div>
 
                         <div class="col-xs-12 col-md-4">
-                            <!--PLACEHOLDER-->
+                            <p>You may attach a JPG, PNG, GIF, SQL, TXT, DOCX, CSS or HTML file</p>
+                            <input type="file" name="attachment"><br><br>
                         </div>
                     </div>
 
@@ -234,6 +232,7 @@
                             <input type="hidden" name="posted_by" value="{{$user->name}}">
                             <input type="hidden" name="email" value="{{$user->email}}">
                             <input type="submit" value="Start Discussion"><br><br>
+                            </form>
                         </div>
 
                         <div class="col-xs-12 col-md-2">
@@ -246,40 +245,11 @@
                                 You may optionally select to be notified by email.
                                 Don't forget to checkout the settings page.
                             </p>
-                            </form>
                         </div>
                     </div>
                 </div>
-
-                {{--<div class="container">--}}
-                    {{--<div class="row">--}}
-                        {{--<div class="col-xs-12 col-sm-8 col-md-4 col-lg-4">--}}
-
-                        {{--</div>--}}
-
-                        {{--<div class="col-xs-12 col-sm-8 col-md-4 col-lg-4">--}}
-                            {{--<p>TEST FORM</p>--}}
-                            {{--<form action="{{url('/posts')}}" method="POST" class="dropzone">--}}
-                                {{--{{csrf_field()}}--}}
-                            {{--</form>--}}
-                        {{--</div>--}}
-
-                        {{--<div class="col-xs-12 col-sm-8 col-md-4 col-lg-4">--}}
-
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
 <!-- START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA -->
 
-<!--jQUERY DROPZONE-->
-<script>
-    $(function(){
-
-
-
-    });
-</script>
-<!--jQUERY DROPZONE-->
 
 
 
@@ -325,13 +295,77 @@
 </div>
 <!--MODAL-->
 
+
+    <!-- JS API-->
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Posts', <?php echo $user->posts->count(); ?>],
+                ['Comments', <?php echo $user->singles->count(); ?>],
+                ['Files', <?php echo $user->files->count(); ?>],
+                ['Email notify', <?php echo $user->additionals->count(); ?>]
+            ]);
+            var options = {
+                title: 'Nerd Activity',
+                backgroundColor: 'transparent',
+                is3D: true,
+                pieSliceText: "none"
+            };
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    </script>
+    <!-- JS API-->
+
+
+
+    <!--MODAL-->
+    <style>
+        .modal-content {
+            padding: 25px;
+        }
+    </style>
+    <div class="modal fade stats" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <!--CHART-->
+                <div id="piechart"></div>
+                <!--CHART-->
+
+                <!--HTML SETUP-->
+                <div class="row placeholders">
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <h4>Posts</h4>
+                        <h1><?php echo $user->posts->count(); ?></h1>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <h4>Comments</h4>
+                        <h1><?php echo $user->singles->count(); ?></h1>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <h4>Files</h4>
+                        <h1><?php echo $user->files->count(); ?></h1>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <h4>Email notify</h4>
+                        <h1><?php  echo $user->additionals->count(); ?></h1>
+                    </div>
+                </div>
+                <!--HTML SETUP-->
+            </div>
+        </div>
+    </div>
+    <!--MODAL-->
+
     <script type="text/javascript">
         $.ajax({
             headers: {'X-CSRF-Token': $('meta[name=token]').attr('content')}
         });
     </script>
-
-
 
 <!--JAVASCRIPT FILE-->
 @include('includes.validation_and_deletes')

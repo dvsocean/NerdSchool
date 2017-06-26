@@ -11,7 +11,8 @@ class Image_post extends Model
         'file_size',
         'single_id',
         'type',
-        'post_id'
+        'post_id',
+        'user_id'
     ];
 
     public function singles(){

@@ -42,7 +42,7 @@ class Post extends Model
 
 
     //USED IN THE POST CONTROLLER
-    public static function upload_file($file_array, $post){
+    public static function upload_file($file_array, $post, $user_id){
         $file=$file_array;
         $name= time() . $file->getClientOriginalName();
         $size= $file->getSize();
@@ -51,18 +51,18 @@ class Post extends Model
         if($type == 'jpg' || $type == 'png' || $type == 'JPG' || $type == 'gif' || $type == 'jpeg' || $type == 'PNG') {
             if ($size < 4000000) {
                 $file->move('post_images/', $name);
-                Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'post_id'=> $post->id]);
+                Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'post_id'=> $post->id,  'user_id'=> $user_id]);
             }
         } elseif ($type == 'html' || $type == 'txt' || $type == 'sql' || $type == 'docx' || $type == 'css') {
             $file->move('post_files/', $name);
-            Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'post_id'=> $post->id]);
+            Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'post_id'=> $post->id,  'user_id'=> $user_id]);
         } else {
             Session::flash('error_message', $type . ' is not a supported file extension, FILE upload failed!');
         }
     }
 
     //USED IN THE EACH CONTROLLER
-    public static function upload_file_for_each($file_array, $new_singles_record){
+    public static function upload_file_for_each($file_array, $new_singles_record, $user_id){
         $file=$file_array;
         $name= time() . $file->getClientOriginalName();
         $size= $file->getSize();
@@ -71,11 +71,11 @@ class Post extends Model
         if($type == 'jpg' || $type == 'png' || $type == 'JPG' || $type == 'gif' || $type == 'jpeg' || $type == 'PNG') {
             if ($size < 4000000) {
                 $file->move('post_images/', $name);
-                Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'single_id' => $new_singles_record->id]);
+                Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'single_id' => $new_singles_record->id, 'user_id'=> $user_id]);
             }
         } elseif ($type == 'html' || $type == 'txt' || $type == 'sql' || $type == 'docx'|| $type == 'css') {
             $file->move('post_files/', $name);
-            Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'single_id' => $new_singles_record->id]);
+            Image_post::create(['post_image' => $name, 'type' => $type, 'file_size' => $size, 'single_id' => $new_singles_record->id, 'user_id'=> $user_id]);
         } else {
             Session::flash('error_message', $type . ' is not a supported file extension, FILE upload failed!');
         }
