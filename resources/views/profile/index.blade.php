@@ -305,11 +305,11 @@
                 ['Task', 'Hours per Day'],
                 ['Posts', <?php echo $user->posts->count(); ?>],
                 ['Comments', <?php echo $user->singles->count(); ?>],
-                ['Files', <?php echo $user->files->count(); ?>],
+                ['File uploads', <?php echo $user->files->count(); ?>],
                 ['Email notify', <?php echo $user->additionals->count(); ?>]
             ]);
             var options = {
-                title: 'Nerd Activity',
+                title: 'Your Activity',
                 backgroundColor: 'transparent',
                 is3D: true,
                 pieSliceText: "none"
@@ -346,7 +346,7 @@
                         <h1><?php echo $user->singles->count(); ?></h1>
                     </div>
                     <div class="col-xs-6 col-sm-3 placeholder">
-                        <h4>Files</h4>
+                        <h4>File uploads</h4>
                         <h1><?php echo $user->files->count(); ?></h1>
                     </div>
 

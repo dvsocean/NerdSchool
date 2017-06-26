@@ -19,6 +19,7 @@ class CreateImagePostsTable extends Migration
             $table->integer('file_size')->nullable();
             $table->integer('single_id')->nullable();
             $table->integer('post_id')->nullable();
+            $table->integer('user_id')->nullable();
             $table->increments('id');
             $table->timestamps();
         });
