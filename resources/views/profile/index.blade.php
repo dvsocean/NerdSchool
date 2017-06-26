@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>{{Auth::user()->name}}</title>
+    <title>{{ucfirst(Auth::user()->name)}}'s profile</title>
     <meta name="_token" content="{{ csrf_token() }}" />
     <!--HEADER-->
     @include('includes.header')

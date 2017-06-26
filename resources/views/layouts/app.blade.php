@@ -123,7 +123,7 @@
                     Note: You can replace the image below with a JPEG or PNG. Just make sure it's exactly
                     320x340 or at least the same aspect ratio (16:17).
                 -->
-                <span class="image"><img src="images/keys.jpg" alt="" /></span>
+                <span class="image"><img src="images/browsers.png" alt="" /></span>
             </div>
         </section>
 
