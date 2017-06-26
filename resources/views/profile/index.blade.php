@@ -309,7 +309,7 @@
                 ['Email notify', <?php echo $user->additionals->count(); ?>]
             ]);
             var options = {
-                title: 'Your Activity',
+                title: 'Activity',
                 backgroundColor: 'transparent',
                 is3D: true,
                 pieSliceText: "none"
