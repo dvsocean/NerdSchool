@@ -311,7 +311,8 @@
             var options = {
                 title: 'Nerd Activity',
                 backgroundColor: 'transparent',
-                is3D: true
+                is3D: true,
+                pieSliceText: "none"
             };
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
             chart.draw(data, options);
