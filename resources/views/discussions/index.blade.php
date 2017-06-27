@@ -77,7 +77,6 @@ use App\User; ?>
                             <table class="table-hover">
                                 <tr>
                                     <td><strong>Comments</strong></td>
-                                    <td><strong>Started on</strong></td>
                                     <td><strong>Last updated</strong></td>
                                     <td><strong>Title</strong></td>
                                     <td><strong>Thread</strong></td>
@@ -87,7 +86,6 @@ use App\User; ?>
                                 @foreach($posts as $post)
                                 <tr>
                                     <td>{{count($post->singles)}}</td>
-                                    <td>{{$post->discussion_date}}</td>
                                     <td>{{$post->singles->pluck('updated_at')->last() ? $post->singles->pluck('updated_at')->last()->diffForHumans() : 'No updates yet'}}</td>
                                     <td><a href="{{route('each', ['id'=> $post->id])}}">{{str_limit($post->title, 15)}}</a></td>
                                     <td>{{$post->topic}}</td>
