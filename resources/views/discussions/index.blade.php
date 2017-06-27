@@ -77,7 +77,7 @@ use App\User; ?>
                             <table class="table-hover">
                                 <tr>
                                     <td><strong>Comments</strong></td>
-                                    <td><strong>Last updated</strong></td>
+                                    <td><strong>Updated</strong></td>
                                     <td><strong>Title</strong></td>
                                     <td><strong>Thread</strong></td>
                                     <td><strong>Author</strong></td>
