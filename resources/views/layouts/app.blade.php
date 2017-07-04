@@ -50,12 +50,11 @@
                     </div>
                 </div>
                 <p>
-                    So you're a nerd and you code stuff. You love computer science and that superhuman feeling<br>
-                    of getting a machine to do just what you want. Most of the time, you feel all powerful, a nerd<br>
-                    on top of the world capable of coding for NASA, but then there are THOSE days. The long hours,<br>
-                    the 10th cup of coffee, the annoying errors. You've been staring at the screen all day but the<br>
-                    magic just isn't happening. I get it. That's why I created Nerdschool, a place for my fellow nerds<br>
-                    to get one-on-one help, ask questions & connect with others. So, login and lets get that magic rollin again.
+                    You love computer science and that superhuman feeling of getting a machine to do just what you want.<br>
+                    Most of the time, you feel all powerful, a nerd on top of the world, but then there are THOSE days.<br>
+                    The long hours, the 10th cup of coffee and those annoying errors.You've been staring at the screen<br>
+                    all day but the magic isn't happening. That's why I created Nerdschool, a place for my fellow nerds<br>
+                    to get one-on-one help, ask questions & connect with others.
                 </p>
             </header>
             @if(Auth::user())
