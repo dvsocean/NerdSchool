@@ -118,3 +118,15 @@ Route::get('/password_req', function(){
     return view('auth.passwords.email');
 })->name('password_req');
 //SEND PASSWORD RESET LINK
+
+
+
+//GO LIVE
+Route::get('/live', function(){
+    return view('go_live.go_live');
+});
+
+Route::get('/verify', function(){
+    return view('go_live.verify');
+});
+//GO LIVE
