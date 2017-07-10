@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8">
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+      	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<title>MtSac</title>
+
+	<!--JQUERY CORE-->
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<!--JQUERY CORE-->
+
+	<!--BOOTSTRAP CSS CORE-->
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+	<!--BOOTSTRAP CSS CORE-->
+
+	<!--GOOGLE FONT SOURCE SANS PRO-->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+	<!--GOOGLE FONT SOURCE SANS PRO-->
+
+	<!--MAIN STYLES-->
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!--MAIN STYLES-->
+
+	<!--FONT AWESOME-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--FONT AWESOME-->
+
+	<!--CYCLE-->
+	<script src="cyclemain.js"></script>
+	<!--CYCLE-->
+
+
+	<link rel="stylesheet" type="text/css" href="foundation/css/foundation.css">
+	<script src="foundation/js/vendor/foundation.js"></script>
+
+</head>
+<body>
+
+<style>
+	.back_path {
+		background-color: #8f0222;
+		height: 80px;
+	}
+
+	.back_path_light {
+		background-color: #F6F2EF;
+	}
+
+	.login {
+		color: yellow;
+	}
+
+	/*.sublink:hover {
+		background-color: #7ABDE3;
+	}*/
+
+	#onhov:hover {
+		color: #7ABDE3;
+	}
+
+	.span-right {
+		padding-top: 17px;
+		padding-right: 75px;
+	}
+
+	.right {
+		padding-right: 110px;
+	}
+
+	#bartop {
+		background-color: #970224;
+	}
+	
+</style>
+
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid back_path">
+    <div class="navbar-header">
+    	<div class="row">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>                        
+	      </button>
+      	
+      		<a class="navbar-brand" href="#" id="school-logo"><img src="images/mtsac-logo.png" id="logo" class="img-responsive"></a>
+      	</div>
+    </div>
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right login">
+		        <li class="span-right"><a href="#"><span class="glyphicon glyphicon-user"></span> Portal Login</a></li>
+		        <li class="span-right right"><a href="#"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+	  		</ul>
+		</div>
+  </div>
+
+  <div class="collapse navbar-collapse back_path_light" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="sublink"><a href="#" id="onhov">Home</a></li>
+        <li class="sublink"><a href="#" id="onhov">Page 2</a></li>
+        <li class="sublink"><a href="#" id="onhov">Page 3</a></li>
+        <li class="sublink"><a href="#" id="onhov">Page 3</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="onhov">Account <span class="caret"></span></a>
+          <ul class="dropdown-menu login">
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Signup</a></li>
+          </ul>
+        </li>
+      </ul>
+      
+    </div>
+</nav>
+  
+	<!--SUB NAV-->
+	<!-- <div class="sub-menu-bar">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-2 col-sm-4 col-md-12">
+						<ul class="sub-links">
+							<li class="sub-link"><a href="" class="sub-bar-link">About us</a></li>
+							<li class="sub-link"><a href="" class="sub-bar-link">Academics & Training</a></li>
+							<li class="sub-link"><a href="" class="sub-bar-link">Admissions & Aid</a></li>
+							<li class="sub-link"><a href="" class="sub-bar-link">Campus life</a></li>
+							<li class="sub-link"><a href="" class="sub-bar-link">Directory</a></li>
+						</ul>
+					</div>
+
+					<div class="col-xs-2 col-sm-4 col-md-12">
+						<div class="sub-links-right">
+							<li class="link-right"><a href="" class="sub-bar-link-right">Students</a></li>
+							<li class="link-right"><a href="" class="sub-bar-link-right">Faculty/Staff</a></li>
+							<li class="link-right"><a href="" class="sub-bar-link-right">Alumni</a></li>
+							<li class="link-right"><a href="" class="sub-bar-link-right">Community</a></li>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+	<!--SUB NAV-->
+
+
+	<div class="container" id="sliders_section">
+		<div class="row">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div id="slider">
+					<ul class="slides">
+						<li class="slide"><img src="images/msacvsrcc.jpg" height="470" width="570" class="img-responsive"></li>
+						<li class="slide"><img src="images/campus.jpg" height="470" width="570" class="img-responsive"></li>
+						<li class="slide"><img src="images/shovels.jpg" height="470" width="570" class="img-responsive"></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div id="slider2">
+					<ul class="slides2">
+						<li class="slide2"><img src="images/football.jpg" height="235" width="540" class="img-responsive"></li>
+						<li class="slide2"><img src="images/study.jpg" height="235" width="540" class="img-responsive"></li>
+						<li class="slide2"><img src="images/grad.jpg" height="235" width="540" class="img-responsive"></li>
+					</ul>
+				</div>
+			</div>
+				
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<div class="group">
+					<div id="slider3">
+						<ul class="slides3">
+							<div class="cycle1">
+								 <img src="images/house.jpg" height="215" width="320" class="img-responsive"/>
+								 <img src="images/baseball.jpg" height="215" width="320" class="img-responsive"/>
+								 <img src="images/book.jpg" height="215" width="320" class="img-responsive"/>
+							</div>
+						</ul>
+					</div>
+					
+					<div id="slider4">
+						<ul class="slides4">
+									<a href="#" id="prev2"><button class="form-control"><img src="images/left.png" height="15" width="15"></button></a>
+									<a href="#" id="next2"><button class="form-control"><img src="images/right.png" height="15" width="15"></button></a>
+							<div class="cycle2">
+								 <img src="images/book.jpg" height="215" width="320" class="img-responsive"/>
+								 <img src="images/study.jpg" height="215" width="320" class="img-responsive"/>
+								 <img src="images/baseball.jpg" height="215" width="320" class="img-responsive"/>
+							</div>
+						</ul>
+					</div>	
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+	
+		<div class="row">
+			<div class="col-xs-4 col-sm-2 col-md-2">
+				<span id="space"><i class="fa fa-telegram" id="circle"></i></span>
+			</div>
+
+			<div class="col-xs-4 col-sm-2 col-md-2">
+				<i class="fa fa-user-circle-o" id="circle"></i>
+			</div>
+
+			<div class="col-xs-4 col-sm-2 col-md-2">
+				<i class="fa fa-wpexplorer" id="circle"></i>
+			</div>
+
+			<div class="col-xs-4 col-sm-2 col-md-2">
+				<i class="fa fa-universal-access" id="circle"></i>
+			</div>
+
+			<div class="col-xs-4 col-sm-2 col-md-2">
+				<i class="fa fa-grav" id="circle"></i>
+			</div>
+
+			<div class="col-xs-4 col-sm-2 col-md-2">
+				<i class="fa fa-user-circle" id="circle"></i>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<h1>Featured Events</h1>
+					<div>
+						<ul class="events_list">
+							<li>
+								<a href="" id="event_float_left">
+									<p id="events_text_index">
+										6
+									</p><br>
+									<p id="events_month">
+										June
+									</p>
+								</a>
+
+								<a href="" id="event_float_right">
+									<strong>
+										<p id="events_text">
+											Mt Sac Car Show
+										</p>
+									</strong>	
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<h1>News and Announcments</h1>
+					<div id="newsBox1">
+						<img id="rhiannaImg" src="images/rhianna.jpg" height="100" width="100">
+						<span></span>
+						<p id="rhiannaTxt">Spotted inside the school swimming pool at mt sac lol........</p>
+					</div>
+
+					<br><br>
+
+					<div id="newsBox2">
+						<img id="rhiannaImg" src="images/linkinpark.jpg" height="100" width="100">
+						<span></span>
+						<p id="rhiannaTxt">In the quad after mid-night, bring your ear pluggs and a hat</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+
+
+	<br><br>
+	<br><br>
+	<br><br>
+	
+
+	
+
+<script src="bootstrap/js/bootstrap.js"></script>
+
+	<!--SLIDER JAVASCRIPT-->
+	<script src="slider.js"></script>
+	<!--SLIDER JAVASCRIPT-->
+</body>
+</html>

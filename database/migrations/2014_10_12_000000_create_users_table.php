@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('admin')->nullable();
             $table->string('notifyEmail')->nullable();
             $table->string('notifyAdditionals')->nullable();
-            $table->string('verified')->nullable();
+            $table->string('accepted_by')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
