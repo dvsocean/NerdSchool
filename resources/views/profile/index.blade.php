@@ -325,7 +325,8 @@
                 ['Posts', <?php echo $user->posts->count(); ?>],
                 ['Comments', <?php echo $user->singles->count(); ?>],
                 ['File uploads', <?php echo $user->files->count(); ?>],
-                ['Email notify', <?php echo $user->additionals->count(); ?>]
+                ['Email notify', <?php echo $user->additionals->count(); ?>],
+                ['Server', <?php echo $user->server->count(); ?>]
             ]);
             var options = {
                 title: 'Activity',
@@ -351,22 +352,27 @@
 
                 <!--HTML SETUP-->
                 <div class="row placeholders">
-                    <div class="col-xs-6 col-sm-3 placeholder">
-                        <h4>Posts</h4>
+                    <div class="col-xs-6 col-sm-2 placeholder">
+                        <h4 class="modal_bottom">Posts</h4>
                         <h1><?php echo $user->posts->count(); ?></h1>
                     </div>
-                    <div class="col-xs-6 col-sm-3 placeholder">
-                        <h4>Comments</h4>
+                    <div class="col-xs-6 col-sm-2 placeholder">
+                        <h4 class="modal_bottom">Comments</h4>
                         <h1><?php echo $user->singles->count(); ?></h1>
                     </div>
-                    <div class="col-xs-6 col-sm-3 placeholder">
-                        <h4>File uploads</h4>
+                    <div class="col-xs-6 col-sm-3 placeholder" align="center">
+                        <h4 class="modal_bottom">Files</h4>
                         <h1><?php echo $user->files->count(); ?></h1>
                     </div>
 
-                    <div class="col-xs-6 col-sm-3 placeholder">
-                        <h4>Email notify</h4>
+                    <div class="col-xs-6 col-sm-2 placeholder">
+                        <h4 class="modal_bottom">Notify</h4>
                         <h1><?php  echo $user->additionals->count(); ?></h1>
+                    </div>
+
+                    <div class="col-xs-6 col-sm-2 placeholder">
+                        <h4 class="modal_bottom">Server</h4>
+                        <h1><?php  echo $user->server->count(); ?></h1>
                     </div>
                 </div>
                 <!--HTML SETUP-->

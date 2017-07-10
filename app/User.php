@@ -62,4 +62,8 @@ class User extends Authenticatable
     public function singles(){
         return $this->hasMany('App\Single');
     }
+
+    public function server(){
+        return $this->hasMany('App\Nerdserver');
+    }
 }
