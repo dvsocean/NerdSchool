@@ -25,7 +25,8 @@ class User extends Authenticatable
         'goal',
         'interest',
         'notifyEmail',
-        'notifyAdditionals'
+        'notifyAdditionals',
+        'accepted_by'
     ];
 
     /**

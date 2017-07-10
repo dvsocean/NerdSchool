@@ -127,7 +127,7 @@
 @include('includes.word_validation')
 <!--JAVASCRIPT FILE-->
 
-@include('includes.footer')
+@include('includes.no_links_footer')
 
 
 </body>

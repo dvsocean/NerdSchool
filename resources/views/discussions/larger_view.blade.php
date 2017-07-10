@@ -16,8 +16,7 @@
 @include('includes.navbar')
 <!--NAV BAR-->
 
-    <!-- Wrapper -->
-    <div id="wrapper">
+
 
         <!-- Main -->
         <section id="main" class="main">
@@ -49,7 +48,6 @@
                 </div>
             </div>
         </section>
-    </div>
 
 
 @include('includes.footer')

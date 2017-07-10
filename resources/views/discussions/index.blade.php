@@ -98,10 +98,15 @@ use App\User; ?>
                     </div>
                 </div>
             </div>
+
+            <br><br>
+            <br><br>
+            <br><br>
+            <br><br>
+            <br><br>
+
         </section>
     </div>
-
-    <br><br>
 
 
 @include('includes.footer')

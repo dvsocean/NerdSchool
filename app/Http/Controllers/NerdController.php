@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Nerdserver;
 use App\User;
 use App\Photo;
 use Illuminate\Http\Request;
@@ -25,6 +26,22 @@ class NerdController extends Controller
 
         return view('classmates.index', compact('nerds'));
 
+    }
+
+    public function verify_nerd(Request $request){
+        $input['accepted_by']= $request->input('agreement');
+        $user= User::find($request->input('user_id'));
+        $user->update($input);
+        return redirect('/live');
+    }
+
+    public function upload(Request $request){
+        $file= $request->file('file');
+        $name= time().$file->getClientOriginalName();
+        $size= $file->getSize();
+        $type= $file->getClientOriginalExtension();
+        $file->move('nerd_server_files', $name);
+        Nerdserver::create(['user_id'=>Auth::user()->id, 'file'=>$name, 'file_size'=>$size, 'type'=>$type]);
     }
 
     /**

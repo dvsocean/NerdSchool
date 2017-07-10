@@ -129,4 +129,10 @@ Route::get('/live', function(){
 Route::get('/verify', function(){
     return view('go_live.verify');
 });
+
+Route::post('/accept_terms', 'NerdController@verify_nerd');
+
+
+Route::post('/server', 'NerdController@upload');
+
 //GO LIVE

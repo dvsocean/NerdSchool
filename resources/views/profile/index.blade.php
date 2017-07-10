@@ -53,24 +53,37 @@
                       <div class="alert alert-info text-center">{{ Session::get('message') }}</div><br>
                     @endif
 
-                    <!--PROJECT FILES OR DATABASE FOR ALL NERDS-->
-                    <div class="col-md-12" align="right">
-                        @if(Auth::user()->admin == 'yes')
-                        <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Database</button><br><br>
-                        @endif
-                            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".stats">Statistics</button><br><br>
-                    </div>
-                    <!--PROJECT FILES OR DATABASE FOR ALL NERDS-->
 
                     <div id="test"></div>
                         <img src="{{$user->photo ? $user->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="200" width="200" class="img-circle"><br><br>
 
                     {!! Form::model($user, ['method'=> 'PATCH', 'action'=>['NerdController@update', $user->id], 'files'=> true]) !!}
 
-                      {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
-
                       <br><br>
 
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                            {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}<br><br>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                            @if(Auth::user()->admin == 'yes')
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Database</button><br><br>
+                            @endif
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".stats">Statistics</button><br><br>
+                            @if(!Auth::user()->accepted_by)
+                                <a href="{{url('/verify')}}" class="btn btn-success">Get verified</a>
+                            @else
+                                <a href="" class="btn btn-success">Nerd Server</a><br><br>
+                                <a href="{{url('/live')}}" class="btn btn-success">Upload Files</a>
+                            @endif
+                        </div>
+                    </div>
+
+                    <br><br>
 
                       <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-6">
@@ -248,6 +261,12 @@
                         </div>
                     </div>
                 </div>
+
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
 <!-- START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA -->
 
 
