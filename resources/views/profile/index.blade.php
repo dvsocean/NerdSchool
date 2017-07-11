@@ -170,98 +170,9 @@
 
 
 <!-- START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA -->
-                <br><br>
-                <br><br>
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 col-md-4">
-                            <!--PLACEHOLDER-->
-                        </div>
-
-                        <div class="col-xs-12 col-md-4">
-                            <h3 align="center">Start a discussion</h3><br>
-                            <form action="{{url('/posts')}}" method="POST" id="postForm" name="postForm" enctype="multipart/form-data">
-                                <select id="topic" name="topic">
-                                    <option value="0">Select a topic &#8681;</option>
-                                    <option value="Server">Server</option>
-                                    <option value="Client">Client</option>
-                                    <option value="Linux">Linux</option>
-                                    <option value="PHP">PHP</option>
-                                    <option value="SQL">SQL</option>
-                                    <option value="Laravel">Laravel</option>
-                                    <option value="Javascript">Javascript</option>
-                                    <option value="JQuery">JQuery</option>
-                                    <option value="HTML">HTML</option>
-                                    <option value="CSS">CSS</option>
-                                    <option value="General">General</option>
-                                </select><br><br>
-                        </div>
-
-                        <div class="col-xs-12 col-md-4">
-                            <p>You may attach a JPG, PNG, GIF, SQL, TXT, DOCX, CSS or HTML file</p>
-                            <input type="file" name="attachment"><br><br>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12 col-md-2">
-                            <!--PLACEHOLDER-->
-                        </div>
-
-                        <div class="col-xs-12 col-md-4">
-                            <label for="title">Title</label><br>
-                            <input type="text" name="title" id="title">
-                        </div>
-
-                        <div class="col-xs-12 col-md-4">
-                            <label>Date</label><br>
-                            <input type="text" name="discussion_date" id="datepicker"><br><br>
-                        </div>
-
-                        <div class="col-xs-12 col-md-2">
-                            <!--PLACEHOLDER-->
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12 col-md-2">
-                            <p>
-                                Modify the discussion by
-                                opening it through the <strong>discussions</strong> page. You may
-                                also post files or photos.
-                                <br><br>
-
-                                <strong>Note</strong>: words that are part of
-                                SQL statements will automatically be mis-spelled
-                                to prevent database issues.
-                            </p><br>
-                        </div>
-
-                        <div class="col-xs-12 col-md-8">
-                            <label>Discussion</label><br>
-                            <textarea rows="7" name="post" id="post"></textarea><br>
-                            <input type="hidden" name="user_id" value="{{$user->id}}">
-                            <input type="hidden" name="posted_by" value="{{$user->name}}">
-                            <input type="hidden" name="email" value="{{$user->email}}">
-                            <input type="submit" value="Start Discussion"><br><br>
-                            </form>
-                        </div>
-
-                        <div class="col-xs-12 col-md-2">
-                            <p>
-                                Your account will be notified when someone
-                                responds to your thread. Just click the badge
-                                icon next to your name.
-                                <br><br>
-
-                                You may optionally select to be notified by email.
-                                Don't forget to checkout the settings page.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
+    <br><br>
+    <br><br>
+    @include('includes.start_a_discussion_form')
     <br><br>
     <br><br>
     <br><br>
@@ -270,122 +181,21 @@
 <!-- START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA START A DISCUSSION AREA -->
 
 
+<!--X-TOKEN-->
+@include('includes.x-token')
+<!--X-TOKEN-->
 
+<!--DATABASE MODAL-->
+@include('includes.database_modal')
+<!--DATABASE MODAL-->
 
+<!--CHARTS API JS-->
+@include('includes.charts_api_js')
+<!--CHARTS API JS-->
 
-<!--MODAL-->
-<style>
-    .modal-content {
-        padding: 25px;
-    }
-</style>
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <?php $all_nerds= User::all(); ?>
-            <div class="table-responsive">
-                <table class="table-striped">
-                    <thead>
-                    <td>ID</td>
-                    <td>Photo</td>
-                    <td>Name</td>
-                    <td>Email</td>
-                    <td>School</td>
-                    <td>Delete</td>
-                    </thead>
-                    <tbody>
-                    @foreach($all_nerds as $nerd)
-                        <tr>
-                            <td>{{$nerd->id}}</td>
-                            <td><img src="{{$nerd->photo ? $nerd->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="62" width="62" class="img-circle"></td>
-                            <td>{{$nerd->name}}</td>
-                            <td>{{$nerd->email}}</td>
-                            <td>{{$nerd->school}}</td>
-                            <td>
-                                <a href="{{route('destroy', ['id'=> $nerd->id])}}" class="btn btn-danger desNerd">DELETE</a>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-<!--MODAL-->
-
-
-    <!-- JS API-->
-    <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['Posts', <?php echo $user->posts->count(); ?>],
-                ['Comments', <?php echo $user->singles->count(); ?>],
-                ['File uploads', <?php echo $user->files->count(); ?>],
-                ['Email notify', <?php echo $user->additionals->count(); ?>],
-                ['Server', <?php echo $user->server->count(); ?>]
-            ]);
-            var options = {
-                title: 'Activity',
-                backgroundColor: 'transparent',
-                is3D: true,
-                pieSliceText: "none"
-            };
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-            chart.draw(data, options);
-        }
-    </script>
-    <!-- JS API-->
-
-
-
-    <!--MODAL-->
-    <div class="modal fade stats" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <!--CHART-->
-                <div id="piechart"></div>
-                <!--CHART-->
-
-                <!--HTML SETUP-->
-                <div class="row placeholders">
-                    <div class="col-xs-6 col-sm-2 placeholder">
-                        <h4 class="modal_bottom">Posts</h4>
-                        <h1><?php echo $user->posts->count(); ?></h1>
-                    </div>
-                    <div class="col-xs-6 col-sm-2 placeholder">
-                        <h4 class="modal_bottom">Comments</h4>
-                        <h1><?php echo $user->singles->count(); ?></h1>
-                    </div>
-                    <div class="col-xs-6 col-sm-3 placeholder" align="center">
-                        <h4 class="modal_bottom">Files</h4>
-                        <h1><?php echo $user->files->count(); ?></h1>
-                    </div>
-
-                    <div class="col-xs-6 col-sm-2 placeholder">
-                        <h4 class="modal_bottom">Notify</h4>
-                        <h1><?php  echo $user->additionals->count(); ?></h1>
-                    </div>
-
-                    <div class="col-xs-6 col-sm-2 placeholder">
-                        <h4 class="modal_bottom">Server</h4>
-                        <h1><?php  echo $user->server->count(); ?></h1>
-                    </div>
-                </div>
-                <!--HTML SETUP-->
-            </div>
-        </div>
-    </div>
-    <!--MODAL-->
-
-    <script type="text/javascript">
-        $.ajax({
-            headers: {'X-CSRF-Token': $('meta[name=token]').attr('content')}
-        });
-    </script>
+<!--CHARTS MODAL-->
+@include('includes.charts_modal')
+<!--CHARTS MODAL-->
 
 <!--JAVASCRIPT FILE-->
 @include('includes.validation_and_deletes')
