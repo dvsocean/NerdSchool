@@ -35,6 +35,7 @@ class NerdController extends Controller
         return redirect('/live');
     }
 
+
     public function upload(Request $request){
         $file= $request->file('file');
         $name= time().$file->getClientOriginalName();

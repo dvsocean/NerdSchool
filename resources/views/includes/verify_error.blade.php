@@ -33,7 +33,7 @@
         </div>
 
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-4">
-            <h4>You must get verified before you can upload pages.</h4>
+            <h4>For access to the Nerdserver you must get verified</h4>
             <br><br>
             <a href="{{url('/verify')}}" class="btn btn-success">Get verified</a>
             <a href="{{url('/profile')}}" class="btn btn-default">Not now</a>
@@ -45,7 +45,7 @@
     </div>
 </div>
 
-
+<br><br><br>
 @include('includes.footer')
 </body>
 </html>

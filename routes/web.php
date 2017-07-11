@@ -135,4 +135,8 @@ Route::post('/accept_terms', 'NerdController@verify_nerd');
 
 Route::post('/server', 'NerdController@upload');
 
+Route::get('/nerdserver', function(){
+    return view('nerdserver.nerdserver');
+});
+
 //GO LIVE

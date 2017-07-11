@@ -77,7 +77,7 @@
                             @if(!Auth::user()->accepted_by)
                                 <a href="{{url('/verify')}}" class="btn btn-success">Get verified</a>
                             @else
-                                <a href="" class="btn btn-success">Nerd Server</a><br><br>
+                                <a href="{{url('/nerdserver')}}" class="btn btn-success">Nerd Server</a><br><br>
                                 <a href="{{url('/live')}}" class="btn btn-success">Upload Files</a>
                             @endif
                         </div>

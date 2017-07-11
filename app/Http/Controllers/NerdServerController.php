@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Nerdserver;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NerdServerController extends Controller
 {
@@ -12,9 +13,10 @@ class NerdServerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        //
+
     }
 
     /**
