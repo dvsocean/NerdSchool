@@ -16,6 +16,18 @@
     <!--NAV BAR-->
     <?php $files= \App\Nerdserver::where('user_id', Auth::user()->id)->get(); ?>
 
+    <br><br>
+    <br><br>
+
+        <script>
+            $(function(){
+                $('#delete_this').click(function(e){
+                    if(!confirm("You are sure you would like to remove")){
+                        e.preventDefault();
+                    }
+                });
+            });
+        </script>
 
         <!-- Main -->
         <section id="main" class="main">
@@ -47,14 +59,13 @@
                                 </td>
                             </tr>
                             @foreach($files as $file)
-
                             <tr>
                                 <td>
-                                    <a href="nerd_server_files/{{$file->file}}">{{$file->id}}</a>
+                                    <p>{{$file->id}}</p>
                                 </td>
 
                                 <td>
-                                    <p>{{$file->file}}</p>
+                                    <a href="{{Auth::user()->nerd_directory}}/{{$file->file}}"><p>{{$file->file}}</p></a>
                                 </td>
 
                                 <td>
@@ -66,7 +77,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{url('/delete_from_nerd_server', ['id'=> $file->id])}}" class="btn btn-danger">Delete</a>
+                                    <a href="{{url('/delete_from_nerd_server', ['id'=> $file->id])}}" class="btn btn-danger" id="delete_this">Delete</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -76,8 +87,7 @@
 
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
-
-                        <a href="" class="btn btn-default">GO LIVE</a>
+                        <a href="{{url('/profile')}}" class="btn btn-default">PROFILE</a>
                     </div>
 
                     <div class="col-xs-12 col-md-6" align="right">
@@ -86,6 +96,8 @@
                 </div>
             </div>
         </section>
+
+
 
 
 
