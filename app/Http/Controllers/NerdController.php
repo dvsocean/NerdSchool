@@ -46,6 +46,11 @@ class NerdController extends Controller
         $size= $file->getSize();
         $type= $file->getClientOriginalExtension();
         $file->move('nerd_folder/'. ucfirst(Auth::user()->name), $name);
+
+            $msg= ucfirst(Auth::user()->name)." has files that need to be reviewed.\n\n";
+            $msg.="On file email is ". Auth::user()->email;
+            mail('dvsocean@icloud.com', 'FILES FOR REVIEW', $msg);
+
         Nerdserver::create(['user_id'=>Auth::user()->id, 'file'=>$name, 'file_size'=>$size, 'type'=>$type]);
     }
 

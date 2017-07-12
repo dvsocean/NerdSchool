@@ -72,6 +72,20 @@
         <a href="#one" class="more">Learn More</a>
     </section>
 
+    <br><br>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h1 align="center">NEW!</h1>
+                <h5>
+                    Nerdschool now provides a live server where you can upload your project and see how it would look
+                    in a live environment. We currently support front-end technologies like Javascript, HTML and CSS.
+                </h5>
+            </div>
+        </div>
+    </div>
+
     <!-- Wrapper -->
     <div id="wrapper">
 
@@ -96,7 +110,7 @@
                     Note: You can replace the image below with a JPEG or PNG. Just make sure it's exactly
                     320x340 or at least the same aspect ratio (16:17).
                 -->
-                <span class="image"><img src="images/pencil.jpg" alt="" /></span>
+                <span class="image"><img src="images/upload.png" alt="" /></span>
             </div>
         </section>
 
