@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('notifyEmail')->nullable();
             $table->string('notifyAdditionals')->nullable();
             $table->string('accepted_by')->nullable();
+            $table->string('nerd_directory')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

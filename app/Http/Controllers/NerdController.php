@@ -29,20 +29,35 @@ class NerdController extends Controller
     }
 
     public function verify_nerd(Request $request){
+        $storage_folder= $request->input('agreement');
+        $store_path= "nerd_folder/" . $storage_folder;
+
         $input['accepted_by']= $request->input('agreement');
+        $input['nerd_directory']= $store_path;
+
         $user= User::find($request->input('user_id'));
         $user->update($input);
+
+        File::makeDirectory($store_path, 0777, true);
+
         return redirect('/live');
     }
 
 
     public function upload(Request $request){
         $file= $request->file('file');
-        $name= time().$file->getClientOriginalName();
+        $name= $file->getClientOriginalName();
         $size= $file->getSize();
         $type= $file->getClientOriginalExtension();
-        $file->move('nerd_server_files', $name);
+        $file->move('nerd_folder/'. ucfirst(Auth::user()->name), $name);
         Nerdserver::create(['user_id'=>Auth::user()->id, 'file'=>$name, 'file_size'=>$size, 'type'=>$type]);
+    }
+
+    public function delete_from_nerd_server($id){
+        $file= Nerdserver::find($id);
+        unlink('nerd_folder/'. ucfirst(Auth::user()->name) .'/'.$file->file);
+        $file->delete();
+        return redirect('/nerdserver');
     }
 
     /**

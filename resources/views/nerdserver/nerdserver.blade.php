@@ -41,11 +41,16 @@
                                 <td>
                                     <p>Type</p>
                                 </td>
+
+                                <td>
+                                    <p>Action</p>
+                                </td>
                             </tr>
                             @foreach($files as $file)
+
                             <tr>
                                 <td>
-                                    <p>{{$file->id}}</p>
+                                    <a href="nerd_server_files/{{$file->file}}">{{$file->id}}</a>
                                 </td>
 
                                 <td>
@@ -59,20 +64,32 @@
                                 <td>
                                     <p>{{$file->type}}</p>
                                 </td>
+
+                                <td>
+                                    <a href="{{url('/delete_from_nerd_server', ['id'=> $file->id])}}" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
                             @endforeach
                         </table>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+
+                        <a href="" class="btn btn-default">GO LIVE</a>
+                    </div>
+
+                    <div class="col-xs-12 col-md-6" align="right">
+                        <a href="{{url('/live')}}" class="btn btn-default">ADD MORE</a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
 
-    @include('includes.footer')
+
+    @include('includes.no_links_footer')
     </body>
     </html>
 

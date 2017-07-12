@@ -11,6 +11,8 @@
 |
 */
 
+use App\Nerdserver;
+
 Route::get('/', function () {
     return view('welcome');
 })->name('homePage');
@@ -138,5 +140,7 @@ Route::post('/server', 'NerdController@upload');
 Route::get('/nerdserver', function(){
     return view('nerdserver.nerdserver');
 });
+
+Route::get('delete_from_nerd_server/{id}', 'NerdController@delete_from_nerd_server');
 
 //GO LIVE
