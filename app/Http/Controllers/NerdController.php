@@ -31,15 +31,11 @@ class NerdController extends Controller
     public function verify_nerd(Request $request){
         $storage_folder= $request->input('agreement');
         $store_path= "nerd_folder/" . $storage_folder;
-
         $input['accepted_by']= $request->input('agreement');
         $input['nerd_directory']= $store_path;
-
         $user= User::find($request->input('user_id'));
         $user->update($input);
-
         File::makeDirectory($store_path, 0777, true);
-
         return redirect('/live');
     }
 

@@ -34,12 +34,26 @@
                                 {{csrf_field()}}
                             </form>
                             <br><br>
-                            <a href="{{url('/profile')}}" class="btn btn-default">DONE</a>
-                            <br><br>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <a href="{{url('/profile')}}" class="btn btn-default">PROFILE</a>
+                        </div>
+
+                        <div class="col-xs-12 col-md-6" align="right">
+                            <a href="{{url('/nerdserver')}}" class="btn btn-success">Nerd Server</a>
+                        </div>
+                    </div>
+
+                    <br><br>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12">
                             <h5>Your files will be reviewed within 24 hours. We will notify you upon completion at
-                                <strong>{{Auth::user()->email}}</strong></h5>
-                            <br><br>
-                            <h5>You can view your project by clicking the "Nerd Server" button on your profile page</h5>
+                                <strong>{{Auth::user()->email}}</strong>. You can view your project by clicking the
+                                "Nerd Server" button on your profile page</h5>
                         </div>
                     </div>
                 </div>

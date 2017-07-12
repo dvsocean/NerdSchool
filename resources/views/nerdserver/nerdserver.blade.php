@@ -29,59 +29,20 @@
             });
         </script>
 
+
         <!-- Main -->
         <section id="main" class="main">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
                         <h1>NERDSERVER</h1>
-
-                        <table>
-                            <tr>
-                                <td>
-                                    <p>ID</p>
-                                </td>
-
-                                <td>
-                                    <p>File</p>
-                                </td>
-
-                                <td>
-                                    <p>Size</p>
-                                </td>
-
-                                <td>
-                                    <p>Type</p>
-                                </td>
-
-                                <td>
-                                    <p>Action</p>
-                                </td>
-                            </tr>
-                            @foreach($files as $file)
-                            <tr>
-                                <td>
-                                    <p>{{$file->id}}</p>
-                                </td>
-
-                                <td>
-                                    <a href="{{Auth::user()->nerd_directory}}/{{$file->file}}"><p>{{$file->file}}</p></a>
-                                </td>
-
-                                <td>
-                                    <p>{{$file->file_size}} KB</p>
-                                </td>
-
-                                <td>
-                                    <p>{{$file->type}}</p>
-                                </td>
-
-                                <td>
-                                    <a href="{{url('/delete_from_nerd_server', ['id'=> $file->id])}}" class="btn btn-danger" id="delete_this">Delete</a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </table>
+                        @if(Auth::user()->reviewed)
+                            @include('includes.files_reviewed')
+                        @else
+                            <br><br>
+                            @include('includes.not_reviewed')
+                            <br><br>
+                        @endif
                     </div>
                 </div>
 

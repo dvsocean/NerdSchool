@@ -27,7 +27,8 @@ class User extends Authenticatable
         'notifyEmail',
         'notifyAdditionals',
         'accepted_by',
-        'nerd_directory'
+        'nerd_directory',
+        'reviewed'
     ];
 
     /**
