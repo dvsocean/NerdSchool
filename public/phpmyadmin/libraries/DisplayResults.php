@@ -793,9 +793,8 @@ class DisplayResults
 
             //<form> to keep the form alignment of button < and <<
             // and also to know what to execute when the selector changes
-            $table_navigation_html .= '<form action="sql.php'
-                . URL::getCommon($_url_params)
-                . '" method="post">';
+            $table_navigation_html .= '<form action="sql.php" method="post">';
+            $table_navigation_html .= URL::getHiddenInputs($_url_params);
 
             $table_navigation_html .= Util::pageselector(
                 'pos',
@@ -2129,7 +2128,7 @@ class DisplayResults
             // Incase this is the current column save $single_sort_order
             if ($current_name == $name_to_use_in_sort) {
                 if (mb_strpos($current_name, '(') !== false) {
-                    $single_sort_order = "\n" . 'ORDER BY ' . $current_name . ' ';
+                    $single_sort_order = "\n" . 'ORDER BY ' . Util::backquote($current_name) . ' ';
                 } else {
                     $single_sort_order = "\n" . 'ORDER BY ' . $sort_tbl
                         . Util::backquote(

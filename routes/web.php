@@ -142,5 +142,12 @@ Route::get('/nerdserver', function(){
 });
 
 Route::get('delete_from_nerd_server/{id}', 'NerdController@delete_from_nerd_server');
-
 //GO LIVE
+
+
+
+//ADMIN-REVIEW FILES
+Route::get('/review', function(){
+    return view('nerdserver.review_user_files');
+});
+//ADMIN-REVIEW FILES

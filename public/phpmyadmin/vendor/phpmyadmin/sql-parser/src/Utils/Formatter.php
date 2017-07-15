@@ -29,6 +29,29 @@ class Formatter
     public $options;
 
     /**
+     * Clauses that are usually short.
+     *
+     * These clauses share the line with the next clause.
+     *
+     * E.g. if INSERT was not here, the formatter would produce:
+     *
+     *      INSERT
+     *      INTO foo
+     *      VALUES(0, 0, 0),(1, 1, 1);
+     *
+     * Instead of:
+     *
+     *      INSERT INTO foo
+     *      VALUES(0, 0, 0),(1, 1, 1)
+     *
+     * @var array
+     */
+    public static $SHORT_CLAUSES = array(
+        'CREATE' => true,
+        'INSERT' => true,
+    );
+
+    /**
      * Clauses that must be inlined.
      *
      * These clauses usually are short and it's nicer to have them inline.
@@ -37,6 +60,7 @@ class Formatter
      */
     public static $INLINE_CLAUSES = array(
         'CREATE' => true,
+        'INTO' => true,
         'LIMIT' => true,
         'PARTITION BY' => true,
         'PARTITION' => true,
@@ -340,6 +364,10 @@ class Formatter
             $curr = $list->tokens[$list->idx];
 
             if ($curr->type === Token::TYPE_WHITESPACE) {
+                // Keep linebreaks after comments
+                if (strpos($curr->token, "\n") !== false && $prev !== null && $prev->type === Token::TYPE_COMMENT) {
+                    $lineEnded = true;
+                }
                 // Whitespaces are skipped because the formatter adds its own.
                 continue;
             }
@@ -376,9 +404,9 @@ class Formatter
 
                 // Checking if this clause ended.
                 if ($tmp = static::isClause($curr)) {
-                    if ($tmp == 2 || $this->options['clause_newline']) {
+                    if (($tmp == 2 || $this->options['clause_newline']) && empty(self::$SHORT_CLAUSES[$lastClause])) {
                         $lineEnded = true;
-                        if ($this->options['parts_newline']) {
+                        if ($this->options['parts_newline'] && $indent > 0) {
                             --$indent;
                         }
                     }
@@ -442,11 +470,6 @@ class Formatter
 
                 // Finishing the line.
                 if ($lineEnded) {
-                    if ($indent < 0) {
-                        // TODO: Make sure this never occurs and delete it.
-                        $indent = 0;
-                    }
-
                     $ret .= $this->options['line_ending']
                         . str_repeat($this->options['indentation'], $indent);
 
@@ -506,6 +529,7 @@ class Formatter
     public function toString($token)
     {
         $text = $token->token;
+        static $prev;
 
         foreach ($this->options['formats'] as $format) {
             if ($token->type === $format['type']
@@ -521,7 +545,12 @@ class Formatter
                 if ($this->options['type'] === 'html') {
                     return '<span ' . $format['html'] . '>' . htmlspecialchars($text, ENT_NOQUOTES) . '</span>';
                 } elseif ($this->options['type'] === 'cli') {
-                    return $format['cli'] . $this->escapeConsole($text);
+                    if ($prev != $format['cli']) {
+                        $prev = $format['cli'];
+                        return $format['cli'] . $this->escapeConsole($text);
+                    }
+
+                    return $this->escapeConsole($text);
                 }
 
                 break;
@@ -529,7 +558,12 @@ class Formatter
         }
 
         if ($this->options['type'] === 'cli') {
-            return "\x1b[39m" . $this->escapeConsole($text);
+            if ($prev != "\x1b[39m") {
+                $prev = "\x1b[39m";
+                return "\x1b[39m" . $this->escapeConsole($text);
+            }
+
+            return $this->escapeConsole($text);
         } elseif ($this->options['type'] === 'html') {
             return htmlspecialchars($text, ENT_NOQUOTES);
         }
