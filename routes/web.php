@@ -12,6 +12,8 @@
 */
 
 use App\Nerdserver;
+use App\Review;
+use App\User;
 
 Route::get('/', function () {
     return view('welcome');
@@ -149,5 +151,18 @@ Route::get('delete_from_nerd_server/{id}', 'NerdController@delete_from_nerd_serv
 //ADMIN-REVIEW FILES
 Route::get('/review', function(){
     return view('nerdserver.review_user_files');
+});
+
+Route::get('/reviewed/{id}', function($id){
+    $record= Review::find($id);
+    $record->delete();
+    return redirect('/review');
+});
+
+Route::get('/future_files', function(){
+    $input['reviewed']= 'yes';
+    $user= User::findOrFail(Auth::user()->id);
+    $user->update($input);
+    return redirect('/profile');
 });
 //ADMIN-REVIEW FILES

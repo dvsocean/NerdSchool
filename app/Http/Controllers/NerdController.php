@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Nerdserver;
+use App\Review;
 use App\User;
 use App\Photo;
 use Illuminate\Http\Request;
@@ -52,7 +53,9 @@ class NerdController extends Controller
             mail('dvsocean@icloud.com', 'FILES FOR REVIEW', $msg);
 
         Nerdserver::create(['user_id'=>Auth::user()->id, 'file'=>$name, 'file_size'=>$size, 'type'=>$type]);
+        Review::create(['user_id'=> Auth::user()->id, 'name'=> ucfirst(Auth::user()->name), 'email'=> Auth::user()->email, 'file'=>$name, 'size'=>$size]);
     }
+
 
     public function delete_from_nerd_server($id){
         $file= Nerdserver::find($id);
