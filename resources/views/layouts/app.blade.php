@@ -78,9 +78,9 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h1 align="center">NEW!</h1>
-                <h5>
+                <h5 align="center">
                     Nerdschool now provides a live server where you can upload your project and see how it would look
-                    in a live environment. We currently support front-end technologies like Javascript, HTML and CSS.
+                    in a live environment. Currently supported technologies are Javascript, HTML and CSS.
                 </h5>
             </div>
         </div>

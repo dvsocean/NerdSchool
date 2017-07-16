@@ -60,7 +60,7 @@
                                     "Nerd Server" button on your profile page.
                                 </h5>
                             @endif
-                            <h5><strong>Note: </strong> Files with the same name will not be uploaded.</h5>
+                            <h5><strong>Note: </strong> We accept .js .css .html .jpg .jpeg .png, duplicate file names will not be uploaded.</h5>
                         </div>
                     </div>
                 </div>
