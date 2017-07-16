@@ -29,6 +29,9 @@
                             <br><br>
                             <br><br>
 
+                            @if (Session::has('file_exists'))
+                                <div class="alert alert-danger text-center">{{ Session::get('file_exists') }}</div><br>
+                            @endif
 
                             <form action="{{url('/server')}}" id="my-awesome-dropzone" method="POST" class="dropzone">
                                 {{csrf_field()}}
@@ -57,6 +60,7 @@
                                     "Nerd Server" button on your profile page.
                                 </h5>
                             @endif
+                            <h5><strong>Note: </strong> Files with the same name will not be uploaded.</h5>
                         </div>
                     </div>
                 </div>
@@ -65,9 +69,8 @@
         <br><br>
         <br><br>
         <br><br>
-        <br><br>
-        <br><br>
-        <br>
+        <br><br><br>
+
 
     @include('includes.footer')
 
