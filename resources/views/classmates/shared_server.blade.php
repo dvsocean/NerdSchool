@@ -67,7 +67,7 @@
                             </table>
                         </div>
 
-                        <a href="{{url('/classmates')}}" class="btn btn-default">Return</a>
+                        <a href="{{url('/classmates')}}" class="btn btn-default">Return</a><br><br><br>
 
                     </div>
                 </div>

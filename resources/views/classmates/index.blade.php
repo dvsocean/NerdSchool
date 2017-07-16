@@ -8,7 +8,6 @@
     <!--HEADER-->
 </head>
 <body>
-<?php $user= Auth::user(); ?>
 
 <!-- Page Wrapper -->
 <div id="page-wrapper">
@@ -44,6 +43,7 @@
                             @endforeach
                         </table>
                     </div>
+                    <h4 align="center">{{$nerds->links()}}</h4>
                 </div>
             @endif
         </div>
@@ -53,6 +53,10 @@
     <br><br>
     <br><br>
     <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br>
 
 @include('includes.footer')
 

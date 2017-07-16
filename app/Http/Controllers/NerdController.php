@@ -23,7 +23,7 @@ class NerdController extends Controller
      */
     public function index()
     {
-        $nerds= User::all();
+        $nerds= User::paginate(10);
 
         return view('classmates.index', compact('nerds'));
 

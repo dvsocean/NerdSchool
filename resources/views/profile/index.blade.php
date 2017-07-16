@@ -70,7 +70,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
                             @if(Auth::user()->admin == 'yes')
                                 <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Database</button><br><br>
-                                <a href="{{url('/review')}}" class="btn btn-default">Review files</a>
+                                <a href="{{url('/review')}}" class="btn btn-default">Review files</a><br><br>
                             @endif
                         </div>
 
