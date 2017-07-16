@@ -178,3 +178,9 @@ Route::get('/reject/{id}', function($id){
     return redirect('/review');
 });
 //ADMIN-REVIEW FILES
+
+//SHARED SERVER BETWEEN NERDS
+Route::get('/view_files/{id}', function($id){
+    return view('classmates.shared_server', compact('id'));
+});
+//SHARED SERVER BETWEEN NERDS
