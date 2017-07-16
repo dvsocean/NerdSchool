@@ -39,7 +39,7 @@
             </td>
 
             <td>
-                <a href="{{url('/delete_from_nerd_server', ['id'=> $file->id])}}" class="btn btn-danger" id="delete_this">Delete</a>
+                <a href="{{url('/delete_from_nerd_server', ['id'=> $file->id])}}" class="btn btn-danger delete_this">Delete</a>
             </td>
         </tr>
     @endforeach

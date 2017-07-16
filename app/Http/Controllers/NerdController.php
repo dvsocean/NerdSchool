@@ -41,6 +41,7 @@ class NerdController extends Controller
     }
 
 
+    //INCOMING FROM DROPZONE
     public function upload(Request $request){
         $file= $request->file('file');
         $name= $file->getClientOriginalName();
@@ -59,6 +60,7 @@ class NerdController extends Controller
 
     public function delete_from_nerd_server($id){
         $file= Nerdserver::find($id);
+        Session::flash('server_message', 'You have deleted "' . $file->file . '" from the server');
         unlink('nerd_folder/'. ucfirst(Auth::user()->name) .'/'.$file->file);
         $file->delete();
         return redirect('/nerdserver');

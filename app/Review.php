@@ -13,4 +13,8 @@ class Review extends Model
         'file',
         'size'
     ];
+
+    public function user(){
+        return $this->hasOne('App\User', 'id', 'user_id');
+    }
 }

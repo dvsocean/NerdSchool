@@ -14,6 +14,7 @@
 use App\Nerdserver;
 use App\Review;
 use App\User;
+use Illuminate\Support\Facades\Session;
 
 Route::get('/', function () {
     return view('welcome');
@@ -159,10 +160,21 @@ Route::get('/reviewed/{id}', function($id){
     return redirect('/review');
 });
 
-Route::get('/future_files', function(){
+Route::get('/future_files/{user_id}', function($user_id){
     $input['reviewed']= 'yes';
-    $user= User::findOrFail(Auth::user()->id);
+    $user= User::findOrFail($user_id);
     $user->update($input);
-    return redirect('/profile');
+    Session::flash('allow_message', 'You have allowed "'. ucfirst($user->name) .'" to upload future files.');
+    return redirect('/review');
+});
+
+Route::get('/reject/{id}', function($id){
+    $review= Review::find($id);
+    $ns= Nerdserver::find($id);
+    $review->delete();
+    $ns->delete();
+    unlink($review->user->nerd_directory .'/'. $review->file);
+    Session::flash('reject_message', 'You have deleted "'. $ns->file .'" from the database permanently');
+    return redirect('/review');
 });
 //ADMIN-REVIEW FILES

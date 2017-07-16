@@ -51,15 +51,23 @@
 
                     <div class="row">
                         <div class="col-xs-12 col-md-12">
-                            <h5>Your files will be reviewed within 24 hours. We will notify you upon completion at
-                                <strong>{{Auth::user()->email}}</strong>. You can view your project by clicking the
-                                "Nerd Server" button on your profile page</h5>
+                            @if(!Auth::user()->reviewed)
+                                <h5>Your files will be reviewed within 24 hours. We will notify you upon completion at
+                                    <strong>{{Auth::user()->email}}</strong>. You can view your project by clicking the
+                                    "Nerd Server" button on your profile page.
+                                </h5>
+                            @endif
                         </div>
                     </div>
                 </div>
             </section>
 
         <br><br>
+        <br><br>
+        <br><br>
+        <br><br>
+        <br><br>
+        <br>
 
     @include('includes.footer')
 

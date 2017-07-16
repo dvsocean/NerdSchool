@@ -21,8 +21,9 @@
 
         <script>
             $(function(){
-                $('#delete_this').click(function(e){
-                    if(!confirm("You are sure you would like to remove")){
+                $('.delete_this').click(function(e){
+
+                    if(!confirm("You are sure you would like to remove this file?")){
                         e.preventDefault();
                     }
                 });
@@ -36,6 +37,11 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
                         <h1>NERDSERVER</h1>
+                        <br><br>
+                        @if (Session::has('server_message'))
+                            <div class="alert alert-info text-center">{{ Session::get('server_message') }}</div><br>
+                        @endif
+
                         @if(Auth::user()->reviewed)
                             @include('includes.files_reviewed')
                         @else

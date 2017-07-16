@@ -28,6 +28,10 @@
             <td>
                 <strong><p>Action</p></strong>
             </td>
+
+            <td>
+                <strong><p>Action</p></strong>
+            </td>
         </tr>
         @foreach($reviews as $review)
             <tr>
@@ -52,11 +56,19 @@
                 </td>
 
                 <td>
-                    <a href="{{url('/reviewed', ['id'=>$review->id])}}" class="btn btn-success" id="review_button">Reviewed</a>
+                    <a href="{{url('/reviewed', ['id'=>$review->id])}}" class="btn btn-success review_button">Reviewed</a>
                 </td>
 
                 <td>
-                    <a href="{{url('/future_files')}}" class="btn btn-success" id="allow_button">Allow All</a>
+                    @if(!$review->user->reviewed)
+                        <a href="{{url('/future_files', ['id'=> $review->user_id])}}" class="btn btn-success allow_button">Allow</a>
+                    @endif
+                </td>
+
+                <td>
+                    @if(!$review->user->reviewed)
+                        <a href="{{url('/reject', ['id'=>$review->id])}}" class="btn btn-danger reject_button">Reject</a>
+                    @endif
                 </td>
             </tr>
         @endforeach
