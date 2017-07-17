@@ -63,7 +63,7 @@
 
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" align="left">
-                            <strong><p>Select a new profile photo</p></strong>
+                            <strong><p>Update profile photo</p></strong>
                             {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}<br><br>
                         </div>
 

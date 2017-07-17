@@ -80,7 +80,7 @@
                 <h1 align="center">NEW!</h1>
                 <h5 align="center">
                     Nerdschool now provides a live server where you can upload your project and see how it would look
-                    in a live environment. Currently supported technologies are Javascript, HTML and CSS.
+                    in a live environment. Front-end technologies are supported with external libraries via CDN.
                 </h5>
             </div>
         </div>
