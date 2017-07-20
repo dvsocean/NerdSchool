@@ -34,41 +34,12 @@
 
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="right">
-                        <div class="table-responsive">
-                            <table class="table-hover">
-                                <tr>
-                                    <td>
-                                        <p>File</p>
-                                    </td>
-
-                                    <td>
-                                        <p>Size</p>
-                                    </td>
-
-                                    <td>
-                                        <p>Type</p>
-                                    </td>
-                                </tr>
-                                @foreach($user->server as $srvr)
-                                <tr>
-                                    <td>
-                                        <a href="{{url($user->nerd_directory.'/'.$srvr->file)}}"><p>{{$srvr->file}}</p></a>
-                                    </td>
-
-                                    <td>
-                                        <p>{{$srvr->file_size}} KB</p>
-                                    </td>
-
-                                    <td>
-                                        <p>{{$srvr->type}}</p>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </table>
-                        </div>
-
+                        @if(count($user->server) > 0)
+                            @include('includes.shared_project_files')
+                        @else
+                            <h3 align="center">{{$user->name}} is not sharing any files</h3>
+                        @endif
                         <a href="{{url('/classmates')}}" class="btn btn-default">Return</a><br><br><br>
-
                     </div>
                 </div>
             </div>

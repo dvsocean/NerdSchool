@@ -4,7 +4,7 @@
             <!--PLACEHOLDER-->
         </div>
 
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-sm-8 col-md-4">
             <h3 align="center">Start a discussion</h3><br>
             <form action="{{url('/posts')}}" method="POST" id="postForm" name="postForm" enctype="multipart/form-data">
                 <select id="topic" name="topic">
@@ -23,7 +23,7 @@
                 </select><br><br>
         </div>
 
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-sm-4 col-md-4">
             <p>You may attach a JPG, PNG, GIF, SQL, TXT, DOCX, CSS or HTML file</p>
             <input type="file" name="attachment"><br><br>
         </div>
@@ -34,12 +34,12 @@
             <!--PLACEHOLDER-->
         </div>
 
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-sm-6 col-md-4">
             <label for="title">Title</label><br>
             <input type="text" name="title" id="title">
         </div>
 
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-sm-6 col-md-4">
             <label>Date</label><br>
             <input type="text" name="discussion_date" id="datepicker"><br><br>
         </div>
@@ -50,7 +50,7 @@
     </div>
 
     <div class="row">
-        <div class="col-xs-12 col-md-2">
+        <div class="col-xs-12 col-sm-3 col-md-2">
             <p>
                 Modify the discussion by
                 opening it through the <strong>discussions</strong> page. You may
@@ -63,7 +63,7 @@
             </p><br>
         </div>
 
-        <div class="col-xs-12 col-md-8">
+        <div class="col-xs-12 col-sm-6 col-md-8">
             <label>Discussion</label><br>
             <textarea rows="7" name="post" id="post"></textarea><br>
             <input type="hidden" name="user_id" value="{{$user->id}}">
@@ -73,7 +73,7 @@
             </form>
         </div>
 
-        <div class="col-xs-12 col-md-2">
+        <div class="col-xs-12 col-sm-3 col-md-2">
             <p>
                 Your account will be notified when someone
                 responds to your thread. Just click the badge

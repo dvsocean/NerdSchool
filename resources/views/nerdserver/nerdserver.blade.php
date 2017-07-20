@@ -14,7 +14,9 @@
     <!--NAV BAR-->
     @include('includes.navbar')
     <!--NAV BAR-->
-    <?php $files= \App\Nerdserver::where('user_id', Auth::user()->id)->get(); ?>
+    <?php
+    $files= \App\Nerdserver::where('user_id', Auth::user()->id)->get();
+    ?>
 
     <br><br>
     <br><br>
@@ -36,14 +38,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-md-12">
-                        <h1>NERDSERVER</h1>
-                        <br><br>
+
                         @if (Session::has('server_message'))
                             <div class="alert alert-info text-center">{{ Session::get('server_message') }}</div><br>
                         @endif
 
                         @if(Auth::user()->reviewed)
-                            @include('includes.files_reviewed')
+                           @if(count($files) > 0)
+                                <h1>NERDSERVER</h1>
+                                <br><br>
+                                @include('includes.files_reviewed')
+                           @else
+                                <h3>Your server is empty</h3><br><br>
+                           @endif
                         @else
                             <br><br>
                             @include('includes.not_reviewed')

@@ -30,7 +30,10 @@
 
 
 <body>
-<?php $user= Auth::user(); ?>
+<?php
+$user= Auth::user();
+$review=\App\Review::all();
+?>
 
 <!-- Page Wrapper -->
 <div id="page-wrapper">
@@ -55,6 +58,7 @@
 
 
                     <div id="test"></div>
+                        <br><br>
                         <img src="{{$user->photo ? $user->photo->file : 'PLACEHOLDER/avatar.JPG'}}" height="200" width="200" class="img-circle"><br><br>
 
                     {!! Form::model($user, ['method'=> 'PATCH', 'action'=>['NerdController@update', $user->id], 'files'=> true]) !!}
@@ -62,19 +66,21 @@
                       <br><br>
 
                     <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4" align="left">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" align="left">
                             <strong><p>Update profile photo</p></strong>
                             {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}<br><br>
                         </div>
 
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             @if(Auth::user()->admin == 'yes')
                                 <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Database</button><br><br>
-                                <a href="{{url('/review')}}" class="btn btn-default">Review files</a><br><br>
+                                @if(!count($review) < 1)
+                                    <a href="{{url('/review')}}" class="btn btn-default">Review files</a><br><br>
+                                @endif
                             @endif
                         </div>
 
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             <button type="button" class="btn btn-default" data-toggle="modal" data-target=".stats">Statistics</button><br><br>
                             @if(!Auth::user()->accepted_by)
                                 <p>View your project on our sever..</p>

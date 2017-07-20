@@ -56,7 +56,7 @@
                 </td>
 
                 <td>
-                    <a href="{{url('/reviewed', ['id'=>$review->id])}}" class="btn btn-success review_button">Reviewed</a>
+                    <a href="{{url('/reviewed', ['id'=>$review->id])}}" class="btn btn-success review_button"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Verified</a>
                 </td>
 
                 <td>

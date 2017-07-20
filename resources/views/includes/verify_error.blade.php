@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Verification required</title>
+    <title>Verification required!</title>
     @include('includes.header')
 </head>
 <body>

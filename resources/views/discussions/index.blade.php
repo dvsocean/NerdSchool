@@ -42,8 +42,8 @@ use App\User; ?>
                     <h1>Discussions</h1><br>
                 </header>
                 <span><img src="page_images/discussions.png" height="150" width="300" class="center-block"/></span>
-                <p class="text-center">Focus is on web technologies that allow us to create dynamic sites. The goal is to spend less
-                    time struggling and more time coding, we'd love to have your input. These are the active discussions we currently have.
+                <p class="text-center">The goal is to spend less time struggling and more time coding. These are the
+                    active discussions we currently have.
                 </p>
                 <br>
             </div>
@@ -76,18 +76,20 @@ use App\User; ?>
                         <div class="table-responsive">
                             <table class="table-hover">
                                 <tr>
-                                    <td><strong>Comments</strong></td>
+                                    <td><strong>#</strong></td>
                                     <td><strong>Updated</strong></td>
                                     <td><strong>Title</strong></td>
+                                    <td><strong>Comments</strong></td>
                                     <td><strong>Thread</strong></td>
                                     <td><strong>Author</strong></td>
                                 </tr>
 
                                 @foreach($posts as $post)
                                 <tr>
-                                    <td>{{count($post->singles)}}</td>
+                                    <td>{{$post->id}}</td>
                                     <td>{{$post->singles->pluck('updated_at')->last() ? $post->singles->pluck('updated_at')->last()->diffForHumans() : 'No updates yet'}}</td>
                                     <td><a href="{{route('each', ['id'=> $post->id])}}">{{str_limit($post->title, 15)}}</a></td>
+                                    <td>{{count($post->singles)}}</td>
                                     <td>{{$post->topic}}</td>
                                     <td>{{ucfirst($post->posted_by)}}</td>
                                 </tr>

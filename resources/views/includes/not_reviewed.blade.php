@@ -1,1 +1,1 @@
-<h3>Your files are still under review...</h3>
+<h3>Your files are still under review..</h3>

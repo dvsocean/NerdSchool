@@ -27,21 +27,21 @@
             <div class="">
                 <div class="container">
                     <div class="row" align="center">
-                        <div class="col-xs-12 col-sm-4 col-md-12 col-lg-12">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <h1>{{$user->name}}'s Page</h1><br>
                         </div>
                     </div>
 
                     <div class="row" align="center">
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-4">
                             <!--PLACEHOLDER-->
                         </div>
 
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-4">
                             <img src="../{{$user->photo ? $user->photo->file : 'PLACEHOLDER/avatar.JPG'}}" class="img-responsive img-rounded"><br>
                         </div>
 
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-4">
                             <a href="javascript:history.back()" class="btn btn-default">GO BACK</a><br><br>
                         </div>
                     </div>
