@@ -79,8 +79,9 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h1 align="center">NEW!</h1>
                 <h5 align="center">
-                    Nerdschool now provides a live server where you can upload your project and see how it would look
-                    in a live environment. Front-end technologies are supported with external libraries via CDN.
+                    Nerdschool now provides a live server where you can upload your project and share it with other
+                    users or share the url with the whole internet if you like. Front-end technologies are supported
+                    with external libraries via CDN.
                 </h5>
             </div>
         </div>
