@@ -10,11 +10,11 @@
     <body>
                 <div class="container">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
                           <!--PLACEHOLDER-->
                         </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
                           <div class="form-box">
                         		<div class="form-top">
 	                        		<div class="form-top-left">
@@ -71,7 +71,7 @@
                         	</div>
                         </div>
 
-                        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
                           <!--PLACEHOLDER-->
                         </div>
                     </div>
