@@ -70,14 +70,12 @@
                 <label>Comment:</label><br>
                 <textarea name="comment" rows="10"></textarea><br><br>
 
-                <input type="submit" value="Send"><br><br>
+                <input type="submit" value="Send Message"><br><br>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                 <p>
-                    Direct email: <a href="mailto:dvsocean@icloud.com">dvsocean@icloud.com</a>
-                    <br><br>
-                    Recent Discussions include<br>
+                    Recent discussions include<br>
                     <strong>PHP</strong><br>
                     <strong>SQL</strong><br>
                     and were growing with <strong>MVC</strong> frameworks.<br><br>

@@ -9,32 +9,32 @@
             <!--HTML SETUP-->
             <div class="row placeholders">
                 <div class="col-xs-6 col-sm-2 col-md-2 col-lg-4" align="center">
-                    <h6 class="modal_bottom">Posts</h6>
-                    <h1><?php echo $user->posts->count(); ?></h1>
+                    <h5 class="modal_bottom">Posts</h5>
+                    <h6><?php echo $user->posts->count() ? $user->posts->count() : 'You have not created any posts'; ?></h6>
                 </div>
                 <div class="col-xs-6 col-sm-2 col-md-2 col-lg-4" align="center">
-                    <h6 class="modal_bottom">Comments</h6>
-                    <h1><?php echo $user->singles->count(); ?></h1>
+                    <h5 class="modal_bottom">Comments</h5>
+                    <h6><?php echo $user->singles->count() ? $user->singles->count() : 'You have not commented on a post'; ?></h6>
                 </div>
                 <div class="col-xs-6 col-sm-2 col-md-2 col-lg-4" align="center">
-                    <h6 class="modal_bottom">Files</h6>
-                    <h1><?php echo $user->files->count(); ?></h1>
+                    <h5 class="modal_bottom">Files</h5>
+                    <h6><?php echo $user->files->count() ? $user->files->count() : 'You have not uploaded any files'; ?></h6>
                 </div>
 
                 <div class="col-xs-6 col-sm-3 col-md-2 col-lg-4" align="center">
-                    <h6 class="modal_bottom">Notify</h6>
-                    <h1><?php  echo $user->additionals->count(); ?></h1>
+                    <h5 class="modal_bottom">Notify</h5>
+                    <h6><?php  echo $user->additionals->count() ? $user->additionals->count() : 'You have not joined any discussions'; ?></h6>
                 </div>
 
                 <div class="col-xs-6 col-sm-2 col-md-2 col-lg-4" align="center">
-                    <h6 class="modal_bottom">Server</h6>
-                    <h1><?php  echo $user->server->count(); ?></h1>
+                    <h5 class="modal_bottom">Server</h5>
+                    <h6><?php  echo $user->server->count() ? $user->server->count() : 'You have not uploaded any files to your server'; ?></h6>
                 </div>
             </div>
             <!--HTML SETUP-->
             <br><br>
             <!--BUTTONS-->
-            <div class="row">
+            <div class="row" align="right">
                 <div class="col-xs-6 col-sm-2 col-md-2 col-lg-4">
 
                 </div>
@@ -43,13 +43,13 @@
 
                 </div>
 
-                <div class="col-xs-6 col-sm-2 col-md-2 col-lg-4">
+                <div class="col-xs-6 col-sm-2 col-md-2 col-lg-4" align="right">
                     @if(!Auth::user()->accepted_by)
-                        <p>View your project on our sever..</p>
+                        <p>Share your project on our sever..</p>
                         <a href="{{url('/verify')}}" class="btn btn-success">Get verified</a>
                     @else
                         <a href="{{url('/nerdserver')}}" class="btn btn-success">Nerd Server</a>
-
+                        <br><br>
                         <a href="{{url('/live')}}" class="btn btn-success">Upload Files</a>
                     @endif
                 </div>
