@@ -45,6 +45,7 @@
         @else
             <li><a href="{{url('/register')}}" class="button special fit">Register</a></li>
             <li><a href="/login" class="button fit">Log In</a></li>
+            <li><a href="{{url('/contact')}}" class="button fit">Contact</a></li>
         @endif
     </ul>
     </nav>

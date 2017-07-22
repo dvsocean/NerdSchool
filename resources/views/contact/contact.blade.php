@@ -1,6 +1,3 @@
-<?php use App\Post;
-use App\User; ?>
-@if(Auth::user())
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -80,20 +77,18 @@ use App\User; ?>
                 <p>
                     Direct email: <a href="mailto:dvsocean@icloud.com">dvsocean@icloud.com</a>
                     <br><br>
-                    Recent Discussions include PHP, SQL and were growing with MVC frameworks.
+                    Recent Discussions include<br>
+                    <strong>PHP</strong><br>
+                    <strong>SQL</strong><br>
+                    and were growing with <strong>MVC</strong> frameworks.<br><br>
+
                     Laravel is the primary focus but all are welcome. Drop us a line if you
-                    have a suggestion or comment. We will gladly accept criticism too and do
-                    our best to improve.
+                    have a suggestion or comment. We gladly accept criticism too.
                 </p>
             </div>
         </div>
     </div>
 
-
 @include('includes.footer')
 </body>
 </html>
-
-@else
-    @include('includes.error')
-@endif
