@@ -24,7 +24,7 @@
     <li><a href="{{url('/classmates')}}">Classmates</a></li>
     <li><a href="{{url('live')}}">Upload Files</a></li>
     <li><a href="{{route('settings')}}">Settings</a></li>
-    <li><a href="">Contact (PENDING)</a></li>
+    <li><a href="{{url('/contact')}}">Contact</a></li>
     @endif
     </ul>
     <br>

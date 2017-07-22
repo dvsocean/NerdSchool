@@ -184,3 +184,15 @@ Route::get('/view_files/{id}', function($id){
     return view('classmates.shared_server', compact('id'));
 });
 //SHARED SERVER BETWEEN NERDS
+
+//NEW DISCUSSION
+Route::get('/new_discussion', function(){
+    return view('discussions.new_discussion');
+});
+//NEW DISCUSSION
+
+//CONTACT PAGE
+Route::get('/contact', function(){
+    return view('contact.contact');
+});
+//CONTACT PAGE

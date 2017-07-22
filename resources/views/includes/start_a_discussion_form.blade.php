@@ -24,10 +24,30 @@
         </div>
 
         <div class="col-xs-12 col-sm-4 col-md-4">
-            <p>You may attach a JPG, PNG, GIF, SQL, TXT, DOCX, CSS or HTML file</p>
-            <input type="file" name="attachment"><br><br>
+            <!--PLACEHOLDER-->
         </div>
     </div>
+
+
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <!--PLACEHOLDER-->
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <fieldset>
+                <legend>Add a file</legend>
+                <p>You may attach a JPG, PNG, GIF, SQL, TXT, DOCX, CSS or HTML file</p>
+                <input type="file" name="attachment"><br><br>
+            </fieldset><br><br>
+        </div>
+
+        <div class="col-xs-12 col-md-4">
+            <!--PLACEHOLDER-->
+        </div>
+    </div>
+
+
 
     <div class="row">
         <div class="col-xs-12 col-md-2">

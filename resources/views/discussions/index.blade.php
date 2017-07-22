@@ -46,6 +46,10 @@ use App\User; ?>
                     active discussions we currently have.
                 </p>
                 <br>
+                <div align="right">
+                    <a href="{{url('/new_discussion')}}" class="btn btn-default">New Discussion</a>
+                </div>
+                <br><br>
             </div>
 
             <div class="container">
