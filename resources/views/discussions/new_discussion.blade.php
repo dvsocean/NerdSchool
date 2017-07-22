@@ -27,20 +27,22 @@
             <div class="col-xs-12 col-sm-6 col-md-4">
                 <h3 align="center">Start a discussion</h3><br>
                 <form action="{{url('/posts')}}" method="POST" id="postForm" name="postForm" enctype="multipart/form-data">
-                    <select id="topic" name="topic">
-                        <option value="0">Select a topic &#8681;</option>
-                        <option value="Server">Server</option>
-                        <option value="Client">Client</option>
-                        <option value="Linux">Linux</option>
-                        <option value="PHP">PHP</option>
-                        <option value="SQL">SQL</option>
-                        <option value="Laravel">Laravel</option>
-                        <option value="Javascript">Javascript</option>
-                        <option value="JQuery">JQuery</option>
-                        <option value="HTML">HTML</option>
-                        <option value="CSS">CSS</option>
-                        <option value="General">General</option>
-                    </select><br><br>
+                    <div class="select-wrapper">
+                        <select id="topic" name="topic">
+                            <option value="0">Select a topic</option>
+                            <option value="Server">Server</option>
+                            <option value="Client">Client</option>
+                            <option value="Linux">Linux</option>
+                            <option value="PHP">PHP</option>
+                            <option value="SQL">SQL</option>
+                            <option value="Laravel">Laravel</option>
+                            <option value="Javascript">Javascript</option>
+                            <option value="JQuery">JQuery</option>
+                            <option value="HTML">HTML</option>
+                            <option value="CSS">CSS</option>
+                            <option value="General">General</option>
+                        </select>
+                    </div><br><br>
             </div>
 
             <div class="col-xs-12 col-sm-3 col-md-4">

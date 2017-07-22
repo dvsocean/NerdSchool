@@ -9,7 +9,7 @@
         <div class="modal-content">
             <?php use App\User;
 
-            $all_nerds= User::all(); ?>
+            $all_nerds= User::paginate(10); ?>
             <div class="table-responsive">
                 <table class="table-striped">
                     <thead>
@@ -35,6 +35,7 @@
                     @endforeach
                     </tbody>
                 </table>
+                <h4 align="center">{{$all_nerds->links()}}</h4>
             </div>
         </div>
     </div>

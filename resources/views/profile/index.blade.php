@@ -73,7 +73,7 @@ $review=\App\Review::all();
 
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             @if(Auth::user()->admin == 'yes')
-                                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Database</button><br><br>
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Administrator</button><br><br>
                                 @if(!count($review) < 1)
                                     <a href="{{url('/review')}}" class="btn btn-default">Review files</a><br><br>
                                 @endif
@@ -81,14 +81,7 @@ $review=\App\Review::all();
                         </div>
 
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".stats">Statistics</button><br><br>
-                            @if(!Auth::user()->accepted_by)
-                                <p>View your project on our sever..</p>
-                                <a href="{{url('/verify')}}" class="btn btn-success">Get verified</a>
-                            @else
-                                <a href="{{url('/nerdserver')}}" class="btn btn-success">Nerd Server</a><br><br>
-                                <a href="{{url('/live')}}" class="btn btn-success">Upload Files</a>
-                            @endif
+                            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".stats">Control Panel</button><br><br>
                         </div>
                     </div>
 

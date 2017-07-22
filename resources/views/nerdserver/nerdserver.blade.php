@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="col-xs-12 col-md-6" align="right">
-                        <a href="{{url('/live')}}" class="btn btn-default">ADD MORE</a>
+                        <a href="{{url('/live')}}" class="btn btn-default">ADD FILES</a>
                     </div>
                 </div>
             </div>

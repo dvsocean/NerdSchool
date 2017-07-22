@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Contact</title>
+    <title>Contact Us</title>
     @include('includes.header')
     <style>
         #contact-text{
