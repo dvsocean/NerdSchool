@@ -25,7 +25,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-md-12">
                             <br><br>
-                            <h3 align="center">Upload files and see how your project will look when it goes live</h3>
+                            <h3 align="center">Upload and share your project</h3>
                             <br><br>
                             <br><br>
 
@@ -41,12 +41,12 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-6 col-md-6">
                             <a href="{{url('/profile')}}" class="btn btn-default">PROFILE</a>
                         </div>
 
-                        <div class="col-xs-12 col-md-6" align="right">
-                            <a href="{{url('/nerdserver')}}" class="btn btn-success">Nerd Server</a>
+                        <div class="col-xs-6 col-md-6" align="right">
+                            <a href="{{url('/nerdserver')}}" class="btn btn-primary">Nerd Server</a>
                         </div>
                     </div>
 

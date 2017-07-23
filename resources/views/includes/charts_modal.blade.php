@@ -48,9 +48,9 @@
                         <p>Share your project on our sever..</p>
                         <a href="{{url('/verify')}}" class="btn btn-success">Get verified</a>
                     @else
-                        <a href="{{url('/nerdserver')}}" class="btn btn-success">Nerd Server</a>
+                        <a href="{{url('/nerdserver')}}" class="btn btn-primary">Nerd Server</a>
                         <br><br>
-                        <a href="{{url('/live')}}" class="btn btn-success">Upload Files</a>
+                        <a href="{{url('/live')}}" class="btn btn-primary">Upload Files</a>
                     @endif
                 </div>
             </div>

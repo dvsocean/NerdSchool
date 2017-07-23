@@ -60,11 +60,11 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xs-12 col-md-6">
+                    <div class="col-xs-6 col-md-6">
                         <a href="{{url('/profile')}}" class="btn btn-default">PROFILE</a>
                     </div>
 
-                    <div class="col-xs-12 col-md-6" align="right">
+                    <div class="col-xs-6 col-md-6" align="right">
                         <a href="{{url('/live')}}" class="btn btn-default">ADD FILES</a>
                     </div>
                 </div>
