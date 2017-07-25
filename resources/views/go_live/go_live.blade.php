@@ -42,11 +42,11 @@
 
                     <div class="row">
                         <div class="col-xs-6 col-md-6">
-                            <a href="{{url('/profile')}}" class="btn btn-default">PROFILE</a>
+                            <a href="{{url('/profile')}}" class="button">PROFILE</a>
                         </div>
 
                         <div class="col-xs-6 col-md-6" align="right">
-                            <a href="{{url('/nerdserver')}}" class="btn btn-primary">Nerd Server</a>
+                            <a href="{{url('/nerdserver')}}" class="button">NERD SERVER</a>
                         </div>
                     </div>
 

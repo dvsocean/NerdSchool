@@ -47,7 +47,7 @@ use App\User; ?>
                 </p>
                 <br>
                 <div align="right">
-                    <a href="{{url('/new_discussion')}}" class="btn btn-default">New Discussion</a>
+                    <a href="{{url('/new_discussion')}}" class="button">New Discussion</a>
                 </div>
                 <br><br>
             </div>

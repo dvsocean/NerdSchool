@@ -73,15 +73,15 @@ $review=\App\Review::all();
 
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             @if(Auth::user()->admin == 'yes')
-                                <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-example-modal-lg">Administrator</button><br><br>
+                                <button type="button" class="button" data-toggle="modal" data-target=".bs-example-modal-lg">Administrator</button><br><br>
                                 @if(!count($review) < 1)
-                                    <a href="{{url('/review')}}" class="btn btn-default">Review files</a><br><br>
+                                    <a href="{{url('/review')}}" class="button">Review files</a><br><br>
                                 @endif
                             @endif
                         </div>
 
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-                            <button type="button" class="btn btn-default" data-toggle="modal" data-target=".stats">Control Panel</button><br><br>
+                            <button type="button" class="button" data-toggle="modal" data-target=".stats">Control Panel</button><br><br>
                         </div>
                     </div>
 
