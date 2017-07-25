@@ -36,7 +36,7 @@
             <h4>For access to the Nerdserver you must get verified</h4>
             <br><br>
             <a href="{{url('/verify')}}" class="btn btn-success">Get verified</a>
-            <a href="{{url('/profile')}}" class="btn btn-default">Not now</a>
+            <a href="{{url('/profile')}}" class="button">Not now</a>
         </div>
 
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-4">

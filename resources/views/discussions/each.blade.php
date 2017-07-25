@@ -33,7 +33,7 @@
                 </header>
 
                 <span><h2>{{$post->title}}</h2></span>
-                <a href="{{url('/discussions')}}" class="btn btn-default">All Discussions</a>
+                <a href="{{url('/discussions')}}" class="button">All Discussions</a>
                 <br><br>
 
                 <style>

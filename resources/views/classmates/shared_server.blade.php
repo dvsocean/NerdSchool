@@ -1,8 +1,9 @@
 @if(Auth::user())
+    <?php $user= App\User::findOrFail($id); ?>
     <!DOCTYPE HTML>
     <html>
     <head>
-        <title></title>
+        <title>{{$user->name}}'s Project</title>
         @include('includes.header')
     </head>
     <body>
@@ -17,9 +18,6 @@
         <br><br>
         <br><br>
 
-        <?php
-        $user= App\User::findOrFail($id);
-        ?>
         <!-- Main -->
         <section id="main" class="main">
 
@@ -39,7 +37,7 @@
                         @else
                             <h3 align="center">{{$user->name}} is not sharing any files</h3>
                         @endif
-                        <a href="{{url('/classmates')}}" class="btn btn-default">Return</a><br><br><br>
+                        <a href="{{url('/classmates')}}" class="button">Return</a><br><br><br>
                     </div>
                 </div>
             </div>
