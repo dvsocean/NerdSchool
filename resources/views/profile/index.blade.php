@@ -68,12 +68,12 @@ $review=\App\Review::all();
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" align="left">
                             <strong><p>Update profile photo</p></strong>
-                            {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}<br><br>
+                            {!! Form::file('photo_id', ['id'=>'user_photo'], ['class'=>'form-control']) !!}<br><br>
                         </div>
 
                         <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                             @if(Auth::user()->admin == 'yes')
-                                <button type="button" class="button" data-toggle="modal" data-target=".bs-example-modal-lg">Administrator</button><br><br>
+                                <button type="button" id="adminButton" class="button" data-toggle="modal" data-target=".bs-example-modal-lg">Administrator</button><br><br>
                                 @if(!count($review) < 1)
                                     <a href="{{url('/review')}}" class="button">Review files</a><br><br>
                                 @endif

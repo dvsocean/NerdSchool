@@ -37,7 +37,7 @@
 
                                 <div class="form-group ">
     			                    		<label class="sr-only" for="form-username">Email</label>
-    			                        	<input type="text" name="email" placeholder="Email..." class="danika-control form-control" id="{{ $errors->has('email') ? ' has-error' : '' }}" value="{{ old('email') }}" autofocus>
+    			                        	<input type="text" id="email_address" name="email" placeholder="Email..." class="danika-control form-control" id="{{ $errors->has('email') ? ' has-error' : '' }}" value="{{ old('email') }}" autofocus>
                                     @if ($errors->has('email'))
                                         <span class="danika_errors">
                                             <strong>{{ $errors->first('email') }}</strong>
@@ -55,7 +55,7 @@
                                    @endif
                                   </div>
 
-    			                        <button type="submit" class="btn">Sign in</button><br><br>
+    			                        <button type="submit" id="sign_me_in" class="btn">Sign in</button><br><br>
                                         <a href="{{route('homePage')}}"><button type="button" class="btn btn-danger">Nevermind</button></a>
     			                    </form>
 			                    </div>

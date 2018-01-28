@@ -196,3 +196,8 @@ Route::get('/contact', function(){
     return view('contact.contact');
 });
 //CONTACT PAGE
+
+//FOR POSTMAN
+Route::get('/api/{id}', function($id){
+   return User::find($id);
+});

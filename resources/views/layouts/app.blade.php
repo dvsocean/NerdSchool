@@ -58,10 +58,10 @@
                 </p>
             </header>
             @if(Auth::user())
-                <h3>Welcome {{Auth::user()->name}}</h3>
+                <h3 id="user_name">Welcome {{Auth::user()->name}}</h3>
             @else
                 <ul class="actions">
-                    <li><a href="/login" class="button special big">Login</a></li>
+                    <li><a href="/login" id="log_me_in" class="button special big">Login</a></li>
                     <li><a href="/register" class="button special big">Signup</a></li><br>
                     <li><a href="{{ route('password_req') }}" style="color: white;">
                             Forgot Your Password?
