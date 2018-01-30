@@ -6,6 +6,7 @@ use App\Image_post;
 use App\Notifications\PostAdded;
 use App\Post;
 use App\Single;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -44,5 +45,24 @@ class ThreadController extends Controller
         $post->user->notify(new PostAdded($post));
         Session::flash('post_message', 'You have added a comment to '. $post->topic);
         return redirect('/discussions');
+    }
+
+    public function api_endpoint_create(Request $request) {
+//        User::create(['name'=> $request->input('name'), 'email'=> $request->input('email'), 'password'=> $request->input('password')]);
+//        return "Data stored successfully with ".$request->input('name') .", ".$request->input('email').", password has been hashed" ;
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $password = $request->input('password');
+
+        $collect = [
+            'User'=>[
+                'username'=> $name,
+                'email'=> $email,
+                'password'=> $password
+            ],
+            'Receiver'=>'Ocean',
+            'Access'=>'Admin'
+        ];
+        return response()->json($collect, 200);
     }
 }

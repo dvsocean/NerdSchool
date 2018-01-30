@@ -199,5 +199,12 @@ Route::get('/contact', function(){
 
 //FOR POSTMAN
 Route::get('/api/{id}', function($id){
-   return User::find($id);
+    if($id == 'all'){
+        return User::all();
+    } else {
+        return User::find($id);
+    }
 });
+
+//POSTMAN CREATE
+Route::post('/api_make_user', 'ThreadController@api_endpoint_create');
